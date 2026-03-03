@@ -14,6 +14,7 @@ cargo clean
 cargo fmt
 
 # docs
+cargo doc --no-deps
 cargo doc --open
 ```
 
