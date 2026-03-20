@@ -1,8 +1,9 @@
-use near_kit::*;
+// use near_kit::*;
+use near_kit::{Error, Near};
 use crate::lib::contract_greeting::GREETING_CONTRACT_TRAIT;
 // =================================================
 /// View helper: fetch the current greeting.
-pub async fn fetch_greeting(near: &Near, contract_id: &str) -> Result<String, Error> {
+pub async fn get_greeting_fun(near: &Near, contract_id: &str) -> Result<String, Error> {
     // Use the trait object that the macro implements `Contract` for:
     let greeter = near.contract::<dyn GREETING_CONTRACT_TRAIT>(contract_id);
     let greeting = greeter.get_greeting().await?;

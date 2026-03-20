@@ -1,5 +1,5 @@
 //! near-kit-tool-box
-//! 
+//!
 //! 🦀 near kit rs tool box, functions for specific near interactions
 // =================================================
 #![allow(non_camel_case_types)]
