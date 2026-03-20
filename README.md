@@ -1,5 +1,5 @@
-# sleetplayground-rs
-🦀 personal rust playground for interacting with NEAR
+# near-kit-tool-box-rs
+🦀 near kit rs tool kit, functions for specific near interactions
 
 ---
 
@@ -20,7 +20,8 @@ cargo doc --open
 
 **dependencies**
 - near-kit-rs (```cargo add near-kit```)
-- 
+
+
 
 ---
 

@@ -1,5 +1,5 @@
 [package]
-name = "sleetplayground-rs"
+name = "near-kit-tool-box"
 version = "0.1.0"
 edition = "2024"
 
@@ -10,7 +10,7 @@ edition = "2024"
 path = "src/lib.rs"
 
 [[bin]]
-name = "sleetplayground"
+name = "sleetkit"
 path = "src/main.rs"
 
 # =================================================
