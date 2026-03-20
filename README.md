@@ -26,6 +26,11 @@ cargo doc --open
 - near-kit-rs (```cargo add near-kit```)
 
 
+BINS
+```sh
+cargo run --bin greeting_get_bin
+```
+
 
 ---
 
