@@ -1,5 +1,9 @@
 # near-kit-tool-box-rs
-🦀 near kit rs tool kit, functions for specific near interactions
+🦀 near kit rs tool box, functions for specific near interactions
+
+ℹ️ primarly for personal use
+<br/>
+ℹ️ the lib contains reusable functions the bins are examples. 
 
 ---
 
