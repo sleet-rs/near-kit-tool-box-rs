@@ -1,7 +1,7 @@
 // get_greeting
 //
 use near_kit::*;
-use near_kit_tool_box::fun::greeting_get_fun::get_greeting_fun;
+use near_kit_tool_box::fun::greeting::greeting_get_fun::get_greeting_fun;
 // =================================================
 #[tokio::main]
 async fn main() -> Result<(), Error> {

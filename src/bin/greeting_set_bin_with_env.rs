@@ -9,7 +9,7 @@
 //
 // =================================================
 use near_kit::*;
-use near_kit_tool_box::fun::greeting_set_fun_json::set_greeting;
+use near_kit_tool_box::fun::greeting::greeting_set_fun_json::set_greeting;
 use std::env;
 // =================================================
 #[tokio::main]
