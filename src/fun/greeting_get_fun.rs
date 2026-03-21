@@ -1,6 +1,6 @@
 // use near_kit::*;
-use near_kit::{Error, Near};
 use crate::lib::contract_greeting::GREETING_CONTRACT_TRAIT;
+use near_kit::{Error, Near};
 // =================================================
 /// View helper: fetch the current greeting.
 pub async fn get_greeting_fun(near: &Near, contract_id: &str) -> Result<String, Error> {

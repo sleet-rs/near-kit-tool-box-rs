@@ -1,6 +1,6 @@
 // use near_kit::*;
 // use crate::lib::contract_greeting::GREETING_CONTRACT_TRAIT;
-use near_kit::{Error, Near, Gas};
+use near_kit::{Error, Gas, Near};
 use serde_json::json;
 // =================================================
 /// Change helper: set a new greeting on the contract using raw JSON args.
