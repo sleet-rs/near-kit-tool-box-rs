@@ -29,6 +29,7 @@ cargo doc --open
 BINS
 ```sh
 cargo run --bin greeting_get_bin
+cargo run --bin greeting_set_bin
 ```
 
 

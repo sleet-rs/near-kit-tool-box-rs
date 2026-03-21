@@ -1,3 +1,5 @@
+// get_greeting
+// 
 use near_kit::*;
 use near_kit_tool_box::fun::greeting_get_fun::get_greeting_fun;
 // =================================================
