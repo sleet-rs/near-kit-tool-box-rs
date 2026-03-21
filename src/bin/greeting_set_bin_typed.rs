@@ -11,7 +11,7 @@
 //
 // =================================================
 use near_kit::*;
-use near_kit_tool_box::lib::contract_greeting::GREETING_CONTRACT_TRAIT;
+use near_kit_tool_box::lib::contract_greeting::{GREETING_CONTRACT_TRAIT, SetGreetingArgs};
 use std::env;
 // =================================================
 #[tokio::main]
@@ -45,11 +45,13 @@ async fn main() -> Result<(), Error> {
         contract_id, account_id, new_greeting
     );
 
-    // Use the typed contract interface - the macro implements `Contract` for the trait
+    // Use the typed contract interface - compile-time type checking
     let greeter = near.contract::<dyn GREETING_CONTRACT_TRAIT>(&contract_id);
-    
-    // Call the typed method with an argument - type-safe and autocomplete-friendly
-    greeter.set_greeting(new_greeting).await?;
+
+    // Call the typed method with an argument struct - type-safe and autocomplete-friendly
+    greeter
+        .set_greeting(SetGreetingArgs { greeting: new_greeting })
+        .await?;
 
     println!("✅ Greeting updated successfully");
 

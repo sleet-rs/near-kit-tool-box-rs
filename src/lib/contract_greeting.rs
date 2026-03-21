@@ -1,11 +1,17 @@
-// use near_kit::*;
+use serde::Serialize;
+// =================================================
+/// Arguments for `set_greeting` call.
+#[derive(Serialize)]
+pub struct SetGreetingArgs {
+    pub greeting: String,
+}
 // =================================================
 /// Typed interface for a simple greeting contract.
 #[near_kit::contract]
 pub trait GREETING_CONTRACT_TRAIT {
     fn get_greeting(&self) -> String;
     #[call]
-    fn set_greeting(&mut self, greeting: String);
+    fn set_greeting(&mut self, args: SetGreetingArgs);
 }
 // =================================================
 // =================================================
