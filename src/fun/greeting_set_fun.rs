@@ -13,13 +13,10 @@ pub async fn set_greeting(
     contract_id: &str,
     new_greeting: String,
 ) -> Result<(), Error> {
-    // This will send JSON: { "greeting": "<new_greeting>" }
-    // which NEAR RPC then base64-encodes on the wire.
     near.call(contract_id, "set_greeting")
         .args(json!({ "greeting": new_greeting }))
         .gas(Gas::from_tgas(3))
         .await?;
-
     Ok(())
 }
 // =================================================
