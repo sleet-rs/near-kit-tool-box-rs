@@ -29,6 +29,13 @@ cargo doc --open
 BINS
 ```sh
 cargo run --bin greeting_get_bin
+
+# cargo run --bin greeting_set_bin
+NEAR_NETWORK=testnet \
+NEAR_ACCOUNT_ID=alice.testnet \
+NEAR_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE \
+GREETING_CONTRACT_ID=hello.sleet.testnet \
+GREETING_NEW_TEXT="hello from near kit rust" \
 cargo run --bin greeting_set_bin
 ```
 

@@ -1,16 +1,16 @@
 // set_greeting
-// 
+//
 // NEAR_NETWORK=testnet \
 // NEAR_ACCOUNT_ID=alice.testnet \
 // NEAR_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE \
 // GREETING_CONTRACT_ID=hello.sleet.testnet \
 // GREETING_NEW_TEXT="hello from near kit rust" \
 // cargo run --bin greeting_set_bin
-// 
+//
 // =================================================
-use std::env;
 use near_kit::*;
 use near_kit_tool_box::fun::greeting_set_fun::set_greeting;
+use std::env;
 // =================================================
 #[tokio::main]
 async fn main() -> Result<(), Error> {
