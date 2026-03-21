@@ -1271,6 +1271,7 @@ name = "near-kit-tool-box"
 version = "0.1.0"
 dependencies = [
  "near-kit",
+ "serde",
  "serde_json",
  "tokio",
 ]
