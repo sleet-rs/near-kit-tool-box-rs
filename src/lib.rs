@@ -9,7 +9,7 @@ pub mod lib {
 }
 pub mod fun {
     pub mod greeting_get_fun;
-    pub mod greeting_set_fun;
+    pub mod greeting_set_fun_json;
 }
 // =================================================
 // =================================================
