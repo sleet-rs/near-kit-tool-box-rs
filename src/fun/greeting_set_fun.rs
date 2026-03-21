@@ -3,11 +3,10 @@
 use near_kit::{Error, Near, Gas};
 use serde_json::json;
 // =================================================
-/// Change helper: set a new greeting on the contract.
+/// Change helper: set a new greeting on the contract using raw JSON args.
 ///
 /// Requires a `Near` client configured with credentials for the signer
 /// that is allowed to call `set_greeting` on `contract_id`.
-/// Change helper: set a new greeting on the contract using raw JSON args.
 pub async fn set_greeting(
     near: &Near,
     contract_id: &str,
