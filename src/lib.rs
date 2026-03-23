@@ -6,7 +6,9 @@
 #![allow(non_camel_case_types)]
 // =================================================
 pub mod lib {
-    //! Contract definitions and typed interfaces for NEAR contracts.
+    //! Reusable Near client configurations.
+    pub mod client;
+    // Contract definitions and typed interfaces for NEAR contracts.
     /// near greetng smart contract trait
     pub mod contract_greeting;
 }
