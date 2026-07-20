@@ -20,6 +20,9 @@ cargo fmt
 # docs
 cargo doc --no-deps
 cargo doc --open
+
+# mdbook
+mdbook serve --open
 ```
 
 **dependencies**
