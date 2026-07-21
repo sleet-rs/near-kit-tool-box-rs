@@ -23,6 +23,12 @@ methods_greeting.rs
 ```
 
 
+#### FUN
+
+- `src/lib/contract/contract_greeting.rs`
+- `src/fun/greeting/greeting_get_fun.rs`
+- `src/fun/greeting/greeting_set_fun.rs`
+- `src/fun/greeting/greeting_set_fun_json.rs`
 
 
 ==========================

@@ -1,5 +1,6 @@
 // use near_kit::*;
 // use crate::lib::contract_greeting::GREETING_CONTRACT_TRAIT;
+use crate::lib::methods::methods_greeting::GREETING_METHODS_CONST;
 use near_kit::{Error, Gas, Near};
 use serde_json::json;
 // =================================================
@@ -12,7 +13,7 @@ pub async fn set_greeting(
     contract_id: &str,
     new_greeting: String,
 ) -> Result<(), Error> {
-    near.call(contract_id, "set_greeting")
+    near.call(contract_id, GREETING_METHODS_CONST.set_greeting)
         .args(json!({ "greeting": new_greeting }))
         .gas(Gas::from_tgas(3))
         .await?;
