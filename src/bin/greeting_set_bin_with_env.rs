@@ -1,11 +1,11 @@
-// set_greeting
+// set_greeting (json)
 //
-// NEAR_NETWORK=testnet \
-// NEAR_ACCOUNT_ID=alice.testnet \
-// NEAR_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE \
-// GREETING_CONTRACT_ID=hello.sleet.testnet \
-// GREETING_NEW_TEXT="hello from near kit rust" \
-// cargo run --bin greeting_set_bin
+// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// then run:
+//   cargo run --bin greeting_set_bin_with_env -- <contract_id> "<new_text>"
+//
+// example:
+//   cargo run --bin greeting_set_bin_with_env -- hello.sleet.testnet "hello from near kit rust"
 //
 // =================================================
 use near_kit::*;
@@ -15,20 +15,24 @@ use std::env;
 // =================================================
 #[tokio::main]
 async fn main() -> Result<(), Error> {
+    let args: Vec<String> = env::args().collect();
+    let contract_id = args
+        .get(1)
+        .expect("usage: greeting_set_bin_with_env <contract_id> \"<new_text>\"");
+    let new_greeting = args
+        .get(2)
+        .expect("usage: greeting_set_bin_with_env <contract_id> \"<new_text>\"");
+
     let near = NEAR_KIT_CLIENT::from_env()?.build();
     let account_id =
         env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
-    let contract_id =
-        env::var("GREETING_CONTRACT_ID").expect("GREETING_CONTRACT_ID env var is required");
-    let new_greeting =
-        env::var("GREETING_NEW_TEXT").expect("GREETING_NEW_TEXT env var is required");
 
     println!(
         "Setting greeting on `{}` as `{}` to: {}",
         contract_id, account_id, new_greeting
     );
 
-    set_greeting(&near, &contract_id, new_greeting).await?;
+    set_greeting(&near, contract_id, new_greeting.clone()).await?;
 
     println!("✅ Greeting updated successfully");
 
