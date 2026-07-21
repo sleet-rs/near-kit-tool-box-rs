@@ -9,8 +9,8 @@ pub mod lib {
     //! Reusable Near client configurations.
     pub mod client_kit;
     // Contract definitions and typed interfaces for NEAR contracts.
-    /// near greetng smart contract trait
-    pub mod contract_greeting;
+    /// near contracts
+    pub mod contract;
 }
 // functions
 pub mod fun;

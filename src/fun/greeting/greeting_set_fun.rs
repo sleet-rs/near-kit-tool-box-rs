@@ -1,5 +1,5 @@
 // use near_kit::*;
-use crate::lib::contract_greeting::{GREETING_CONTRACT_TRAIT, GREETING_ARGS};
+use crate::lib::contract::contract_greeting::{GREETING_CONTRACT_TRAIT, GREETING_ARGS};
 use near_kit::{Error, Gas, Near};
 // =================================================
 /// Change helper: set a new greeting on the contract using typed contract interface.

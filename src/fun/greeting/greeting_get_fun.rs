@@ -1,5 +1,5 @@
 // use near_kit::*;
-use crate::lib::contract_greeting::GREETING_CONTRACT_TRAIT;
+use crate::lib::contract::contract_greeting::GREETING_CONTRACT_TRAIT;
 use near_kit::{Error, Near};
 // =================================================
 /// View helper: fetch the current greeting.
