@@ -11,9 +11,18 @@ NEAR_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE
 
 ## src/fun/greeting
 
+Read bins only need `NEAR_NETWORK` (defaults to `testnet`). Set bins also need `NEAR_ACCOUNT_ID` and `NEAR_PRIVATE_KEY`.
+
 ```bash
-# Hardcoded testnet contract `hello.sleet.testnet`. No signer needed.
-cargo run --bin greeting_get_bin_with_client
+## get greeting (typed)
+# Uses the typed contract wrapper (`get_greeting_fun`).
+cargo run --bin greeting_get_bin_typed -- <contract_id>
+cargo run --bin greeting_get_bin_typed -- hello.sleet.testnet
+
+## get greeting (json)
+# Same read, but via raw JSON (`get_greeting_json`). Useful when you don't want the typed wrapper.
+cargo run --bin greeting_get_bin_json -- <contract_id>
+cargo run --bin greeting_get_bin_json -- hello.sleet.testnet
 
 ## set greeting (typed)
 # Uses the typed contract wrapper (`set_greeting_typed`).
