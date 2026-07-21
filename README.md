@@ -13,7 +13,7 @@
 cargo run
 cargo check
 # cargo check --target wasm32-unknown-unknown
-cargo test
+# cargo test
 cargo clean
 cargo fmt
 
@@ -28,19 +28,6 @@ mdbook serve --open
 **dependencies**
 - near-kit-rs (```cargo add near-kit```)
 
-
-BINS
-```sh
-cargo run --bin greeting_get_bin
-
-# cargo run --bin greeting_set_bin
-NEAR_NETWORK=testnet \
-NEAR_ACCOUNT_ID=alice.testnet \
-NEAR_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE \
-GREETING_CONTRACT_ID=hello.sleet.testnet \
-GREETING_NEW_TEXT="hello from near kit rust" \
-cargo run --bin greeting_set_bin_with_env
-```
 
 
 ==========================

@@ -9,12 +9,12 @@ pub mod lib {
     //! Reusable Near client configurations.
     pub mod client_kit;
     // Contract definitions and typed interfaces for NEAR contracts.
+    /// near contract id constants
+    pub mod const_id;
     /// near contracts
     pub mod contract;
     /// near contract method name constants
     pub mod methods;
-    /// near contract id constants
-    pub mod const_id;
 }
 // functions
 pub mod fun;

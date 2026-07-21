@@ -1,5 +1,5 @@
 // use near_kit::*;
-use crate::lib::contract::contract_greeting::{GREETING_CONTRACT_TRAIT, GREETING_ARGS};
+use crate::lib::contract::contract_greeting::{GREETING_ARGS, GREETING_CONTRACT_TRAIT};
 use near_kit::{Error, Gas, Near};
 // =================================================
 /// Change helper: set a new greeting on the contract using typed contract interface.
@@ -14,7 +14,9 @@ pub async fn set_greeting_typed(
     // Use the typed contract interface - compile-time type checking
     let greeter = near.contract::<dyn GREETING_CONTRACT_TRAIT>(contract_id);
     greeter
-        .set_greeting(GREETING_ARGS { greeting: new_greeting })
+        .set_greeting(GREETING_ARGS {
+            greeting: new_greeting,
+        })
         .gas(Gas::from_tgas(3))
         .await?;
     Ok(())
