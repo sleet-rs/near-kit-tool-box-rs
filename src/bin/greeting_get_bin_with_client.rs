@@ -2,7 +2,7 @@
 //
 use near_kit::Error;
 use near_kit_tool_box::fun::greeting::greeting_get_fun::get_greeting_fun;
-use near_kit_tool_box::lib::client::NearClient;
+use near_kit_tool_box::lib::client_kit::NearClient;
 // =================================================
 #[tokio::main]
 async fn main() -> Result<(), Error> {
