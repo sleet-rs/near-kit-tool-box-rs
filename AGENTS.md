@@ -10,6 +10,11 @@
 - `src/lib/const_id` contract id constants
 - `docs` mdbook
 
+---
+
+also agents
+- see [WORKFLOW.md](./WORKFLOW.md) for workflow
+
 
 ==========================
 <br/>
