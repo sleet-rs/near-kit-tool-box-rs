@@ -1,4 +1,4 @@
 // =================================================
-//! Contract definitions and typed interfaces for NEAR contracts.
-pub mod contract_greeting;
+//! Method name constants for NEAR contracts.
+pub mod methods_greeting;
 // =================================================

@@ -11,6 +11,8 @@ pub mod lib {
     // Contract definitions and typed interfaces for NEAR contracts.
     /// near contracts
     pub mod contract;
+    /// near contract method name constants
+    pub mod methods;
 }
 // functions
 pub mod fun;
