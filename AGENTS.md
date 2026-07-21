@@ -1,6 +1,6 @@
 # AGENTS
 
-🦀 near kit rs tool box, functions for specific near interactions
+🦀 near kit rs tool box, functions and more for specific near interactions
 
 
 - `src/bin` - example bins

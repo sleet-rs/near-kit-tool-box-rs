@@ -1,5 +1,5 @@
 # near-kit-tool-box-rs
-🦀 near kit rs tool box, functions for specific near interactions
+🦀 near kit rs tool box, functions and more for specific near interactions
 
 ℹ️ primarly for personal use
 <br/>
