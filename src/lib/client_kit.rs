@@ -3,23 +3,23 @@
 //! # Examples
 //!
 //! ```no_run
-//! use near_kit_tool_box::lib::client::NearClient;
+//! use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 //!
 //! // Testnet client
-//! let near = NearClient::testnet().build();
+//! let near = NEAR_KIT_CLIENT::testnet().build();
 //!
 //! // Mainnet client
-//! let near = NearClient::mainnet().build();
+//! let near = NEAR_KIT_CLIENT::mainnet().build();
 //! ```
 // =================================================
 use near_kit::{Near, NearBuilder};
 
 /// Builder for creating reusable Near clients.
-pub struct NearClient {
+pub struct NEAR_KIT_CLIENT {
     inner: NearBuilder,
 }
 
-impl NearClient {
+impl NEAR_KIT_CLIENT {
     /// Create a new client configured for testnet.
     pub fn testnet() -> Self {
         Self {

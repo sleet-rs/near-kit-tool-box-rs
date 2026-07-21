@@ -2,11 +2,11 @@
 //
 use near_kit::Error;
 use near_kit_tool_box::fun::greeting::greeting_get_fun::get_greeting_fun;
-use near_kit_tool_box::lib::client_kit::NearClient;
+use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 // =================================================
 #[tokio::main]
 async fn main() -> Result<(), Error> {
-    let near = NearClient::testnet().build();
+    let near = NEAR_KIT_CLIENT::testnet().build();
     let contract_id = "hello.sleet.testnet";
     let greeting = get_greeting_fun(&near, contract_id).await?;
     println!("Current Greeting: {greeting}");
