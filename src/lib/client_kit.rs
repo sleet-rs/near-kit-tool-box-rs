@@ -18,36 +18,13 @@
 //! # }
 //! ```
 // =================================================
+use super::helper::print_client_details::print_client_details_fun;
 use near_kit::{Error, Near, NearBuilder};
 use std::env;
 
 /// Builder for creating reusable Near clients.
 pub struct NEAR_KIT_CLIENT {
     inner: NearBuilder,
-}
-
-pub fn print_client_details(near: &Near) {
-    let account_id = near
-        .try_account_id()
-        .map(ToString::to_string)
-        .unwrap_or_else(|| "none (read-only)".to_string());
-    let mode = if near.signer().is_some() {
-        "signing"
-    } else {
-        "read-only"
-    };
-
-    println!("==========================");
-    println!("NEAR client details:");
-    println!("  Network: {}", near.chain_id());
-    println!("  RPC URL: {}", near.rpc_url());
-    println!("  Account ID: {account_id}");
-    println!("  Mode: {mode}");
-    println!("==========================");
-
-    if let Some(public_key) = near.public_key() {
-        println!("  Public key: {public_key}");
-    }
 }
 
 impl NEAR_KIT_CLIENT {
@@ -74,7 +51,7 @@ impl NEAR_KIT_CLIENT {
     /// Build the Near client instance.
     pub fn build(self) -> Near {
         let near = self.inner.build();
-        print_client_details(&near);
+        print_client_details_fun(&near);
         near
     }
 
