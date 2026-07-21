@@ -7,10 +7,7 @@ pub const WRAP_NEAR_CONTRACT_ID_CONST: WRAP_NEAR_CONTRACT_ID_CONST_TYPE =
     };
 // =================================================
 /// String constants for wrap.near contract ids per network.
-pub struct WRAP_NEAR_CONTRACT_ID_CONST_TYPE {
-    pub testnet: &'static str,
-    pub mainnet: &'static str,
-}
+pub type WRAP_NEAR_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTRACT_ID_CONST_TYPE;
 // =================================================
 /// Returns the wrap.near contract id for the given network.
 ///

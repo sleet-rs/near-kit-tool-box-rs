@@ -7,10 +7,7 @@ pub const BERRYCLUB_CONTRACT_ID_CONST: BERRYCLUB_CONTRACT_ID_CONST_TYPE =
     };
 // =================================================
 /// String constants for berryclub contract ids per network.
-pub struct BERRYCLUB_CONTRACT_ID_CONST_TYPE {
-    pub testnet: &'static str,
-    pub mainnet: &'static str,
-}
+pub type BERRYCLUB_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTRACT_ID_CONST_TYPE;
 // =================================================
 /// Returns the berryclub contract id for the given network.
 ///

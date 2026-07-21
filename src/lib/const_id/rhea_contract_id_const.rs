@@ -6,10 +6,7 @@ pub const RHEA_CONTRACT_ID_CONST: RHEA_CONTRACT_ID_CONST_TYPE = RHEA_CONTRACT_ID
 };
 // =================================================
 /// String constants for the rhea / ref-finance DEX contract ids per network.
-pub struct RHEA_CONTRACT_ID_CONST_TYPE {
-    pub testnet: &'static str,
-    pub mainnet: &'static str,
-}
+pub type RHEA_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTRACT_ID_CONST_TYPE;
 // =================================================
 /// Returns the rhea / ref-finance contract id for the given network.
 ///

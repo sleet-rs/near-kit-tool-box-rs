@@ -7,10 +7,7 @@ pub const SOCIAL_NEAR_CONTRACT_ID_CONST: SOCIAL_NEAR_CONTRACT_ID_CONST_TYPE =
     };
 // =================================================
 /// String constants for social.near contract ids per network.
-pub struct SOCIAL_NEAR_CONTRACT_ID_CONST_TYPE {
-    pub testnet: &'static str,
-    pub mainnet: &'static str,
-}
+pub type SOCIAL_NEAR_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTRACT_ID_CONST_TYPE;
 // =================================================
 /// Returns the social.near contract id for the given network.
 ///

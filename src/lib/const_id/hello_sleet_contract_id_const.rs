@@ -7,10 +7,7 @@ pub const HELLO_SLEET_CONTRACT_ID_CONST: HELLO_SLEET_CONTRACT_ID_CONST_TYPE =
     };
 // =================================================
 /// String constants for hello.sleet contract ids per network.
-pub struct HELLO_SLEET_CONTRACT_ID_CONST_TYPE {
-    pub testnet: &'static str,
-    pub mainnet: &'static str,
-}
+pub type HELLO_SLEET_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTRACT_ID_CONST_TYPE;
 // =================================================
 /// Returns the hello.sleet contract id for the given network.
 ///

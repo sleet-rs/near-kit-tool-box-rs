@@ -7,10 +7,7 @@ pub const MEME_COOKING_CONTRACT_ID_CONST: MEME_COOKING_CONTRACT_ID_CONST_TYPE =
     };
 // =================================================
 /// String constants for meme-cooking contract ids per network.
-pub struct MEME_COOKING_CONTRACT_ID_CONST_TYPE {
-    pub testnet: &'static str,
-    pub mainnet: &'static str,
-}
+pub type MEME_COOKING_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTRACT_ID_CONST_TYPE;
 // =================================================
 /// Returns the meme-cooking contract id for the given network.
 ///
