@@ -13,6 +13,8 @@ pub mod lib {
     pub mod contract;
     /// near contract method name constants
     pub mod methods;
+    /// near contract id constants
+    pub mod const_id;
 }
 // functions
 pub mod fun;

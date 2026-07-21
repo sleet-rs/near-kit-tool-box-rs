@@ -5,9 +5,11 @@
 
 - `src/bin` - example bins
 - `src/fun` the resuable functions
-- `src/lib/contract` near kit rs typed conrtacts
+- `src/lib/contract` near kit rs typed contracts
 - `src/lib/methods` methods consts
-- 
+- `src/lib/const_id` contract id constants
+- `docs` mdbook
+
 
 ==========================
 <br/>

@@ -9,32 +9,28 @@ NEAR_ACCOUNT_ID=alice.testnet
 NEAR_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE
 ```
 
-## greet — read
+## src/fun/greeting
 
 ```bash
+# Hardcoded testnet contract `hello.sleet.testnet`. No signer needed.
 cargo run --bin greeting_get_bin_with_client
-```
-
-Hardcoded testnet contract `hello.sleet.testnet`. No signer needed.
 
 ## set greeting (typed)
-
-```bash
+# Uses the typed contract wrapper (`set_greeting_typed`).
 cargo run --bin greeting_set_bin_typed -- <contract_id> "<new_text>"
-
-# example
-cargo run --bin greeting_set_bin_typed -- hello.sleet.testnet "hello from near kit rust"
-```
-
-Uses the typed contract wrapper (`set_greeting_typed`).
+cargo run --bin greeting_set_bin_typed -- hello.sleet.testnet "hello from near kit toolbox rust"
 
 ## set greeting (json)
-
-```bash
-cargo run --bin greeting_set_bin_with_env -- <contract_id> "<new_text>"
-
-# example
-cargo run --bin greeting_set_bin_with_env -- hello.sleet.testnet "hello from near kit rust"
+# Same call, but via raw JSON (`set_greeting`). Useful when you don't want the typed wrapper.
+cargo run --bin greeting_set_bin_json -- <contract_id> "<new_text>"
+cargo run --bin greeting_set_bin_json -- hello.sleet.testnet "hello from near kit toolbox rust"
 ```
 
-Same call, but via raw JSON (`set_greeting`). Useful when you don't want the typed wrapper.
+
+## src/fun/rhea
+
+
+
+==========================
+<br/>
+copyright 2026 by sleet.near
