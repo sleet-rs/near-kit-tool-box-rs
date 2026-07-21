@@ -10,6 +10,7 @@
 
 - [README](./SC/README.md)
 - [hello.sleet.near](./SC/hello.sleet.near.md)
+- [v2.ref-finance.near](./SC/v2.ref-finance.near.md)
 
 ---
 
