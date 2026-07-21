@@ -1,6 +1,8 @@
 # SMART CONTRACTS
 
 **CONTRACTS**
+
+general
 - [hello.sleet.near.md](./hello.sleet.near.md)
 - [social.near.md](./social.near.md)
 - [wrap.near.md](./wrap.near.md)
@@ -9,9 +11,9 @@
 - [berryclub.ek.near.md](./berryclub.ek.near.md)
 
 hos
-- [venear.dao.md](./venear.dao.md)
-- [vote.dao.md](./vote.dao.md)
-- [lockup.md](./lockup.md)
+- [hos.venear.dao.md](./hos.venear.dao.md)
+- [hos.vote.dao.md](./hos.vote.dao.md)
+- [hos.lockup.md](./hos.lockup.md)
 
 pumpopoly
 - [world.pumpopoly.near.md](./world.pumpopoly.near.md)
