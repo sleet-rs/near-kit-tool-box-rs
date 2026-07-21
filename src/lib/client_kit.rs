@@ -10,9 +10,13 @@
 //!
 //! // Mainnet client
 //! let near = NEAR_KIT_CLIENT::mainnet().build();
+//!
+//! // From env vars: NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY
+//! let near = NEAR_KIT_CLIENT::from_env()?.build();
 //! ```
 // =================================================
-use near_kit::{Near, NearBuilder};
+use near_kit::{Error, Near, NearBuilder};
+use std::env;
 
 /// Builder for creating reusable Near clients.
 pub struct NEAR_KIT_CLIENT {
@@ -43,6 +47,27 @@ impl NEAR_KIT_CLIENT {
     /// Build the Near client instance.
     pub fn build(self) -> Near {
         self.inner.build()
+    }
+
+    /// Build from env vars: `NEAR_NETWORK` (defaults to `testnet`),
+    /// `NEAR_ACCOUNT_ID`, `NEAR_PRIVATE_KEY`.
+    pub fn from_env() -> Result<Self, near_kit::Error> {
+        let network = env::var("NEAR_NETWORK").unwrap_or_else(|_| "testnet".to_string());
+        let account_id = env::var("NEAR_ACCOUNT_ID")
+            .map_err(|_| Error::Config("NEAR_ACCOUNT_ID env var is required".into()))?;
+        let private_key = env::var("NEAR_PRIVATE_KEY")
+            .map_err(|_| Error::Config("NEAR_PRIVATE_KEY env var is required".into()))?;
+
+        let me = match network.as_str() {
+            "mainnet" => Self::mainnet(),
+            "testnet" => Self::testnet(),
+            other => {
+                return Err(Error::Config(format!(
+                    "Unsupported NEAR_NETWORK `{other}` (use `mainnet` or `testnet`)"
+                )));
+            }
+        };
+        me.credentials(&private_key, &account_id)
     }
 }
 
