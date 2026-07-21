@@ -1,8 +1,9 @@
-//! Reusable Near client configurations for testnet and mainnet.
+//! Reusable Near client configurations for testnet, mainnet, and custom networks.
 //!
 //! # Examples
 //!
 //! ```no_run
+//! # fn main() -> Result<(), near_kit::Error> {
 //! use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 //!
 //! // Testnet client
@@ -11,8 +12,10 @@
 //! // Mainnet client
 //! let near = NEAR_KIT_CLIENT::mainnet().build();
 //!
-//! // From env vars: NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY
+//! // From env vars with optional credentials
 //! let near = NEAR_KIT_CLIENT::from_env()?.build();
+//! # Ok(())
+//! # }
 //! ```
 // =================================================
 use near_kit::{Error, Near, NearBuilder};
@@ -21,6 +24,30 @@ use std::env;
 /// Builder for creating reusable Near clients.
 pub struct NEAR_KIT_CLIENT {
     inner: NearBuilder,
+}
+
+pub fn print_client_details(near: &Near) {
+    let account_id = near
+        .try_account_id()
+        .map(ToString::to_string)
+        .unwrap_or_else(|| "none (read-only)".to_string());
+    let mode = if near.signer().is_some() {
+        "signing"
+    } else {
+        "read-only"
+    };
+
+    println!("==========================");
+    println!("NEAR client details:");
+    println!("  Network: {}", near.chain_id());
+    println!("  RPC URL: {}", near.rpc_url());
+    println!("  Account ID: {account_id}");
+    println!("  Mode: {mode}");
+    println!("==========================");
+
+    if let Some(public_key) = near.public_key() {
+        println!("  Public key: {public_key}");
+    }
 }
 
 impl NEAR_KIT_CLIENT {
@@ -46,28 +73,43 @@ impl NEAR_KIT_CLIENT {
 
     /// Build the Near client instance.
     pub fn build(self) -> Near {
-        self.inner.build()
+        let near = self.inner.build();
+        print_client_details(&near);
+        near
     }
 
-    /// Build from env vars: `NEAR_NETWORK` (defaults to `testnet`),
-    /// `NEAR_ACCOUNT_ID`, `NEAR_PRIVATE_KEY`.
+    /// Build from env vars: `NEAR_NETWORK` defaults to `testnet` and may be
+    /// a custom RPC URL. `NEAR_CHAIN_ID` is optional. Credentials are optional
+    /// and enable signing only when both `NEAR_ACCOUNT_ID` and
+    /// `NEAR_PRIVATE_KEY` are set.
     pub fn from_env() -> Result<Self, near_kit::Error> {
         let network = env::var("NEAR_NETWORK").unwrap_or_else(|_| "testnet".to_string());
-        let account_id = env::var("NEAR_ACCOUNT_ID")
-            .map_err(|_| Error::Config("NEAR_ACCOUNT_ID env var is required".into()))?;
-        let private_key = env::var("NEAR_PRIVATE_KEY")
-            .map_err(|_| Error::Config("NEAR_PRIVATE_KEY env var is required".into()))?;
-
-        let me = match network.as_str() {
+        let chain_id = env::var("NEAR_CHAIN_ID").ok();
+        let mut me = match network.as_str() {
             "mainnet" => Self::mainnet(),
             "testnet" => Self::testnet(),
-            other => {
-                return Err(Error::Config(format!(
-                    "Unsupported NEAR_NETWORK `{other}` (use `mainnet` or `testnet`)"
-                )));
-            }
+            rpc_url => Self {
+                inner: Near::custom(rpc_url, chain_id.as_deref().unwrap_or("custom")),
+            },
         };
-        me.credentials(&private_key, &account_id)
+
+        if let Some(chain_id) = chain_id {
+            me.inner = me.inner.chain_id(chain_id);
+        }
+
+        match (
+            env::var("NEAR_ACCOUNT_ID").ok(),
+            env::var("NEAR_PRIVATE_KEY").ok(),
+        ) {
+            (Some(account_id), Some(private_key)) => me.credentials(&private_key, &account_id),
+            (Some(_), None) => Err(Error::Config(
+                "NEAR_ACCOUNT_ID is set but NEAR_PRIVATE_KEY is missing".into(),
+            )),
+            (None, Some(_)) => Err(Error::Config(
+                "NEAR_PRIVATE_KEY is set but NEAR_ACCOUNT_ID is missing".into(),
+            )),
+            (None, None) => Ok(me),
+        }
     }
 }
 
