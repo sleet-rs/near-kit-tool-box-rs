@@ -9,6 +9,10 @@ NEAR_ACCOUNT_ID=alice.testnet
 NEAR_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE
 ```
 
+```sh
+source .env
+```
+
 ## src/fun/greeting
 
 Read bins only need `NEAR_NETWORK` (defaults to `testnet`). Set bins also need `NEAR_ACCOUNT_ID` and `NEAR_PRIVATE_KEY`.
