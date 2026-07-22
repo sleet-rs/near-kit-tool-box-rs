@@ -1,31 +1,32 @@
 // =================================================
 /// Method name constants for the nft.pumpopoly.near NFT contract.
-pub const PUMPOPOLY_NFT_METHODS_CONST: PUMPOPOLY_NFT_METHODS_CONST_TYPE = PUMPOPOLY_NFT_METHODS_CONST_TYPE {
-    new_default_meta: "new_default_meta",
-    new: "new",
-    nft_sync: "nft_sync",
-    nft_from_land: "nft_from_land",
-    nft_mint: "nft_mint",
-    nft_mint_bond: "nft_mint_bond",
-    nft_payout: "nft_payout",
-    nft_tokens_by_ids: "nft_tokens_by_ids",
-    nft_token_ids_for_owners: "nft_token_ids_for_owners",
-    nft_tokens_ids: "nft_tokens_ids",
-    nft_transfer_payout: "nft_transfer_payout",
-    nft_transfer: "nft_transfer",
-    nft_transfer_call: "nft_transfer_call",
-    nft_token: "nft_token",
-    nft_resolve_transfer: "nft_resolve_transfer",
-    nft_approve: "nft_approve",
-    nft_revoke: "nft_revoke",
-    nft_revoke_all: "nft_revoke_all",
-    nft_is_approved: "nft_is_approved",
-    nft_total_supply: "nft_total_supply",
-    nft_tokens: "nft_tokens",
-    nft_supply_for_owner: "nft_supply_for_owner",
-    nft_tokens_for_owner: "nft_tokens_for_owner",
-    nft_metadata: "nft_metadata",
-};
+pub const PUMPOPOLY_NFT_METHODS_CONST: PUMPOPOLY_NFT_METHODS_CONST_TYPE =
+    PUMPOPOLY_NFT_METHODS_CONST_TYPE {
+        new_default_meta: "new_default_meta",
+        new: "new",
+        nft_sync: "nft_sync",
+        nft_from_land: "nft_from_land",
+        nft_mint: "nft_mint",
+        nft_mint_bond: "nft_mint_bond",
+        nft_payout: "nft_payout",
+        nft_tokens_by_ids: "nft_tokens_by_ids",
+        nft_token_ids_for_owners: "nft_token_ids_for_owners",
+        nft_tokens_ids: "nft_tokens_ids",
+        nft_transfer_payout: "nft_transfer_payout",
+        nft_transfer: "nft_transfer",
+        nft_transfer_call: "nft_transfer_call",
+        nft_token: "nft_token",
+        nft_resolve_transfer: "nft_resolve_transfer",
+        nft_approve: "nft_approve",
+        nft_revoke: "nft_revoke",
+        nft_revoke_all: "nft_revoke_all",
+        nft_is_approved: "nft_is_approved",
+        nft_total_supply: "nft_total_supply",
+        nft_tokens: "nft_tokens",
+        nft_supply_for_owner: "nft_supply_for_owner",
+        nft_tokens_for_owner: "nft_tokens_for_owner",
+        nft_metadata: "nft_metadata",
+    };
 // =================================================
 /// String constants for nft.pumpopoly.near contract method names.
 pub struct PUMPOPOLY_NFT_METHODS_CONST_TYPE {

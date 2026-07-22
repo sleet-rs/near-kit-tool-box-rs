@@ -7,7 +7,8 @@ pub const POOL_FACTORY_CONTRACT_ID_CONST: POOL_FACTORY_CONTRACT_ID_CONST_TYPE =
     };
 // =================================================
 /// String constants for pool.near factory contract ids per network.
-pub type POOL_FACTORY_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTRACT_ID_CONST_TYPE;
+pub type POOL_FACTORY_CONTRACT_ID_CONST_TYPE =
+    super::contract_id_const_type::CONTRACT_ID_CONST_TYPE;
 // =================================================
 /// Returns the pool.near factory contract id for the given network.
 ///
