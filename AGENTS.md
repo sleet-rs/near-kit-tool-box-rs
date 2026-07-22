@@ -15,6 +15,7 @@
 also agents
 - see [WORKFLOW.md](./WORKFLOW.md) for workflow
 - see [STANDARDS.md](./STANDARDS.md) for naming and layout standards
+- see [docs/tools.md](./docs/tools.md) for tools that are helpful for developing this package
 
 
 ==========================
