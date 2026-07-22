@@ -10,6 +10,7 @@ pub mod hos_voting_contract_id_const;
 pub mod linear_protocol_contract_id_const;
 pub mod meme_cooking_contract_id_const;
 pub mod meta_pool_contract_id_const;
+pub mod near_contract_id_const;
 pub mod pool_factory_contract_id_const;
 pub mod pool_factoryv1_contract_id_const;
 pub mod pumpopoly_exchequer_contract_id_const;
