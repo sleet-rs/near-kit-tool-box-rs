@@ -9,6 +9,7 @@ pub mod methods_hos_voting;
 pub mod methods_linear_protocol;
 pub mod methods_meme_cooking;
 pub mod methods_meta_pool;
+pub mod methods_near;
 pub mod methods_pool_factory;
 pub mod methods_pool_factoryv1;
 pub mod methods_pool_staking;

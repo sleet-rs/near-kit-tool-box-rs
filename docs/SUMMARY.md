@@ -17,6 +17,8 @@
 - [hello.sleet.near](./SC/hello.sleet.near.md)
 - [social.near](./SC/social.near.md)
 - [wrap.near](./SC/wrap.near.md)
+- [near (TLD registrar + actions)](./SC/near.md)
+- [ft (NEP-141 / NEP-145)](./SC/ft.md)
 - [v2.ref-finance.near](./SC/v2.ref-finance.near.md)
 - [meme-cooking.near](./SC/meme-cooking.near.md)
 - [berryclub.ek.near](./SC/berryclub.ek.near.md)

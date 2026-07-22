@@ -22,6 +22,8 @@ near contract inspect wrap.near network-config mainnet now
 
 - `src/lib/methods/methods_wrap_near.rs`
 - `src/lib/const_id/wrap_near_contract_id_const.rs`
+- `src/fun/near/wrap_near_deposit_fun_json.rs`
+- `src/fun/near/wrap_near_withdraw_fun_json.rs`
 
 
 ==========================

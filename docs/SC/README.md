@@ -6,6 +6,8 @@ general
 - [hello.sleet.near.md](./hello.sleet.near.md)
 - [social.near.md](./social.near.md)
 - [wrap.near.md](./wrap.near.md)
+- [near.md](./near.md) — TLD registrar + NEAR-level actions
+- [ft.md](./ft.md) — generic NEP-141 / NEP-145 helpers
 - [v2.ref-finance.near.md](./v2.ref-finance.near.md)
 - [meme-cooking.near.md](./meme-cooking.near.md)
 - [berryclub.ek.near.md](./berryclub.ek.near.md)
