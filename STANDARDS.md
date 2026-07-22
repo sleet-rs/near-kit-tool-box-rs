@@ -26,6 +26,7 @@ copyright 2026 by sleet.near
 - `src/lib/const_id/{contract_slug}_contract_id_const.rs` — per-contract id constant + lookup fn
 - `src/lib/methods/methods_{contract_slug}.rs` — per-contract method-name constant bag
 - `src/lib/contract/contract_{contract_slug}.rs` — typed contract trait + args structs
+- `src/lib/types/{descriptive_name}.rs` — shared response / data shapes (e.g. `FT_METADATA_GET_RESPONSE_TYPE`)
 - `src/lib/helper/{descriptive_name}.rs` — generic client/utility helpers
 - `src/bin/{topic}_{action}_bin_json.rs` / `..._bin_typed.rs` — example/test binaries
 - the `bin` suffix is only used in `src/bin/` filenames, never in `src/fun/` filenames.

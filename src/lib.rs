@@ -16,6 +16,8 @@ pub mod lib {
     pub mod contract;
     /// near contract method name constants
     pub mod methods;
+    /// shared response / data shapes
+    pub mod types;
 }
 // functions
 pub mod fun;

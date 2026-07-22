@@ -8,6 +8,7 @@
 - `src/lib/contract` near kit rs typed contracts
 - `src/lib/methods` methods consts
 - `src/lib/const_id` contract id constants
+- `src/lib/types` shared response / data shapes
 - `docs` mdbook
 
 ---
