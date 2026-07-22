@@ -12,7 +12,7 @@ pub type SOCIAL_NEAR_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CON
 /// Returns the social.near contract id for the given network.
 ///
 /// `network` should be `"testnet"` or `"mainnet"`.
-pub fn social_near_contractid_fun(network: &str) -> &'static str {
+pub fn social_near_contractid(network: &str) -> &'static str {
     match network {
         "mainnet" => SOCIAL_NEAR_CONTRACT_ID_CONST.mainnet,
         "testnet" => SOCIAL_NEAR_CONTRACT_ID_CONST.testnet,

@@ -1,5 +1,5 @@
 // use near_kit::*;
-use crate::lib::const_id::near_contract_id_const::near_contractid_fun;
+use crate::lib::const_id::near_contract_id_const::near_contractid;
 use crate::lib::methods::methods_near::NEAR_METHODS_CONST;
 use near_kit::{Error, Gas, Near, NearToken};
 use serde_json::json;
@@ -20,8 +20,8 @@ pub async fn near_create_account(
     new_public_key: &str,
 ) -> Result<near_kit::FinalExecutionOutcome, Error> {
     let tld_contract_id = match near.chain_id().is_mainnet() {
-        true => near_contractid_fun("mainnet"),
-        false => near_contractid_fun("testnet"),
+        true => near_contractid("mainnet"),
+        false => near_contractid("testnet"),
     };
 
     let result = near

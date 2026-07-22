@@ -13,7 +13,7 @@ pub type POOL_FACTORY_CONTRACT_ID_CONST_TYPE =
 /// Returns the pool.near factory contract id for the given network.
 ///
 /// `network` should be `"testnet"` or `"mainnet"`.
-pub fn pool_factory_contractid_fun(network: &str) -> &'static str {
+pub fn pool_factory_contractid(network: &str) -> &'static str {
     match network {
         "mainnet" => POOL_FACTORY_CONTRACT_ID_CONST.mainnet,
         "testnet" => POOL_FACTORY_CONTRACT_ID_CONST.testnet,

@@ -1,4 +1,4 @@
-// set_greeting_typed
+// set_greeting
 //
 // Demonstrates using typed contracts with a call that requires an argument.
 //
@@ -11,7 +11,7 @@
 //
 // =================================================
 use near_kit::*;
-use near_kit_tool_box::fun::greeting::greeting_set_fun::set_greeting_typed;
+use near_kit_tool_box::fun::greeting::greeting_set_fun::set_greeting;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
 // =================================================
@@ -34,7 +34,7 @@ async fn main() -> Result<(), Error> {
     );
 
     // Use the reusable typed function
-    set_greeting_typed(&near, contract_id, new_greeting.clone()).await?;
+    set_greeting(&near, contract_id, new_greeting.clone()).await?;
 
     println!("✅ Greeting updated successfully");
 

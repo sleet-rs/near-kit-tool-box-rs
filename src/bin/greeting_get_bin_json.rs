@@ -11,7 +11,7 @@
 //
 // =================================================
 use near_kit::Error;
-use near_kit_tool_box::fun::greeting::greeting_get_fun_json::get_greeting_json;
+use near_kit_tool_box::fun::greeting::greeting_get_fun_json::get_greeting;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
 // =================================================
@@ -26,7 +26,7 @@ async fn main() -> Result<(), Error> {
 
     println!("Fetching greeting from `{}`...", contract_id);
 
-    let greeting = get_greeting_json(&near, contract_id).await?;
+    let greeting = get_greeting(&near, contract_id).await?;
 
     println!("Current Greeting: {greeting}");
 

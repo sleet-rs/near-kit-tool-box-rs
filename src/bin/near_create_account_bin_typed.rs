@@ -14,7 +14,7 @@
 //
 // =================================================
 use near_kit::Error;
-use near_kit_tool_box::fun::near::near_create_account_fun_typed::near_create_account_typed;
+use near_kit_tool_box::fun::near::near_create_account_fun_typed::near_create_account;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
 // =================================================
@@ -32,7 +32,7 @@ async fn main() -> Result<(), Error> {
 
     println!("Creating sub-account `{}`...", new_account_id);
 
-    let result = near_create_account_typed(&near, new_account_id, new_public_key).await?;
+    let result = near_create_account(&near, new_account_id, new_public_key).await?;
 
     println!("✅ Created sub-account. tx id: {}", result.transaction.hash);
 

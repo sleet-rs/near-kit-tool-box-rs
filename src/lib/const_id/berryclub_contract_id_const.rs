@@ -12,7 +12,7 @@ pub type BERRYCLUB_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTR
 /// Returns the berryclub contract id for the given network.
 ///
 /// `network` should be `"testnet"` or `"mainnet"`.
-pub fn berryclub_contractid_fun(network: &str) -> &'static str {
+pub fn berryclub_contractid(network: &str) -> &'static str {
     match network {
         "mainnet" => BERRYCLUB_CONTRACT_ID_CONST.mainnet,
         "testnet" => BERRYCLUB_CONTRACT_ID_CONST.testnet,

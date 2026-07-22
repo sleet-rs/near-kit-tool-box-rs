@@ -1,5 +1,5 @@
 // use near_kit::*;
-use crate::lib::const_id::near_contract_id_const::near_contractid_fun;
+use crate::lib::const_id::near_contract_id_const::near_contractid;
 use crate::lib::contract::contract_near::{
     NEAR_CREATE_ACCOUNT_ARGS, NEAR_TLD_CONTRACT_TRAIT,
 };
@@ -16,14 +16,14 @@ use near_kit::types::AccountId;
 ///
 /// Requires a `Near` client configured with credentials for the
 /// signer that pays for the transaction.
-pub async fn near_create_account_typed(
+pub async fn near_create_account(
     near: &Near,
     new_account_id: &str,
     new_public_key: &str,
 ) -> Result<near_kit::FinalExecutionOutcome, Error> {
     let tld_contract_id = match near.chain_id().is_mainnet() {
-        true => near_contractid_fun("mainnet"),
-        false => near_contractid_fun("testnet"),
+        true => near_contractid("mainnet"),
+        false => near_contractid("testnet"),
     };
 
     let new_account_id: AccountId = new_account_id

@@ -12,7 +12,7 @@ pub type WRAP_NEAR_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTR
 /// Returns the wrap.near contract id for the given network.
 ///
 /// `network` should be `"testnet"` or `"mainnet"`.
-pub fn wrap_near_contractid_fun(network: &str) -> &'static str {
+pub fn wrap_near_contractid(network: &str) -> &'static str {
     match network {
         "mainnet" => WRAP_NEAR_CONTRACT_ID_CONST.mainnet,
         "testnet" => WRAP_NEAR_CONTRACT_ID_CONST.testnet,

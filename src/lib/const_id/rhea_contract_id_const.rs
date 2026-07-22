@@ -11,7 +11,7 @@ pub type RHEA_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTRACT_I
 /// Returns the rhea / ref-finance contract id for the given network.
 ///
 /// `network` should be `"testnet"` or `"mainnet"`.
-pub fn rhea_contractid_fun(network: &str) -> &'static str {
+pub fn rhea_contractid(network: &str) -> &'static str {
     match network {
         "mainnet" => RHEA_CONTRACT_ID_CONST.mainnet,
         "testnet" => RHEA_CONTRACT_ID_CONST.testnet,

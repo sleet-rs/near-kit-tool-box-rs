@@ -1,6 +1,6 @@
 use near_kit::Near;
 // =================================================
-pub fn print_client_details_fun(near: &Near) {
+pub fn print_client_details(near: &Near) {
     let account_id = near
         .try_account_id()
         .map(ToString::to_string)

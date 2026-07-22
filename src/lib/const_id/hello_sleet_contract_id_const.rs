@@ -12,7 +12,7 @@ pub type HELLO_SLEET_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CON
 /// Returns the hello.sleet contract id for the given network.
 ///
 /// `network` should be `"testnet"` or `"mainnet"`.
-pub fn hello_sleet_contractid_fun(network: &str) -> &'static str {
+pub fn hello_sleet_contractid(network: &str) -> &'static str {
     match network {
         "mainnet" => HELLO_SLEET_CONTRACT_ID_CONST.mainnet,
         "testnet" => HELLO_SLEET_CONTRACT_ID_CONST.testnet,

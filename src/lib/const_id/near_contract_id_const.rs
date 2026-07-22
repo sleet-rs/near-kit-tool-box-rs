@@ -16,7 +16,7 @@ pub type NEAR_CONTRACT_ID_CONST_TYPE = super::contract_id_const_type::CONTRACT_I
 /// network.
 ///
 /// `network` should be `"testnet"` or `"mainnet"`.
-pub fn near_contractid_fun(network: &str) -> &'static str {
+pub fn near_contractid(network: &str) -> &'static str {
     match network {
         "mainnet" => NEAR_CONTRACT_ID_CONST.mainnet,
         "testnet" => NEAR_CONTRACT_ID_CONST.testnet,

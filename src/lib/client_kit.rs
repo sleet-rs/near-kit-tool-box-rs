@@ -18,7 +18,7 @@
 //! # }
 //! ```
 // =================================================
-use super::helper::print_client_details::print_client_details_fun;
+use super::helper::print_client_details::print_client_details;
 use near_kit::{Error, Near, NearBuilder};
 use std::env;
 
@@ -51,7 +51,7 @@ impl NEAR_KIT_CLIENT {
     /// Build the Near client instance.
     pub fn build(self) -> Near {
         let near = self.inner.build();
-        print_client_details_fun(&near);
+        print_client_details(&near);
         near
     }
 

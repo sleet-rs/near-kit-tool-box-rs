@@ -19,17 +19,17 @@ Read bins only need `NEAR_NETWORK` (defaults to `testnet`). Set bins also need `
 
 ```bash
 ## get greeting (typed)
-# Uses the typed contract wrapper (`get_greeting_fun`).
+# Uses the typed contract wrapper (`get_greeting`).
 cargo run --bin greeting_get_bin_typed -- <contract_id>
 cargo run --bin greeting_get_bin_typed -- hello.sleet.testnet
 
 ## get greeting (json)
-# Same read, but via raw JSON (`get_greeting_json`). Useful when you don't want the typed wrapper.
+# Same read, but via raw JSON (`get_greeting`). Useful when you don't want the typed wrapper.
 cargo run --bin greeting_get_bin_json -- <contract_id>
 cargo run --bin greeting_get_bin_json -- hello.sleet.testnet
 
 ## set greeting (typed)
-# Uses the typed contract wrapper (`set_greeting_typed`).
+# Uses the typed contract wrapper (`set_greeting`).
 cargo run --bin greeting_set_bin_typed -- <contract_id> "<new_text>"
 cargo run --bin greeting_set_bin_typed -- hello.sleet.testnet "hello from near kit toolbox rust"
 

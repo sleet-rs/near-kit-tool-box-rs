@@ -7,7 +7,7 @@ use serde_json::json;
 ///
 /// Mirrors `greeting_set_fun_json::set_greeting` but for the read-only
 /// `get_greeting` view call. No signer is required.
-pub async fn get_greeting_json(near: &Near, contract_id: &str) -> Result<String, Error> {
+pub async fn get_greeting(near: &Near, contract_id: &str) -> Result<String, Error> {
     let greeting: String = near
         .view::<String>(contract_id, GREETING_METHODS_CONST.get_greeting)
         .args(json!({}))

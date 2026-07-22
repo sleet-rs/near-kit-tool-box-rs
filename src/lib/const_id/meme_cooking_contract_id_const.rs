@@ -13,7 +13,7 @@ pub type MEME_COOKING_CONTRACT_ID_CONST_TYPE =
 /// Returns the meme-cooking contract id for the given network.
 ///
 /// `network` should be `"testnet"` or `"mainnet"`.
-pub fn meme_cooking_contractid_fun(network: &str) -> &'static str {
+pub fn meme_cooking_contractid(network: &str) -> &'static str {
     match network {
         "mainnet" => MEME_COOKING_CONTRACT_ID_CONST.mainnet,
         "testnet" => MEME_COOKING_CONTRACT_ID_CONST.testnet,
