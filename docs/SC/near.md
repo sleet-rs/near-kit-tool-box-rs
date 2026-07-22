@@ -14,8 +14,8 @@ are built into the protocol.
 
 ```sh
 # near cli rs - get a list of methods
-near contract inspect near       network-config mainnet now
-near contract inspect testnet    network-config testnet now
+near contract inspect near network-config mainnet now
+near contract inspect testnet network-config testnet now
 ```
 
 ---
