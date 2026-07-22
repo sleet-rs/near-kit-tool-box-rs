@@ -11,6 +11,7 @@
 # PROTOCOL
 
 - [NEAR-level actions](./actions.md)
+- [TOOLS](./tools.md)
 
 ---
 
