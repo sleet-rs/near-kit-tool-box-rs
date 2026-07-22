@@ -4,7 +4,7 @@ tools that are helpful for developing this package.
 
 #### FastNear Transactions API server
 
-See how to use at https://tx.main.fastnear.com/, use this to get transaction data to see if transaction was successful or to see sample transactions with different smart contracts
+See how to use at https://tx.main.fastnear.com/, use this to get transaction data to see if transaction was successful or to see sample transactions with different smart contracts. Ask for tx hash, check tx history for contract address
 
 #### NEAR CLI RS
 
