@@ -14,6 +14,7 @@
 
 also agents
 - see [WORKFLOW.md](./WORKFLOW.md) for workflow
+- see [STANDARDS.md](./STANDARDS.md) for naming and layout standards
 
 
 ==========================
