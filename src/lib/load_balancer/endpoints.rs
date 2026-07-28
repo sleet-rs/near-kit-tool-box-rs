@@ -5,7 +5,6 @@
 /// Public NEAR testnet RPC endpoints used by the load balancer.
 pub const NEAR_RPC_TESTNET_ENDPOINTS: &[&str] = &[
     "https://rpc.testnet.near.org",
-    "https://near-testnet.lava.build",
     "https://test.rpc.fastnear.com",
     "https://testnet-rpc.intea.rs",
 ];

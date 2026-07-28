@@ -33,7 +33,6 @@ use near_kit_tool_box::lib::load_balancer::endpoints::{
 
 // testnet
 //   https://rpc.testnet.near.org
-//   https://near-testnet.lava.build
 //   https://test.rpc.fastnear.com
 //   https://testnet-rpc.intea.rs
 
@@ -55,13 +54,13 @@ the load balancer. No signer is needed — these endpoints are read-only.
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 
 // Default testnet endpoints, round-robin, failover on
-let view = NEAR_KIT_CLIENT::view_testnet();
+let view = NEAR_KIT_CLIENT::view_balancer_testnet();
 
 // Default mainnet endpoints
-let view = NEAR_KIT_CLIENT::view_mainnet();
+let view = NEAR_KIT_CLIENT::view_balancer_mainnet();
 
 // Custom URL list
-let view = NEAR_KIT_CLIENT::view_with_urls(&[
+let view = NEAR_KIT_CLIENT::view_balancer_with_urls(&[
     "https://rpc.testnet.near.org",
     "https://my-private-rpc.example.com",
 ]);
@@ -119,10 +118,10 @@ sticky-by-method).
 
 ```rust
 # async fn demo() -> Result<(), near_kit::Error> {
-use near_kit::Finality;
+use near_kit::{Finality, serde_json};
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 
-let view = NEAR_KIT_CLIENT::view_testnet();
+let view = NEAR_KIT_CLIENT::view_balancer_testnet();
 let account = view.view_account("alice.testnet", Finality::Final.into()).await?;
 println!("balance: {}", account.amount);
 # Ok(())
@@ -159,7 +158,7 @@ For methods not exposed directly, use `call`:
 # async fn demo() -> Result<(), near_kit::RpcError> {
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 
-let view = NEAR_KIT_CLIENT::view_testnet();
+let view = NEAR_KIT_CLIENT::view_balancer_testnet();
 let status: serde_json::Value = view.call("status", serde_json::json!([])).await?;
 println!("{}", status);
 # Ok(())
@@ -176,7 +175,7 @@ Every successful call records the index of the client that served it. Call
 use near_kit::{Finality, serde_json};
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 
-let view = NEAR_KIT_CLIENT::view_testnet();
+let view = NEAR_KIT_CLIENT::view_balancer_testnet();
 let result = view
     .view_function("hello.sleet.near", "get_greeting", b"{}", Finality::Final.into())
     .await?;
@@ -201,7 +200,7 @@ it for logging, not coordination.
 - `src/lib/load_balancer/endpoints.rs` — `NEAR_RPC_TESTNET_ENDPOINTS`,
   `NEAR_RPC_MAINNET_ENDPOINTS`
 - `src/lib/load_balancer/mod.rs` — module declarations
-- `src/lib/client_kit.rs` — `NEAR_KIT_CLIENT::view_testnet` etc.
+- `src/lib/client_kit.rs` — `NEAR_KIT_CLIENT::view_balancer_testnet` etc.
 - `src/bin/load_balancer_status_bin_json.rs` — example: round-robin `status`
 - `src/bin/greeting_get_balanced_bin_json.rs` — example: round-robin
   `get_greeting` with RPC-of-origin logging

@@ -16,7 +16,7 @@ use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 // =================================================
 #[tokio::main]
 async fn main() -> Result<(), Error> {
-    let view = NEAR_KIT_CLIENT::view_testnet();
+    let view = NEAR_KIT_CLIENT::view_balancer_testnet();
 
     println!("==========================");
     println!("Load-balanced view client (testnet):");

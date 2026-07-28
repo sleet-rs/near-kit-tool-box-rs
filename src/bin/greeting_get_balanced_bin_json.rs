@@ -27,7 +27,7 @@ async fn main() -> Result<(), Error> {
         .and_then(|s| s.parse().ok())
         .unwrap_or(5);
 
-    let view = NEAR_KIT_CLIENT::view_testnet();
+    let view = NEAR_KIT_CLIENT::view_balancer_testnet();
     let account_id = contract_id
         .try_into_account_id()
         .expect("invalid contract_id");
