@@ -15,14 +15,17 @@
 //! // From env vars with optional credentials
 //! let near = NEAR_KIT_CLIENT::from_env()?.build();
 //!
-//! // Load-balanced view client (round-robin across default endpoints)
+//! // Load-balanced view client (round-robin across default endpoints).
+//! // Each call picks a Near and either returns it for the caller to use
+//! // directly, or runs a proxy method on the picked client.
 //! let view = NEAR_KIT_CLIENT::view_balancer_testnet();
+//! let near = view.next_near();
 //! # Ok(())
 //! # }
 //! ```
 // =================================================
 use super::helper::print_client_details::print_client_details;
-use super::load_balancer::load_balancing_rpc_client::LOAD_BALANCING_RPC_CLIENT;
+use super::load_balancer::load_balancing_near::LOAD_BALANCING_NEAR;
 use near_kit::{Error, Near, NearBuilder};
 use std::env;
 
@@ -95,20 +98,20 @@ impl NEAR_KIT_CLIENT {
 
     /// Load-balanced view client over the default public testnet endpoints.
     /// Read-only — do not use for signing.
-    pub fn view_balancer_testnet() -> LOAD_BALANCING_RPC_CLIENT {
-        LOAD_BALANCING_RPC_CLIENT::testnet()
+    pub fn view_balancer_testnet() -> LOAD_BALANCING_NEAR {
+        LOAD_BALANCING_NEAR::testnet()
     }
 
     /// Load-balanced view client over the default public mainnet endpoints.
     /// Read-only — do not use for signing.
-    pub fn view_balancer_mainnet() -> LOAD_BALANCING_RPC_CLIENT {
-        LOAD_BALANCING_RPC_CLIENT::mainnet()
+    pub fn view_balancer_mainnet() -> LOAD_BALANCING_NEAR {
+        LOAD_BALANCING_NEAR::mainnet()
     }
 
-    /// Load-balanced view client over a custom URL list. Read-only — do not
-    /// use for signing.
-    pub fn view_balancer_with_urls(urls: &[&str]) -> LOAD_BALANCING_RPC_CLIENT {
-        LOAD_BALANCING_RPC_CLIENT::new(urls)
+    /// Load-balanced view client over a custom URL list with the given
+    /// `chain_id`. Read-only — do not use for signing.
+    pub fn view_balancer_with_urls(urls: &[&str], chain_id: &str) -> LOAD_BALANCING_NEAR {
+        LOAD_BALANCING_NEAR::new(urls, chain_id)
     }
 }
 
