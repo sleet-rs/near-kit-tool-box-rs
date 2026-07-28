@@ -89,8 +89,12 @@ impl LOAD_BALANCING_RPC_CLIENT {
         self
     }
 
-    /// Enable or disable failover. When `true` (default), a retryable failure
-    /// on the picked endpoint falls through to the next one before returning.
+    /// Enable or disable failover. When `true` (default), any failure on the
+    /// picked endpoint falls through to the next one before returning. Note
+    /// that this is broader than `RpcError::is_retryable()` — a 403 from a
+    /// misconfigured node is classified as non-retryable by near-kit, but
+    /// for a load balancer the right move is to try the next endpoint, not
+    /// to give up.
     pub fn with_failover(mut self, enabled: bool) -> Self {
         self.failover = enabled;
         self
@@ -143,8 +147,14 @@ impl LOAD_BALANCING_RPC_CLIENT {
     }
 
     /// Run an async operation against the picked endpoint, falling through to
-    /// the next endpoint on retryable errors when failover is enabled. Records
-    /// the index of the client whose call actually returned `Ok`.
+    /// the next endpoint on any error when failover is enabled. Records the
+    /// index of the client whose call actually returned `Ok`.
+    ///
+    /// Note: this is intentionally broader than `RpcError::is_retryable()`.
+    /// For a load balancer, a 403 from a misconfigured node is a node-local
+    /// problem — the other endpoints are still healthy, so the right move is
+    /// to try them. Deterministic client errors (e.g. invalid params) will
+    /// still surface on every endpoint; the user just sees the last one.
     async fn try_with_failover<F, Fut, T>(&self, op: F) -> Result<T, RpcError>
     where
         F: Fn(Arc<RpcClient>) -> Fut,
@@ -157,7 +167,7 @@ impl LOAD_BALANCING_RPC_CLIENT {
                     self.last_used_idx.store(idx, Ordering::Relaxed);
                     return Ok(result);
                 }
-                Err(e) if self.failover && e.is_retryable() => {
+                Err(e) if self.failover => {
                     last_err = Some(e);
                     continue;
                 }

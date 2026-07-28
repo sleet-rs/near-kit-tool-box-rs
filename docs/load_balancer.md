@@ -15,10 +15,11 @@ nonces and replay protection unreliable.
 - Drop-in for the `RpcClient` view surface — same method signatures, same
   return types.
 - Picks an endpoint per call via [`LoadBalancingStrategy`].
-- Tries the next endpoint on retryable errors (`RpcError::is_retryable()`)
-  when failover is enabled (default).
-- Per-endpoint retries are still handled by the underlying `RpcClient`, so
-  transient hiccups are absorbed before failover is even attempted.
+- Tries the next endpoint on **any** error when failover is enabled (default).
+  This is broader than `RpcError::is_retryable()` — a 403 from a
+  misconfigured node is non-retryable per near-kit, but for a load balancer
+  the right move is to try the next endpoint, not to give up. Per-endpoint
+  retries are still handled by the underlying `RpcClient` first.
 - [`last_used_url()`](#which-rpc-was-used) records which endpoint served the
   last successful call.
 
