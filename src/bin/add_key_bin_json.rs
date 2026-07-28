@@ -8,10 +8,12 @@
 // then run:
 //   cargo run --bin add_key_bin_json -- <public_key>                              # full access
 //   cargo run --bin add_key_bin_json -- <public_key> fc <receiver> <methods> <allowance>
+//                                                                          ^ empty = all methods
 //
 // example:
 //   cargo run --bin add_key_bin_json -- ed25519:HDaBzemF6CYnQ2A3CgAh8vK7stWp5aXvKMKzKDe6s3QZ
 //   cargo run --bin add_key_bin_json -- ed25519:9vnVSMT1hv2Q1vuZzbjStFieqGbTrwqe4KcvfqYAkb5T fc wrap.testnet "near_deposit,near_withdraw" "1 NEAR"
+//   cargo run --bin add_key_bin_json -- ed25519:9vnVSMT1hv2Q1vuZzbjStFieqGbTrwqe4KcvfqYAkb5T fc near "" "10 NEAR"
 //
 // =================================================
 use near_kit::{AccessKeyPermission, AccountId, Error, IntoNearToken};
@@ -34,16 +36,25 @@ async fn main() -> Result<(), Error> {
             let receiver = args
                 .get(3)
                 .expect("missing <receiver> for function-call key");
-            let methods = args
+            let methods_arg = args
                 .get(4)
-                .expect("missing <methods> (comma-separated) for function-call key");
+                .expect("missing <methods> (comma-separated, empty for all) for function-call key");
             let allowance = args
                 .get(5)
                 .map(|s| s.as_str().into_near_token())
                 .transpose()?;
+            let methods: Vec<String> = if methods_arg.trim().is_empty() {
+                Vec::new()
+            } else {
+                methods_arg
+                    .split(',')
+                    .map(|s| s.trim().to_string())
+                    .filter(|s| !s.is_empty())
+                    .collect()
+            };
             AccessKeyPermission::function_call(
                 receiver.parse::<AccountId>()?,
-                methods.split(',').map(|s| s.trim().to_string()).collect(),
+                methods,
                 allowance,
             )
         }
