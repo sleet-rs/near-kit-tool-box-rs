@@ -14,11 +14,15 @@
 //!
 //! // From env vars with optional credentials
 //! let near = NEAR_KIT_CLIENT::from_env()?.build();
+//!
+//! // Load-balanced view client (round-robin across default endpoints)
+//! let view = NEAR_KIT_CLIENT::view_testnet();
 //! # Ok(())
 //! # }
 //! ```
 // =================================================
 use super::helper::print_client_details::print_client_details;
+use super::load_balancer::load_balancing_rpc_client::LOAD_BALANCING_RPC_CLIENT;
 use near_kit::{Error, Near, NearBuilder};
 use std::env;
 
@@ -87,6 +91,24 @@ impl NEAR_KIT_CLIENT {
             )),
             (None, None) => Ok(me),
         }
+    }
+
+    /// Load-balanced view client over the default public testnet endpoints.
+    /// Read-only — do not use for signing.
+    pub fn view_testnet() -> LOAD_BALANCING_RPC_CLIENT {
+        LOAD_BALANCING_RPC_CLIENT::testnet()
+    }
+
+    /// Load-balanced view client over the default public mainnet endpoints.
+    /// Read-only — do not use for signing.
+    pub fn view_mainnet() -> LOAD_BALANCING_RPC_CLIENT {
+        LOAD_BALANCING_RPC_CLIENT::mainnet()
+    }
+
+    /// Load-balanced view client over a custom URL list. Read-only — do not
+    /// use for signing.
+    pub fn view_with_urls(urls: &[&str]) -> LOAD_BALANCING_RPC_CLIENT {
+        LOAD_BALANCING_RPC_CLIENT::new(urls)
     }
 }
 

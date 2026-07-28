@@ -11,6 +11,7 @@
 # PROTOCOL
 
 - [NEAR-level actions](./actions.md)
+- [RPC LOAD BALANCER](./load_balancer.md)
 - [TOOLS](./tools.md)
 
 ---

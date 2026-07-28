@@ -111,6 +111,21 @@ cargo run --bin ft_storage_deposit_bin_json -- wrap.testnet
 
 
 
+## src/lib/load_balancer
+
+`NEAR_KIT_CLIENT` exposes a special **view client** that round-robins calls
+across multiple public endpoints with automatic failover. Read-only — do not
+use for signing.
+
+```bash
+## load_balancer_status — round-robin `status` across default testnet endpoints
+cargo run --bin load_balancer_status_bin_json
+
+## greeting_get_balanced — round-robin `get_greeting` with RPC-of-origin logging
+cargo run --bin greeting_get_balanced_bin_json -- hello.sleet.testnet 5
+```
+
+
 ==========================
 <br/>
 copyright 2026 by sleet.near
