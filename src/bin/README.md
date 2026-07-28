@@ -28,6 +28,12 @@ cargo run --bin greeting_get_bin_typed -- hello.sleet.testnet
 cargo run --bin greeting_get_bin_json -- <contract_id>
 cargo run --bin greeting_get_bin_json -- hello.sleet.testnet
 
+## get greeting (balanced)
+# Round-robins `get_greeting` across the default testnet endpoints and
+# logs which RPC served each call. Default 5 calls; pass a count to override.
+cargo run --bin greeting_get_balanced_bin_json -- <contract_id> [times]
+cargo run --bin greeting_get_balanced_bin_json -- hello.sleet.testnet 5
+
 ## set greeting (typed)
 # Uses the typed contract wrapper (`set_greeting`).
 cargo run --bin greeting_set_bin_typed -- <contract_id> "<new_text>"
@@ -37,6 +43,22 @@ cargo run --bin greeting_set_bin_typed -- hello.sleet.testnet "hello from near k
 # Same call, but via raw JSON (`set_greeting`). Useful when you don't want the typed wrapper.
 cargo run --bin greeting_set_bin_json -- <contract_id> "<new_text>"
 cargo run --bin greeting_set_bin_json -- hello.sleet.testnet "hello from near kit toolbox rust"
+```
+
+
+## generic NEAR protocol views
+
+Read-only — only `NEAR_NETWORK` is needed.
+
+```bash
+## view_account — account balance, storage, deployed contract info
+cargo run --bin view_account_bin_json -- <account_id>
+cargo run --bin view_account_bin_json -- hello.sleet.testnet
+cargo run --bin view_account_bin_json -- hello.sleet.near
+
+## view_access_key_list — all access keys on an account with permissions
+cargo run --bin view_access_key_list_bin_json -- <account_id>
+cargo run --bin view_access_key_list_bin_json -- sleet.testnet
 ```
 
 
