@@ -40,4 +40,12 @@ pub mod near {
     /// Unwrap wNEAR back into NEAR via raw JSON args.
     pub mod wrap_near_withdraw_fun_json;
 }
+pub mod pumpopoly {
+    /// Change helper: perform a Pumpopoly elite move via raw JSON args.
+    pub mod pumpopoly_elite_move_fun_json;
+    /// Change helper: move a Pumpopoly player via raw JSON args.
+    pub mod pumpopoly_move_player_fun_json;
+    /// View helper: fetch a Pumpopoly player's state via raw JSON args.
+    pub mod pumpopoly_view_player_fun_json;
+}
 // =================================================
