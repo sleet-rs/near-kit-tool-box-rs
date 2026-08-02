@@ -1,6 +1,7 @@
 // =================================================
 //! Contract id constants for NEAR contracts.
 pub mod berryclub_contract_id_const;
+pub mod chess_game_contract_id_const;
 /// Shared `CONTRACT_ID_CONST_TYPE` struct used by every dual-network
 /// `*_CONTRACT_ID_CONST_TYPE` in this module.
 pub mod contract_id_const_type;

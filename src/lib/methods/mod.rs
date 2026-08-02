@@ -1,6 +1,7 @@
 // =================================================
 //! Method name constants for NEAR contracts.
 pub mod methods_berryclub;
+pub mod methods_chess_game;
 pub mod methods_ft;
 pub mod methods_greeting;
 pub mod methods_hos_lockup;
