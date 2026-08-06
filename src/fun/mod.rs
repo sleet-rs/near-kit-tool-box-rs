@@ -45,6 +45,8 @@ pub mod pumpopoly {
     pub mod pumpopoly_elite_move_fun_json;
     /// Change helper: move a Pumpopoly player via raw JSON args.
     pub mod pumpopoly_move_player_fun_json;
+    /// View helper: fetch multiple Pumpopoly players' state via raw JSON args.
+    pub mod pumpopoly_view_players_fun_json;
     /// View helper: fetch a Pumpopoly player's state via raw JSON args.
     pub mod pumpopoly_view_player_fun_json;
 }

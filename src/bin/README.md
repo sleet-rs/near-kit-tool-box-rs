@@ -133,6 +133,22 @@ cargo run --bin ft_storage_deposit_bin_json -- wrap.testnet
 
 
 
+## src/fun/pumpopoly
+
+Read-only — only `NEAR_NETWORK` is needed. `world.pumpopoly.near` is mainnet only.
+
+```bash
+## view_player (json) — fetch a single player's state
+cargo run --bin pumpopoly_view_player_bin_json -- <account_id>
+cargo run --bin pumpopoly_view_player_bin_json -- sleet.near
+
+## view_players (json) — fetch multiple players' state in a single view call
+cargo run --bin pumpopoly_view_players_bin_json -- <account_id> [<account_id> ...]
+cargo run --bin pumpopoly_view_players_bin_json -- sleet.near narkmeta.near
+```
+
+
+
 ## src/lib/load_balancer
 
 `NEAR_KIT_CLIENT` exposes a special **view client** that round-robins calls
