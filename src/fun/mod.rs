@@ -50,4 +50,18 @@ pub mod pumpopoly {
     /// View helper: fetch a Pumpopoly player's state via raw JSON args.
     pub mod pumpopoly_view_player_fun_json;
 }
+pub mod pumpopoly_nft {
+    /// View helper: count the Pumpopoly NFTs held by an account via raw JSON args.
+    pub mod pumpopoly_nft_supply_for_owner_fun_json;
+    /// View helper: fetch a single Pumpopoly NFT by token id via raw JSON args.
+    pub mod pumpopoly_nft_token_fun_json;
+    /// View helper: fetch the Pumpopoly NFT token ids held by accounts via raw JSON args.
+    pub mod pumpopoly_nft_token_ids_for_owners_fun_json;
+    /// View helper: fetch the Pumpopoly NFTs held by an account via raw JSON args.
+    pub mod pumpopoly_nft_tokens_for_owner_fun_json;
+    /// Change helper: transfer a Pumpopoly NFT to a receiver contract with a msg via raw JSON args.
+    pub mod pumpopoly_nft_transfer_call_fun_json;
+    /// Change helper: transfer a Pumpopoly NFT to a receiver via raw JSON args.
+    pub mod pumpopoly_nft_transfer_fun_json;
+}
 // =================================================
