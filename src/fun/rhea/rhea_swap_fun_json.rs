@@ -1,33 +1,31 @@
 // use near_kit::*;
 use crate::lib::methods::methods_rhea::RHEA_METHODS_CONST;
+use crate::lib::types::ref_swap_action_type::REF_SWAP_ACTION_TYPE;
 use near_kit::{Error, Near};
-use serde_json::{Value, json};
+use serde_json::json;
 // =================================================
 /// Change helper: perform a swap (or routed multi-hop swap) on the
 /// rhea / ref-finance DEX using raw JSON args.
 ///
-/// `actions_json` is the JSON value for the rhea `actions` array. Each
-/// action is an object like
-/// `{ "pool_id": 2794, "token_in": "wrap.near", "token_out": "a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.near", "min_amount_out": "0" }`
-/// plus an optional `amount_in`. Accepting a pre-built JSON value lets
-/// callers compose the action list however they like without us
-/// pinning a Rust struct to the wire shape.
+/// `actions` is an ordered list of one or more
+/// [`REF_SWAP_ACTION_TYPE`] steps — for a single-pool swap, pass a
+/// one-element slice; for a routed hop, chain actions in order.
 ///
-/// `referral_id` is the optional NEAR account that should be credited
-/// as the referrer (pass an empty string for none).
+/// `referral_id` is the optional NEAR account credited as the
+/// referrer. Pass `""` for none.
 ///
 /// No deposit is attached — the swap routes user tokens already held
 /// by the contract under the signer's storage registration.
 pub async fn swap(
     near: &Near,
     rhea_contract_id: &str,
-    actions_json: Value,
+    actions: &[REF_SWAP_ACTION_TYPE],
     referral_id: &str,
 ) -> Result<near_kit::FinalExecutionOutcome, Error> {
     let result = near
         .call(rhea_contract_id, RHEA_METHODS_CONST.swap)
         .args(json!({
-            "actions": actions_json,
+            "actions": actions,
             "referral_id": referral_id,
         }))
         .await?;

@@ -7,6 +7,8 @@ pub mod ft {
     pub mod ft_metadata_fun_json;
     /// Change helper: register storage on an FT contract via raw JSON args.
     pub mod ft_storage_deposit_fun_json;
+    /// View helper: fetch the NEP-145 storage balance of an account on an FT contract via raw JSON args.
+    pub mod ft_storage_balance_of_fun_json;
     /// View helper: fetch an FT total supply via raw JSON args.
     pub mod ft_total_supply_fun_json;
     /// Change helper: transfer FT to a receiver and call `ft_transfer_call` via raw JSON args.

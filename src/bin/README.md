@@ -126,6 +126,11 @@ cargo run --bin ft_transfer_call_bin_json -- wrap.testnet alice.testnet 10000000
 ## ft_storage_deposit (call, attaches 0.00125 NEAR)
 cargo run --bin ft_storage_deposit_bin_json -- <ft_contract_id>
 cargo run --bin ft_storage_deposit_bin_json -- wrap.testnet
+
+## ft_storage_balance_of (view) — NEP-145 storage registration on an FT contract
+cargo run --bin ft_storage_balance_of_bin_json -- <ft_contract_id> <account_id>
+cargo run --bin ft_storage_balance_of_bin_json -- wrap.testnet sleet.testnet
+cargo run --bin ft_storage_balance_of_bin_json -- usdt.tether-token.near sleet.near
 ```
 
 
