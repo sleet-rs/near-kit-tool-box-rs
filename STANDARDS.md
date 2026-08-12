@@ -3,13 +3,10 @@
 Conventions for naming and layout across the near-kit-tool-box-rs codebase.
 Following these keeps the tree consistent and makes new code obvious to read.
 
-==========================
-<br/>
-copyright 2026 by sleet.near
-
 # naming
 
 ## functions (snake_case)
+
 - no `_fun`, `_json`, `_typed` suffix on function names — the **file** name carries the variant.
   - bad: `pub async fn get_greeting_json(...)` in `greeting_get_fun_json.rs`
   - good: `pub async fn get_greeting(...)` in `greeting_get_fun_json.rs`
@@ -20,6 +17,7 @@ copyright 2026 by sleet.near
 - `pub async fn` for NEAR calls; `pub fn` for pure helpers.
 
 ## files (snake_case.rs)
+
 - `src/fun/{topic}/{topic}_{action}_fun_json.rs` — raw `json!()` helper
 - `src/fun/{topic}/{topic}_{action}_fun.rs` — typed contract helper (single typed variant, no suffix)
 - `src/fun/{topic}/{topic}_{action}_fun_typed.rs` — typed contract helper when a `fun_json` sibling also exists
@@ -32,6 +30,7 @@ copyright 2026 by sleet.near
 - the `bin` suffix is only used in `src/bin/` filenames, never in `src/fun/` filenames.
 
 ## consts (SCREAMING_SNAKE_CASE)
+
 - network-aware contract ids:
   - struct: `{CONTRACT}_CONTRACT_ID_CONST_TYPE` (aliases `CONTRACT_ID_CONST_TYPE`)
   - value: `pub const {CONTRACT}_CONTRACT_ID_CONST: {CONTRACT}_CONTRACT_ID_CONST_TYPE = ...`
@@ -43,12 +42,14 @@ copyright 2026 by sleet.near
 - no `_CONST` suffix on method fields — only on the wrapping struct.
 
 ## structs / types (SCREAMING_SNAKE_CASE)
+
 - typed contract trait: `{CONTRACT}_{SCOPE?}_CONTRACT_TRAIT` (e.g. `GREETING_CONTRACT_TRAIT`, `NEAR_TLD_CONTRACT_TRAIT`)
 - args structs passed to trait methods: `{CONTRACT}_{METHOD}_ARGS` or scoped `{ACTION}_ARGS` (e.g. `GREETING_ARGS`, `NEAR_CREATE_ACCOUNT_ARGS`)
 - shared shapes: `_TYPE` suffix (e.g. `CONTRACT_ID_CONST_TYPE { testnet, mainnet }`)
 - trait field-method names mirror the on-chain method name in `snake_case` so call sites stay readable (`greeter.get_greeting()`, `tld.create_account(...)`).
 
 ## modules
+
 - module names mirror the file slug (`pub mod ft_balance_of_fun_json;` etc.) — do not re-export; callers reach functions via the full path.
 
 # layout
@@ -71,3 +72,5 @@ copyright 2026 by sleet.near
   type names don't fight the lint; do not re-add it per file.
 
 ==========================
+<br/>
+copyright 2026 by sleet.near
