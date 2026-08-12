@@ -22,7 +22,7 @@ async fn main() -> Result<(), Error> {
         .get(1)
         .expect("usage: ft_metadata_bin_json <ft_contract_id>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!("Fetching FT metadata for `{}`...", ft_contract_id);
     let meta = ft_metadata(&near, ft_contract_id).await?;

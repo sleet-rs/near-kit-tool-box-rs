@@ -27,7 +27,6 @@
 use super::helper::print_client_details::print_client_details;
 use super::load_balancer::load_balancing_near::LOAD_BALANCING_NEAR;
 use near_kit::{Error, Near, NearBuilder};
-use std::env;
 
 /// Builder for creating reusable Near clients.
 pub struct NEAR_KIT_CLIENT {
@@ -62,38 +61,17 @@ impl NEAR_KIT_CLIENT {
         near
     }
 
-    /// Build from env vars: `NEAR_NETWORK` defaults to `testnet` and may be
-    /// a custom RPC URL. `NEAR_CHAIN_ID` is optional. Credentials are optional
-    /// and enable signing only when both `NEAR_ACCOUNT_ID` and
-    /// `NEAR_PRIVATE_KEY` are set.
-    pub fn from_env() -> Result<Self, near_kit::Error> {
-        let network = env::var("NEAR_NETWORK").unwrap_or_else(|_| "testnet".to_string());
-        let chain_id = env::var("NEAR_CHAIN_ID").ok();
-        let mut me = match network.as_str() {
-            "mainnet" => Self::mainnet(),
-            "testnet" => Self::testnet(),
-            rpc_url => Self {
-                inner: Near::custom(rpc_url, chain_id.as_deref().unwrap_or("custom")),
-            },
-        };
-
-        if let Some(chain_id) = chain_id {
-            me.inner = me.inner.chain_id(chain_id);
-        }
-
-        match (
-            env::var("NEAR_ACCOUNT_ID").ok(),
-            env::var("NEAR_PRIVATE_KEY").ok(),
-        ) {
-            (Some(account_id), Some(private_key)) => me.credentials(&private_key, &account_id),
-            (Some(_), None) => Err(Error::Config(
-                "NEAR_ACCOUNT_ID is set but NEAR_PRIVATE_KEY is missing".into(),
-            )),
-            (None, Some(_)) => Err(Error::Config(
-                "NEAR_PRIVATE_KEY is set but NEAR_ACCOUNT_ID is missing".into(),
-            )),
-            (None, None) => Ok(me),
-        }
+    /// Build a client directly from env vars and return the
+    /// constructed [`Near`] (delegates to [`Near::from_env`] and
+    /// prints client details on success).
+    ///
+    /// Reads `NEAR_NETWORK` (defaults to `testnet`, may be a custom
+    /// RPC URL), optional `NEAR_CHAIN_ID`, and optional credentials
+    /// via `NEAR_ACCOUNT_ID` + `NEAR_PRIVATE_KEY`.
+    pub fn from_env() -> Result<Near, Error> {
+        let near = Near::from_env()?;
+        print_client_details(&near);
+        Ok(near)
     }
 
     /// Load-balanced view client over the default public testnet endpoints.

@@ -22,7 +22,7 @@ async fn main() -> Result<(), Error> {
         .get(1)
         .expect("usage: view_account_bin_json <account_id>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!("Fetching account info for `{}`...", account_id);
 

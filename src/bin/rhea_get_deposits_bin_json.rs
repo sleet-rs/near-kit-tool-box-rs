@@ -13,7 +13,7 @@
 //   cargo run --bin rhea_get_deposits_bin_json -- sleet.testnet ref-finance-101.testnet
 //
 // =================================================
-use near_kit::Error;
+use near_kit::{AccountId, Error};
 use near_kit_tool_box::fun::rhea::rhea_get_deposits_fun_json::get_deposits;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
@@ -21,7 +21,7 @@ use std::env;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
-    let account_id = args
+    let account_id_raw = args
         .get(1)
         .expect("usage: rhea_get_deposits_bin_json <account_id> [rhea_contract_id]");
     let rhea_contract_id = args
@@ -29,14 +29,15 @@ async fn main() -> Result<(), Error> {
         .map(String::as_str)
         .unwrap_or("ref-finance-101.testnet");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let account_id: AccountId = account_id_raw.parse()?;
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!(
         "Fetching deposits for `{}` on rhea contract `{}`...",
         account_id, rhea_contract_id
     );
-    let deposits = get_deposits(&near, rhea_contract_id, account_id).await?;
-    println!("{deposits:#}");
+    let deposits = get_deposits(&near, rhea_contract_id, &account_id).await?;
+    println!("{deposits:#?}");
     Ok(())
 }
 // =================================================

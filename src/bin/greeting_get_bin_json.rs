@@ -22,7 +22,7 @@ async fn main() -> Result<(), Error> {
         .get(1)
         .expect("usage: greeting_get_bin_json <contract_id>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!("Fetching greeting from `{}`...", contract_id);
 

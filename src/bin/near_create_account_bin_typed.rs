@@ -28,7 +28,7 @@ async fn main() -> Result<(), Error> {
         .get(2)
         .expect("usage: near_create_account_bin_typed <new_account_id> <new_public_key>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!("Creating sub-account `{}`...", new_account_id);
 

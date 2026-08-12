@@ -31,14 +31,14 @@ async fn main() -> Result<(), Error> {
         .map(String::as_str)
         .unwrap_or("ref-finance-101.testnet");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!(
         "Fetching pool `{}` from rhea contract `{}`...",
         pool_id, rhea_contract_id
     );
     let pool = get_pool(&near, rhea_contract_id, pool_id).await?;
-    println!("{pool:#}");
+    println!("{pool:#?}");
     Ok(())
 }
 // =================================================

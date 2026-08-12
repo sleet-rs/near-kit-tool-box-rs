@@ -45,7 +45,7 @@ async fn main() -> Result<(), Error> {
         .map(String::as_str)
         .unwrap_or("ref-finance-101.testnet");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!(
         "Quoting swap on rhea contract `{}` pool `{}`: {} {} -> {} ...",

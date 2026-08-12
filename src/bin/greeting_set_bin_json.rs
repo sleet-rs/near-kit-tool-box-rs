@@ -23,7 +23,7 @@ async fn main() -> Result<(), Error> {
         .get(2)
         .expect("usage: greeting_set_bin_with_env <contract_id> \"<new_text>\"");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
     let account_id = env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
 
     println!(

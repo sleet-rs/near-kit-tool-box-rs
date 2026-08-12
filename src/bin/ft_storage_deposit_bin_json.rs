@@ -23,7 +23,7 @@ async fn main() -> Result<(), Error> {
         .get(1)
         .expect("usage: ft_storage_deposit_bin_json <ft_contract_id>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
     let account_id = env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
 
     println!(

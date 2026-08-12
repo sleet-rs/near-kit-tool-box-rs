@@ -28,7 +28,7 @@ async fn main() -> Result<(), Error> {
         .get(1)
         .expect("usage: add_key_bin_json <public_key> [fc <receiver> <methods> <allowance>]");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
     let signer_id = env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
 
     let permission = match args.get(2).map(String::as_str) {

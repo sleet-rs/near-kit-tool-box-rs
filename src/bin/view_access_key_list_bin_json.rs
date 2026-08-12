@@ -22,7 +22,7 @@ async fn main() -> Result<(), Error> {
         .get(1)
         .expect("usage: view_access_key_list_bin_json <account_id>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!("Fetching access keys for `{}`...", account_id);
 

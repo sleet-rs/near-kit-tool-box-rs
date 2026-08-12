@@ -6,8 +6,8 @@ use serde_json::json;
 /// Register storage on the FT contract for the signer using raw JSON
 /// args.
 ///
-/// Attaches the standard storage deposit of 0.00125 NEAR. Takes no
-/// args — the contract infers the account from the signer.
+/// Attaches the standard NEP-145 storage deposit of 0.00125 NEAR.
+/// Takes no args — the contract infers the account from the signer.
 pub async fn ft_storage_deposit(
     near: &Near,
     ft_contract_id: &str,

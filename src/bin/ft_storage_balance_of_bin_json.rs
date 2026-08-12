@@ -30,7 +30,7 @@ async fn main() -> Result<(), Error> {
         .get(2)
         .expect("usage: ft_storage_balance_of_bin_json <ft_contract_id> <account_id>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!(
         "Fetching storage balance of `{}` on FT contract `{}`...",

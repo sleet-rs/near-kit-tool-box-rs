@@ -21,7 +21,7 @@ async fn main() -> Result<(), Error> {
         .get(1)
         .expect("usage: ft_total_supply_bin_json <ft_contract_id>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!("Fetching FT total supply on `{}`...", ft_contract_id);
     let supply = ft_total_supply(&near, ft_contract_id).await?;

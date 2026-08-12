@@ -26,7 +26,7 @@ async fn main() -> Result<(), Error> {
         .get(2)
         .expect("usage: wrap_near_withdraw_bin_json <wrap_contract_id> <amount_yocto>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!(
         "Unwrapping {} yoctoNEAR from `{}`...",

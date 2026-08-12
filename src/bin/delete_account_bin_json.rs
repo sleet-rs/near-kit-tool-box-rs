@@ -23,7 +23,7 @@ async fn main() -> Result<(), Error> {
         .get(1)
         .expect("usage: delete_account_bin_json <beneficiary>");
 
-    let near = NEAR_KIT_CLIENT::from_env()?.build();
+    let near = NEAR_KIT_CLIENT::from_env()?;
     let signer_id = env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
 
     println!(
