@@ -131,6 +131,40 @@ cargo run --bin ft_storage_deposit_bin_json -- wrap.testnet
 
 ## src/fun/rhea
 
+rhea / ref-finance DEX view helpers. All bins are read-only — only
+`NEAR_NETWORK` is needed. Defaults to `ref-finance-101.testnet` when
+no contract id is passed; pass `v2.ref-finance.near` for mainnet.
+
+```bash
+## get_number_of_pools — total pool count on the DEX (json)
+cargo run --bin rhea_get_number_of_pools_bin_json
+cargo run --bin rhea_get_number_of_pools_bin_json -- v2.ref-finance.near
+
+## get_pool — fetch a single pool by id (json)
+cargo run --bin rhea_get_pool_bin_json -- 0
+cargo run --bin rhea_get_pool_bin_json -- 0 v2.ref-finance.near
+cargo run --bin rhea_get_pool_bin_json -- 0 ref-finance-101.testnet
+
+## get_deposits — every LP position an account holds (json)
+cargo run --bin rhea_get_deposits_bin_json -- sleet.testnet
+cargo run --bin rhea_get_deposits_bin_json -- sleet.near v2.ref-finance.near
+
+## get_pools — paginated list of pools (json)
+cargo run --bin rhea_get_pools_bin_json -- 0 3
+cargo run --bin rhea_get_pools_bin_json -- 0 3 v2.ref-finance.near
+
+## get_return — swap quote: amount_out for amount_in on a pool (json)
+# `amount_in` is in yocto units of `token_in` (10^decimals).
+cargo run --bin rhea_get_return_bin_json -- \
+    2794 wrap.near 10000000000000000000000 \
+    a0b86991c6218b36c1d19d4a2e9eb0ce3606eb48.near v2.ref-finance.near
+cargo run --bin rhea_get_return_bin_json -- 0 wrap.testnet 10000000000000000000000 wrap.testnet
+
+## storage_balance_of — NEP-145 storage registration (json, returns null if unregistered)
+cargo run --bin rhea_storage_balance_of_bin_json -- sleet.testnet
+cargo run --bin rhea_storage_balance_of_bin_json -- sleet.near v2.ref-finance.near
+```
+
 
 
 ## src/fun/pumpopoly

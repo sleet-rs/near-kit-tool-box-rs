@@ -64,4 +64,26 @@ pub mod pumpopoly_nft {
     /// Change helper: transfer a Pumpopoly NFT to a receiver via raw JSON args.
     pub mod pumpopoly_nft_transfer_fun_json;
 }
+pub mod rhea {
+    /// View helper: fetch the total number of pools registered on the rhea / ref-finance DEX via raw JSON args.
+    pub mod rhea_get_number_of_pools_fun_json;
+    /// View helper: fetch a single pool by its pool id from the rhea / ref-finance DEX via raw JSON args.
+    pub mod rhea_get_pool_fun_json;
+    /// View helper: fetch every LP position an account holds on the rhea / ref-finance DEX via raw JSON args.
+    pub mod rhea_get_deposits_fun_json;
+    /// View helper: fetch a paginated slice of pools from the rhea / ref-finance DEX via raw JSON args.
+    pub mod rhea_get_pools_fun_json;
+    /// View helper: simulate a swap on the rhea / ref-finance DEX via raw JSON args.
+    pub mod rhea_get_return_fun_json;
+    /// View helper: fetch the NEP-145 storage balance of an account on the rhea / ref-finance DEX via raw JSON args.
+    pub mod rhea_storage_balance_of_fun_json;
+    /// Change helper: register storage on the rhea / ref-finance DEX for the signer via raw JSON args.
+    pub mod rhea_storage_deposit_fun_json;
+    /// Change helper: perform a swap (or routed multi-hop swap) on the rhea / ref-finance DEX via raw JSON args.
+    pub mod rhea_swap_fun_json;
+    /// Change helper: withdraw a token from the signer's LP position on the rhea / ref-finance DEX via raw JSON args.
+    pub mod rhea_withdraw_fun_json;
+    /// Change helper: register a new constant-product pool on the rhea / ref-finance DEX via raw JSON args.
+    pub mod rhea_add_simple_pool_fun_json;
+}
 // =================================================
