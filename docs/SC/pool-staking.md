@@ -18,6 +18,22 @@ near contract inspect <pool_account> network-config mainnet now
 
 
 
+#### KNOWN POOLS (v2 hash)
+
+| pool account id | code_hash |
+| --- | --- |
+| `everything.pool.near` | `AjD4YJaXgpiRdiArqnzyDi7Bkr1gJms9Z2w7Ev5esTKB` |
+| `shitzu.pool.near` | `AjD4YJaXgpiRdiArqnzyDi7Bkr1gJms9Z2w7Ev5esTKB` |
+| `shadowcorp.pool.near` | `AjD4YJaXgpiRdiArqnzyDi7Bkr1gJms9Z2w7Ev5esTKB` |
+| `intear.pool.near` | `AjD4YJaXgpiRdiArqnzyDi7Bkr1gJms9Z2w7Ev5esTKB` |
+
+> **hash variant** — `aurora.pool.near` runs a **patched** v2 pool at a
+> different `code_hash`: `5vf2Jkqpk11H7szLnY4XdPA6maJi1ND8xe346xtbtX8e`.
+> Method surface matches v2, but **always verify code_hash at the call site**
+> before assuming parity.
+
+
+
 #### FILES
 
 - `src/lib/methods/methods_pool_staking.rs`

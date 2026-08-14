@@ -18,6 +18,15 @@ near contract inspect <pool_account> network-config mainnet now
 
 
 
+#### KNOWN POOLS (v1 hash)
+
+| pool account id | code_hash |
+| --- | --- |
+| `npro.poolv1.near` | `J1arLz48fgXcGyCPVckFwLnewNH6j1uw79thsvwqGYTY` |
+| `pumpopoly.poolv1.near` | `J1arLz48fgXcGyCPVckFwLnewNH6j1uw79thsvwqGYTY` |
+
+
+
 #### FILES
 
 - `src/lib/methods/methods_pool_stakingv1.rs`
