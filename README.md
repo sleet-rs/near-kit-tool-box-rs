@@ -16,7 +16,11 @@ cargo check
 # cargo test
 cargo clean
 cargo fmt
-
+# update
+cargo update
+cargo install cargo-edit
+cargo upgrade
+cargo upgrade -p near-kit --incompatible
 # docs
 cargo doc --no-deps
 cargo doc --open
