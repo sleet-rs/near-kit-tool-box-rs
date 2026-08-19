@@ -35,6 +35,7 @@ pub mod near {
     pub mod delete_key_fun_json;
     /// Create a sub-account via the `near` / `testnet` TLD registrar using raw JSON args.
     pub mod near_create_account_fun_json;
+    pub mod view_account_fun_json;
     /// Create a sub-account via the `near` / `testnet` TLD registrar using typed contract interface.
     pub mod near_create_account_fun_typed;
     /// Wrap NEAR into wNEAR via raw JSON args.
