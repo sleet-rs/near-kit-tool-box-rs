@@ -19,11 +19,7 @@ use std::env;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
-    let account_ids: Vec<String> = args
-        .iter()
-        .skip(1)
-        .cloned()
-        .collect();
+    let account_ids: Vec<String> = args.iter().skip(1).cloned().collect();
     if account_ids.is_empty() {
         panic!("usage: pumpopoly_view_players_bin_json <account_id> [<account_id> ...]");
     }
@@ -35,8 +31,7 @@ async fn main() -> Result<(), Error> {
         "Fetching Pumpopoly players `{}`...",
         account_refs.join(", ")
     );
-    let players =
-        view_players(&near, PUMPOPOLY_WORLD_CONTRACT_ID_CONST, &account_refs).await?;
+    let players = view_players(&near, PUMPOPOLY_WORLD_CONTRACT_ID_CONST, &account_refs).await?;
     println!("{:#?}", players);
     Ok(())
 }

@@ -21,9 +21,11 @@ pub async fn nft_supply_for_owner(
         )
         .args(json!({ "account_id": account }))
         .await?;
-    let supply: u64 = supply
-        .parse()
-        .map_err(|_| Error::Config(format!("nft_supply_for_owner returned non-numeric `{supply}`")))?;
+    let supply: u64 = supply.parse().map_err(|_| {
+        Error::Config(format!(
+            "nft_supply_for_owner returned non-numeric `{supply}`"
+        ))
+    })?;
     Ok(supply)
 }
 // =================================================

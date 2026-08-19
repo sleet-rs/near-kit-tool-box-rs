@@ -1,10 +1,8 @@
 // use near_kit::*;
 use crate::lib::const_id::near_contract_id_const::near_contractid;
-use crate::lib::contract::contract_near::{
-    NEAR_CREATE_ACCOUNT_ARGS, NEAR_TLD_CONTRACT_TRAIT,
-};
-use near_kit::{Error, Gas, Near, NearToken};
+use crate::lib::contract::contract_near::{NEAR_CREATE_ACCOUNT_ARGS, NEAR_TLD_CONTRACT_TRAIT};
 use near_kit::types::AccountId;
+use near_kit::{Error, Gas, Near, NearToken};
 // =================================================
 /// Create a new sub-account via the TLD registrar contract using the
 /// typed contract interface.

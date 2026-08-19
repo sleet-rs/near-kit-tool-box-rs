@@ -11,8 +11,7 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 use near_kit::types::{
     AccessKeyListView, AccessKeyView, AccountId, AccountView, BlockEffects, BlockReference,
     BlockView, CryptoHash, EpochValidatorInfo, GasKeyNoncesView, GasPrice, MaintenanceWindow,
-    PublicKey, ReceiptToTxResponse, StatusResponse, StateItem, ViewFunctionResult,
-    ViewStateResult,
+    PublicKey, ReceiptToTxResponse, StateItem, StatusResponse, ViewFunctionResult, ViewStateResult,
 };
 use near_kit::{Near, RetryConfig, RpcError};
 
@@ -69,11 +68,7 @@ impl LOAD_BALANCING_NEAR {
     /// Create a load-balanced client with a custom retry config applied to
     /// every endpoint's [`Near`]. The per-endpoint retries handle transient
     /// failures; failover handles whole-endpoint outages.
-    pub fn with_retry_config(
-        urls: &[&str],
-        chain_id: &str,
-        retry_config: RetryConfig,
-    ) -> Self {
+    pub fn with_retry_config(urls: &[&str], chain_id: &str, retry_config: RetryConfig) -> Self {
         let nears = urls
             .iter()
             .map(|url| {
@@ -360,10 +355,7 @@ impl LOAD_BALANCING_NEAR {
     }
 
     /// Get all state changes that occurred in a block.
-    pub async fn block_effects(
-        &self,
-        block: BlockReference,
-    ) -> Result<BlockEffects, RpcError> {
+    pub async fn block_effects(&self, block: BlockReference) -> Result<BlockEffects, RpcError> {
         self.try_with_failover(|near| {
             let block = block.clone();
             async move { near.rpc().block_effects(block).await }
@@ -396,10 +388,7 @@ impl LOAD_BALANCING_NEAR {
     }
 
     /// Get current gas price.
-    pub async fn gas_price(
-        &self,
-        block_hash: Option<&CryptoHash>,
-    ) -> Result<GasPrice, RpcError> {
+    pub async fn gas_price(&self, block_hash: Option<&CryptoHash>) -> Result<GasPrice, RpcError> {
         self.try_with_failover(|near| {
             let block_hash = block_hash.cloned();
             async move { near.rpc().gas_price(block_hash.as_ref()).await }

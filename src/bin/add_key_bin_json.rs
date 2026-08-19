@@ -52,11 +52,7 @@ async fn main() -> Result<(), Error> {
                     .filter(|s| !s.is_empty())
                     .collect()
             };
-            AccessKeyPermission::function_call(
-                receiver.parse::<AccountId>()?,
-                methods,
-                allowance,
-            )
+            AccessKeyPermission::function_call(receiver.parse::<AccountId>()?, methods, allowance)
         }
         _ => AccessKeyPermission::full_access(),
     };

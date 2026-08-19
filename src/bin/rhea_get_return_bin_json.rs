@@ -51,7 +51,15 @@ async fn main() -> Result<(), Error> {
         "Quoting swap on rhea contract `{}` pool `{}`: {} {} -> {} ...",
         rhea_contract_id, pool_id, amount_in, token_in, token_out
     );
-    let amount_out = get_return(&near, rhea_contract_id, pool_id, token_in, amount_in, token_out).await?;
+    let amount_out = get_return(
+        &near,
+        rhea_contract_id,
+        pool_id,
+        token_in,
+        amount_in,
+        token_out,
+    )
+    .await?;
     println!("Out: {amount_out}");
     Ok(())
 }

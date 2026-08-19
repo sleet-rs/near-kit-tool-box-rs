@@ -24,10 +24,7 @@ async fn main() -> Result<(), Error> {
     let contract_id = args
         .get(1)
         .expect("usage: greeting_get_balanced_bin_json <contract_id> [times]");
-    let times: usize = args
-        .get(2)
-        .and_then(|s| s.parse().ok())
-        .unwrap_or(5);
+    let times: usize = args.get(2).and_then(|s| s.parse().ok()).unwrap_or(5);
 
     let view = NEAR_KIT_CLIENT::view_balancer_testnet();
 

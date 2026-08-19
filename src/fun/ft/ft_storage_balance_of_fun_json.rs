@@ -17,7 +17,10 @@ pub async fn ft_storage_balance_of(
 ) -> Result<STORAGE_BALANCE_OF_RESPONSE_TYPE, Error> {
     let account: AccountId = account_id.parse()?;
     let balance: STORAGE_BALANCE_OF_RESPONSE_TYPE = near
-        .view::<STORAGE_BALANCE_OF_RESPONSE_TYPE>(ft_contract_id, FT_METHODS_CONST.storage_balance_of)
+        .view::<STORAGE_BALANCE_OF_RESPONSE_TYPE>(
+            ft_contract_id,
+            FT_METHODS_CONST.storage_balance_of,
+        )
         .args(json!({ "account_id": account }))
         .await?;
     Ok(balance)
