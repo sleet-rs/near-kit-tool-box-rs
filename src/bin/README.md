@@ -83,12 +83,12 @@ cargo run --bin add_key_bin_json -- ed25519:9vnVSMT1hv2Q1vuZzbjStFieqGbTrwqe4Kcv
 ## delete_key
 cargo run --bin delete_key_bin_json -- <public_key>
 
-## add_key_delegate — meta-tx (NEP-366): relayer pays gas + storage
-# Adds a new full-access key to one or more accounts even when those
-# accounts have zero balance. The shared user key signs a DelegateAction
-# per target; a funded relayer account submits each one on the target's
-# behalf. Requires `RELAYER_ACCOUNT_ID` + `RELAYER_PRIVATE_KEY` in env
-# in addition to `NEAR_PRIVATE_KEY`.
+## add_key_delegate — meta-tx (NEP-366): relayer pays all fees
+# Adds a full-access key to one or more accounts, even ones with zero
+# own balance. The shared user key signs a DelegateAction per target;
+# a funded relayer account submits each one on the target's behalf.
+# Requires `RELAYER_ACCOUNT_ID` + `RELAYER_PRIVATE_KEY` in env in
+# addition to `NEAR_PRIVATE_KEY`.
 cargo run --bin add_key_delegate_bin_json -- <new_public_key> <account_1> [account_2 ...]
 cargo run --bin add_key_delegate_bin_json -- ed25519:2eDMWnKcDt7UQ1xVximcWbd1YKwJbfE7HGPmNZSegjcV walcwarchest.near walcpool.near
 

@@ -3,10 +3,9 @@
 // Adds an access key to one or more accounts via NEAR meta-transactions
 // (NEP-366). The shared user private key — already a full-access key on
 // every target account — signs a DelegateAction per target; a separate
-// funded relayer account then submits each one, paying for gas and the
-// storage stake (~0.23 NEAR per AddKey) on the target's behalf. Useful
-// when the target accounts have zero balance and you don't want to fund
-// them just to add a key.
+// funded relayer account then submits each one, paying gas (and any
+// other related costs) on the target's behalf. Works even on accounts
+// with zero own balance — no need to fund them just to add a key.
 //
 // set in env (.env):
 //   NEAR_NETWORK              # testnet (default) or mainnet
