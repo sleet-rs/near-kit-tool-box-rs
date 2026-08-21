@@ -26,7 +26,7 @@
 // =================================================
 use near_kit::{AccessKeyPermission, Error, Near};
 use near_kit_tool_box::fun::near::add_key_meta_fun_json::{
-    add_key_meta, submit_add_key_meta,
+    sign_add_key_meta, submit_add_key_meta,
 };
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
@@ -74,7 +74,7 @@ async fn main() -> Result<(), Error> {
 
     for account_id in &accounts {
         let user = build_near(&network, &user_private_key, account_id);
-        let delegate = add_key_meta(
+        let delegate = sign_add_key_meta(
             &user,
             account_id,
             public_key,

@@ -13,7 +13,7 @@ use serde_json::json;
 /// on-chain access key the delegation is bound to (in practice the
 /// shared `PUMPOPOLY_LIMITED_KEY` function-call key, one per account).
 /// The relayer is then free to be any funded account.
-pub async fn move_player_meta(
+pub async fn sign_move_player_meta(
     user_near: &Near,
     pumpopoly_contract_id: &str,
 ) -> Result<DelegateResult, Error> {
@@ -28,7 +28,7 @@ pub async fn move_player_meta(
 }
 // =================================================
 /// Wrap a previously signed [`DelegateResult`] (built by
-/// [`move_player_meta`]) in an outer transaction signed by
+/// [`sign_move_player_meta`]) in an outer transaction signed by
 /// `relayer_near` and submit it to the chain. The relayer pays for gas
 /// on behalf of the inner signer.
 pub async fn submit_move_player_meta(

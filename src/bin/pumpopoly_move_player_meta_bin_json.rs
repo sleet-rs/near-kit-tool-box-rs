@@ -25,7 +25,7 @@
 // =================================================
 use near_kit::{Error, Near};
 use near_kit_tool_box::fun::pumpopoly::pumpopoly_move_player_meta_fun_json::{
-    move_player_meta, submit_move_player_meta,
+    sign_move_player_meta, submit_move_player_meta,
 };
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
@@ -66,7 +66,7 @@ async fn main() -> Result<(), Error> {
         contract_id, signer_id, relayer_id
     );
 
-    let delegate = move_player_meta(&signer, contract_id).await?;
+    let delegate = sign_move_player_meta(&signer, contract_id).await?;
     let result = submit_move_player_meta(&relayer, delegate).await?;
     println!("✅ {} tx: {}", signer_id, result.transaction.hash);
 

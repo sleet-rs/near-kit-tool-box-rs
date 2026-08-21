@@ -14,7 +14,7 @@ use near_kit::{AccessKey, AccessKeyPermission, Action, DelegateResult, Error, Ne
 ///
 /// `permission` controls whether the new key is full-access or
 /// restricted to a single receiver / method set (function-call key).
-pub async fn add_key_meta(
+pub async fn sign_add_key_meta(
     near: &Near,
     target_account_id: &str,
     public_key: &str,
@@ -37,9 +37,9 @@ pub async fn add_key_meta(
 }
 // =================================================
 /// Wrap a previously signed [`DelegateResult`] (built by
-/// [`add_key_meta`]) in an outer transaction signed by `relayer_near`
-/// and submit it to the chain. The relayer pays for gas and storage on
-/// behalf of the inner signer.
+/// [`sign_add_key_meta`]) in an outer transaction signed by
+/// `relayer_near` and submit it to the chain. The relayer pays for gas
+/// and storage on behalf of the inner signer.
 pub async fn submit_add_key_meta(
     relayer_near: &Near,
     delegate: DelegateResult,
