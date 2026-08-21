@@ -27,6 +27,9 @@ pub mod greeting {
     pub mod greeting_set_fun_json;
 }
 pub mod near {
+    /// Add an access key to one or more target accounts via meta-transactions
+    /// (NEP-366), with a separate relayer paying gas + storage. Uses raw JSON args.
+    pub mod add_key_delegate_fun_json;
     /// Add an access key to the signer's account using raw JSON args.
     pub mod add_key_fun_json;
     /// Delete the signer's account via raw JSON args.
