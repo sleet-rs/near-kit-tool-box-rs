@@ -23,7 +23,7 @@ cargo upgrade
 cargo upgrade -p near-kit --incompatible
 # docs
 cargo doc --no-deps
-cargo doc --open
+cargo doc --open --no-deps
 
 # mdbook
 mdbook serve --open
