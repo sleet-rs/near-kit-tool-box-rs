@@ -1,4 +1,4 @@
-// add_key_delegate (meta-tx)
+// add_key_meta (meta-tx)
 //
 // Adds an access key to one or more accounts via NEAR meta-transactions
 // (NEP-366). The shared user private key — already a full-access key on
@@ -15,18 +15,18 @@
 //   RELAYER_PRIVATE_KEY       # the relayer's full-access private key
 //
 // then run:
-//   cargo run --bin add_key_delegate_bin_json -- \
+//   cargo run --bin add_key_meta_bin_json -- \
 //     <new_public_key> <account_1> [account_2 ...]
 //
 // example:
-//   cargo run --bin add_key_delegate_bin_json -- \
+//   cargo run --bin add_key_meta_bin_json -- \
 //     ed25519:2eDMWnKcDt7UQ1xVximcWbd1YKwJbfE7HGPmNZSegjcV \
 //     walcwarchest.near walcpool.near mattbwalc.near
 //
 // =================================================
 use near_kit::{AccessKeyPermission, Error, Near};
-use near_kit_tool_box::fun::near::add_key_delegate_fun_json::{
-    add_key_delegate, submit_add_key_delegate,
+use near_kit_tool_box::fun::near::add_key_meta_fun_json::{
+    add_key_meta, submit_add_key_meta,
 };
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
@@ -47,11 +47,11 @@ async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
     let public_key = args
         .get(1)
-        .expect("usage: add_key_delegate_bin_json <new_public_key> <account_1> [account_2 ...]");
+        .expect("usage: add_key_meta_bin_json <new_public_key> <account_1> [account_2 ...]");
     let accounts: Vec<String> = args[2..].to_vec();
     if accounts.is_empty() {
         panic!(
-            "usage: add_key_delegate_bin_json <new_public_key> <account_1> [account_2 ...] (at least one target account is required)"
+            "usage: add_key_meta_bin_json <new_public_key> <account_1> [account_2 ...] (at least one target account is required)"
         );
     }
 
@@ -74,14 +74,14 @@ async fn main() -> Result<(), Error> {
 
     for account_id in &accounts {
         let user = build_near(&network, &user_private_key, account_id);
-        let delegate = add_key_delegate(
+        let delegate = add_key_meta(
             &user,
             account_id,
             public_key,
             AccessKeyPermission::full_access(),
         )
         .await?;
-        let result = submit_add_key_delegate(&relayer, delegate).await?;
+        let result = submit_add_key_meta(&relayer, delegate).await?;
         println!("✅ {} tx: {}", account_id, result.transaction.hash);
     }
 

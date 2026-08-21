@@ -4,7 +4,7 @@ use near_kit::{AccessKey, AccessKeyPermission, Action, DelegateResult, Error, Ne
 /// Build and sign a meta-transaction (NEP-366) that adds `public_key`
 /// to `target_account_id`. The returned [`DelegateResult`] can be
 /// transported to a relayer (off-chain) and submitted via
-/// [`submit_add_key_delegate`] — the relayer pays gas and storage on
+/// [`submit_add_key_meta`] — the relayer pays gas and storage on
 /// behalf of `target_account_id`.
 ///
 /// `near` MUST have credentials set for `target_account_id` using one
@@ -14,7 +14,7 @@ use near_kit::{AccessKey, AccessKeyPermission, Action, DelegateResult, Error, Ne
 ///
 /// `permission` controls whether the new key is full-access or
 /// restricted to a single receiver / method set (function-call key).
-pub async fn add_key_delegate(
+pub async fn add_key_meta(
     near: &Near,
     target_account_id: &str,
     public_key: &str,
@@ -37,10 +37,10 @@ pub async fn add_key_delegate(
 }
 // =================================================
 /// Wrap a previously signed [`DelegateResult`] (built by
-/// [`add_key_delegate`]) in an outer transaction signed by
-/// `relayer_near` and submit it to the chain. The relayer pays for gas
-/// and storage on behalf of the inner signer.
-pub async fn submit_add_key_delegate(
+/// [`add_key_meta`]) in an outer transaction signed by `relayer_near`
+/// and submit it to the chain. The relayer pays for gas and storage on
+/// behalf of the inner signer.
+pub async fn submit_add_key_meta(
     relayer_near: &Near,
     delegate: DelegateResult,
 ) -> Result<near_kit::FinalExecutionOutcome, Error> {

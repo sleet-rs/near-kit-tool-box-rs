@@ -21,12 +21,13 @@ Following these keeps the tree consistent and makes new code obvious to read.
 - `src/fun/{topic}/{topic}_{action}_fun_json.rs` — raw `json!()` helper
 - `src/fun/{topic}/{topic}_{action}_fun.rs` — typed contract helper (single typed variant, no suffix)
 - `src/fun/{topic}/{topic}_{action}_fun_typed.rs` — typed contract helper when a `fun_json` sibling also exists
+- `src/fun/{topic}/{topic}_{action}_meta_fun_json.rs` — NEP-366 meta-transaction helper (sign + submit pair), raw JSON args
 - `src/lib/const_id/{contract_slug}_contract_id_const.rs` — per-contract id constant + lookup fn
 - `src/lib/methods/methods_{contract_slug}.rs` — per-contract method-name constant bag
 - `src/lib/contract/contract_{contract_slug}.rs` — typed contract trait + args structs
 - `src/lib/types/{descriptive_name}.rs` — shared response / data shapes (e.g. `FT_METADATA_GET_RESPONSE_TYPE`)
 - `src/lib/helper/{descriptive_name}.rs` — generic client/utility helpers
-- `src/bin/{topic}_{action}_bin_json.rs` / `..._bin_typed.rs` — example/test binaries
+- `src/bin/{topic}_{action}_bin_json.rs` / `..._bin_typed.rs` / `..._meta_bin_json.rs` — example/test binaries
 - the `bin` suffix is only used in `src/bin/` filenames, never in `src/fun/` filenames.
 
 ## consts (SCREAMING_SNAKE_CASE)

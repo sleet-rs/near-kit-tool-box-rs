@@ -29,7 +29,7 @@ pub mod greeting {
 pub mod near {
     /// Add an access key to one or more target accounts via meta-transactions
     /// (NEP-366), with a separate relayer paying gas + storage. Uses raw JSON args.
-    pub mod add_key_delegate_fun_json;
+    pub mod add_key_meta_fun_json;
     /// Add an access key to the signer's account using raw JSON args.
     pub mod add_key_fun_json;
     /// Delete the signer's account via raw JSON args.
@@ -38,9 +38,9 @@ pub mod near {
     pub mod delete_key_fun_json;
     /// Create a sub-account via the `near` / `testnet` TLD registrar using raw JSON args.
     pub mod near_create_account_fun_json;
-    pub mod view_account_fun_json;
     /// Create a sub-account via the `near` / `testnet` TLD registrar using typed contract interface.
     pub mod near_create_account_fun_typed;
+    pub mod view_account_fun_json;
     /// Wrap NEAR into wNEAR via raw JSON args.
     pub mod wrap_near_deposit_fun_json;
     /// Unwrap wNEAR back into NEAR via raw JSON args.
@@ -49,6 +49,9 @@ pub mod near {
 pub mod pumpopoly {
     /// Change helper: perform a Pumpopoly elite move via raw JSON args.
     pub mod pumpopoly_elite_move_fun_json;
+    /// Change helper: move a Pumpopoly player via a NEP-366 meta-transaction
+    /// (sign + submit pair), with a separate relayer paying gas. Uses raw JSON args.
+    pub mod pumpopoly_move_player_meta_fun_json;
     /// Change helper: move a Pumpopoly player via raw JSON args.
     pub mod pumpopoly_move_player_fun_json;
     /// View helper: fetch a Pumpopoly player's state via raw JSON args.

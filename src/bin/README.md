@@ -83,14 +83,14 @@ cargo run --bin add_key_bin_json -- ed25519:9vnVSMT1hv2Q1vuZzbjStFieqGbTrwqe4Kcv
 ## delete_key
 cargo run --bin delete_key_bin_json -- <public_key>
 
-## add_key_delegate — meta-tx (NEP-366): relayer pays all fees
+## add_key_meta — meta-tx (NEP-366): relayer pays all fees
 # Adds a full-access key to one or more accounts, even ones with zero
 # own balance. The shared user key signs a DelegateAction per target;
 # a funded relayer account submits each one on the target's behalf.
 # Requires `RELAYER_ACCOUNT_ID` + `RELAYER_PRIVATE_KEY` in env in
 # addition to `NEAR_PRIVATE_KEY`.
-cargo run --bin add_key_delegate_bin_json -- <new_public_key> <account_1> [account_2 ...]
-cargo run --bin add_key_delegate_bin_json -- ed25519:2eDMWnKcDt7UQ1xVximcWbd1YKwJbfE7HGPmNZSegjcV walcwarchest.near walcpool.near
+cargo run --bin add_key_meta_bin_json -- <new_public_key> <account_1> [account_2 ...]
+cargo run --bin add_key_meta_bin_json -- ed25519:2eDMWnKcDt7UQ1xVximcWbd1YKwJbfE7HGPmNZSegjcV walcwarchest.near walcpool.near
 
 ## delete_account (refund goes to beneficiary)
 cargo run --bin delete_account_bin_json -- <beneficiary>
@@ -183,7 +183,10 @@ cargo run --bin rhea_storage_balance_of_bin_json -- sleet.near v2.ref-finance.ne
 
 ## src/fun/pumpopoly
 
-Read-only — only `NEAR_NETWORK` is needed. `world.pumpopoly.near` is mainnet only.
+View bins only need `NEAR_NETWORK`; the meta-tx bin also needs
+`NEAR_ACCOUNT_ID` + `NEAR_PRIVATE_KEY` (the signer / limited key) plus
+`RELAYER_ACCOUNT_ID` + `RELAYER_PRIVATE_KEY` (the funded relayer).
+`world.pumpopoly.near` is mainnet only.
 
 ```bash
 ## view_player (json) — fetch a single player's state
@@ -193,6 +196,14 @@ cargo run --bin pumpopoly_view_player_bin_json -- sleet.near
 ## view_players (json) — fetch multiple players' state in a single view call
 cargo run --bin pumpopoly_view_players_bin_json -- <account_id> [<account_id> ...]
 cargo run --bin pumpopoly_view_players_bin_json -- sleet.near narkmeta.near
+
+## move_player_meta — meta-tx (NEP-366): relayer pays gas
+# Calls `move_player` on the Pumpopoly world contract. The signer key
+# (typically the shared `PUMPOPOLY_LIMITED_KEY` function-call key on
+# the player account) signs a DelegateAction; a funded relayer account
+# submits it on the player's behalf.
+cargo run --bin pumpopoly_move_player_meta_bin_json -- <pumpopoly_contract_id>
+cargo run --bin pumpopoly_move_player_meta_bin_json -- world.pumpopoly.near
 ```
 
 
