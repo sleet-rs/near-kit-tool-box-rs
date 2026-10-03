@@ -8,9 +8,12 @@ general
 - [wrap.near.md](./wrap.near.md)
 - [near.md](./near.md) — TLD registrar + NEAR-level actions
 - [ft.md](./ft.md) — generic NEP-141 / NEP-145 helpers
-- [v2.ref-finance.near.md](./v2.ref-finance.near.md)
 - [meme-cooking.near.md](./meme-cooking.near.md)
 - [berryclub.ek.near.md](./berryclub.ek.near.md)
+
+RHEA - ref was renamed rhea
+- [v2.ref-finance.near.md](./v2.ref-finance.near.md)
+- [dclv2.ref-labs.near.md](./dclv2.ref-labs.near.md)
 
 hos
 - [hos.venear.dao.md](./hos.venear.dao.md)

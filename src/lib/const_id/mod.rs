@@ -5,7 +5,7 @@ pub mod chess_game_contract_id_const;
 /// Shared `CONTRACT_ID_CONST_TYPE` struct used by every dual-network
 /// `*_CONTRACT_ID_CONST_TYPE` in this module.
 pub mod contract_id_const_type;
-pub mod dclv2_contract_id_const;
+pub mod rhea_dclv2_contract_id_const;
 pub mod hello_sleet_contract_id_const;
 pub mod hos_venear_contract_id_const;
 pub mod hos_voting_contract_id_const;

@@ -73,7 +73,7 @@ pub mod pumpopoly_nft {
     /// Change helper: transfer a Pumpopoly NFT to a receiver via raw JSON args.
     pub mod pumpopoly_nft_transfer_fun_json;
 }
-pub mod dclv2 {
+pub mod rhea_dclv2 {
     /// Change helper: add concentrated liquidity to a DCL v2 pool range via raw JSON args.
     pub mod dclv2_add_liquidity_fun_json;
     /// Change helper: cancel a DCL v2 limit order via raw JSON args.

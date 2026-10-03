@@ -4,7 +4,7 @@ pub mod methods_berryclub;
 pub mod methods_chess_game;
 pub mod methods_ft;
 pub mod methods_greeting;
-pub mod methods_dclv2;
+pub mod methods_rhea_dclv2;
 pub mod methods_hos_lockup;
 pub mod methods_hos_venear;
 pub mod methods_hos_voting;

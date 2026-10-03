@@ -1,6 +1,6 @@
 // use near_kit::*;
 use crate::lib::methods::methods_rhea::RHEA_METHODS_CONST;
-use crate::lib::types::ref_get_deposits_type::REF_GET_DEPOSITS_TYPE;
+use crate::lib::types::rhea_get_deposits_type::RHEA_GET_DEPOSITS_TYPE;
 use near_kit::{AccountId, Error, Near};
 use serde_json::json;
 // =================================================
@@ -13,9 +13,9 @@ pub async fn get_deposits(
     near: &Near,
     rhea_contract_id: &str,
     account_id: &AccountId,
-) -> Result<REF_GET_DEPOSITS_TYPE, Error> {
-    let deposits: REF_GET_DEPOSITS_TYPE = near
-        .view::<REF_GET_DEPOSITS_TYPE>(rhea_contract_id, RHEA_METHODS_CONST.get_deposits)
+) -> Result<RHEA_GET_DEPOSITS_TYPE, Error> {
+    let deposits: RHEA_GET_DEPOSITS_TYPE = near
+        .view::<RHEA_GET_DEPOSITS_TYPE>(rhea_contract_id, RHEA_METHODS_CONST.get_deposits)
         .args(json!({ "account_id": account_id }))
         .await?;
     Ok(deposits)
