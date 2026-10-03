@@ -1,5 +1,11 @@
 // =================================================
 //! Shared response / data shapes used across `fun` helpers.
+pub mod dcl_liquidity_type;
+pub mod dcl_order_type;
+pub mod dcl_pool_type;
+pub mod dcl_predict_add_liquidity_type;
+pub mod dcl_quote_type;
+pub mod dcl_user_asset_type;
 pub mod ft_metadata_get_response_type;
 pub mod nft_token_response_type;
 pub mod pumpopoly_view_player_response_type;

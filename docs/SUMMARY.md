@@ -29,6 +29,7 @@
 - [near (TLD registrar)](./SC/near.md)
 - [ft (NEP-141 / NEP-145)](./SC/ft.md)
 - [v2.ref-finance.near](./SC/v2.ref-finance.near.md)
+- [dclv2.ref-labs.near](./SC/dclv2.ref-labs.near.md)
 - [meme-cooking.near](./SC/meme-cooking.near.md)
 - [app.chess-game.near](./SC/app.chess-game.near.md)
 - [berryclub.ek.near](./SC/berryclub.ek.near.md)

@@ -73,6 +73,72 @@ pub mod pumpopoly_nft {
     /// Change helper: transfer a Pumpopoly NFT to a receiver via raw JSON args.
     pub mod pumpopoly_nft_transfer_fun_json;
 }
+pub mod dclv2 {
+    /// Change helper: add concentrated liquidity to a DCL v2 pool range via raw JSON args.
+    pub mod dclv2_add_liquidity_fun_json;
+    /// Change helper: cancel a DCL v2 limit order via raw JSON args.
+    pub mod dclv2_cancel_order_fun_json;
+    /// Change helper: fund the signer's DCL v2 internal balance via ft_transfer_call with empty msg.
+    pub mod dclv2_deposit_fun_json;
+    /// View helper: find an account's DCL v2 limit order on one pool point via raw JSON args.
+    pub mod dclv2_find_order_fun_json;
+    /// View helper: fetch a single DCL v2 limit order by its order id via raw JSON args.
+    pub mod dclv2_get_order_fun_json;
+    /// View helper: fetch a single DCL v2 liquidity position by its lpt id via raw JSON args.
+    pub mod dclv2_get_liquidity_fun_json;
+    /// View helper: fetch the per-point liquidity distribution of a DCL v2 pool range via raw JSON args.
+    pub mod dclv2_get_liquidity_range_fun_json;
+    /// View helper: fetch the enriched view of a single DCL v2 liquidity position via raw JSON args.
+    pub mod dclv2_get_liquidity_view_fun_json;
+    /// View helper: fetch market-depth snapshots for several DCL v2 pools via raw JSON args.
+    pub mod dclv2_get_market_depth_list_fun_json;
+    /// View helper: fetch the market-depth snapshot of a DCL v2 pool via raw JSON args.
+    pub mod dclv2_get_marketdepth_fun_json;
+    /// View helper: fetch the resting limit orders of a DCL v2 pool range via raw JSON args.
+    pub mod dclv2_get_pointorder_range_fun_json;
+    /// View helper: fetch a single DCL v2 pool by its pool id via raw JSON args.
+    pub mod dclv2_get_pool_fun_json;
+    /// View helper: fetch several DCL v2 pools by their pool ids via raw JSON args.
+    pub mod dclv2_get_pools_fun_json;
+    /// View helper: fetch one inner token balance an account holds inside the DCL v2 contract via raw JSON args.
+    pub mod dclv2_get_user_asset_fun_json;
+    /// View helper: fetch the storage-deposit detail the DCL v2 contract tracks for one user via raw JSON args.
+    pub mod dclv2_get_user_storage_detail_fun_json;
+    /// View helper: list the still-open DCL v2 limit orders of an account via raw JSON args.
+    pub mod dclv2_list_active_orders_fun_json;
+    /// View helper: list the filled / cancelled DCL v2 limit orders of an account via raw JSON args.
+    pub mod dclv2_list_history_orders_fun_json;
+    /// View helper: fetch a paginated slice of DCL v2 liquidity positions of an account via raw JSON args.
+    pub mod dclv2_list_liquidities_fun_json;
+    /// View helper: fetch a paginated slice of enriched DCL v2 liquidity views of an account via raw JSON args.
+    pub mod dclv2_list_liquidity_views_fun_json;
+    /// View helper: fetch a paginated slice of DCL v2 pools via raw JSON args.
+    pub mod dclv2_list_pools_fun_json;
+    /// View helper: list every inner token balance an account holds inside the DCL v2 contract via raw JSON args.
+    pub mod dclv2_list_user_assets_fun_json;
+    /// View helper: simulate adding liquidity to a DCL v2 pool range via raw JSON args.
+    pub mod dclv2_predict_add_liquidity_fun_json;
+    /// View helper: simulate removing liquidity from a DCL v2 position via raw JSON args.
+    pub mod dclv2_predict_remove_liquidity_fun_json;
+    /// View helper: quote an exact-output swap across DCL v2 pools via raw JSON args.
+    pub mod dclv2_quote_by_output_fun_json;
+    /// View helper: quote an exact-input swap across DCL v2 pools via raw JSON args.
+    pub mod dclv2_quote_fun_json;
+    /// Change helper: remove concentrated liquidity from a DCL v2 position via raw JSON args.
+    pub mod dclv2_remove_liquidity_fun_json;
+    /// View helper: fetch the NEP-145 storage balance of an account on the DCL v2 contract via raw JSON args.
+    pub mod dclv2_storage_balance_of_fun_json;
+    /// Change helper: register storage on the DCL v2 contract via raw JSON args.
+    pub mod dclv2_storage_deposit_fun_json;
+    /// Change helper: unregister storage on the DCL v2 contract via raw JSON args.
+    pub mod dclv2_storage_unregister_fun_json;
+    /// Change helper: withdraw excess storage NEAR from the DCL v2 contract via raw JSON args.
+    pub mod dclv2_storage_withdraw_fun_json;
+    /// Change helper: swap on DCL v2 via ft_transfer_call on the input token via raw JSON args.
+    pub mod dclv2_swap_ft_transfer_call_fun_json;
+    /// Change helper: withdraw an internal token balance out of the DCL v2 contract via raw JSON args.
+    pub mod dclv2_withdraw_asset_fun_json;
+}
 pub mod rhea {
     /// Change helper: register a new constant-product pool on the rhea / ref-finance DEX via raw JSON args.
     pub mod rhea_add_simple_pool_fun_json;
