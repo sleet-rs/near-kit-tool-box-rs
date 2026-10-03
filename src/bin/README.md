@@ -10,7 +10,8 @@ NEAR_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE
 ```
 
 ```sh
-source .env
+set -a; source .env; set +a
+# bare `source .env` does NOT export — child `cargo` won't see vars without `set -a`
 ```
 
 ## src/fun/greeting
