@@ -1,6 +1,6 @@
 use serde::Deserialize;
 // =================================================
-/// Best-effort shape of a DCL v2 user order (`UserOrderInfo` in rhea-sdk).
+/// Best-effort shape of a DCL v2 user order (`UserOrderInfo` in rhea_ammv2-sdk).
 #[derive(Debug, Clone, Deserialize)]
 pub struct RHEA_DCLV2_ORDER_TYPE {
     pub order_id: String,

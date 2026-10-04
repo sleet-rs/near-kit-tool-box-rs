@@ -1,6 +1,6 @@
 use serde::Deserialize;
 // =================================================
-/// NEP-145 storage balance returned by the rhea / ref-finance
+/// NEP-145 storage balance returned by the rhea_ammv2 / ref-finance
 /// `storage_balance_of` view call (and any other storage-standard
 /// contract).
 ///

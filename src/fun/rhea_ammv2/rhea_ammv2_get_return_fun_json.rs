@@ -1,9 +1,9 @@
 // use near_kit::*;
-use crate::lib::methods::methods_rhea::RHEA_METHODS_CONST;
+use crate::lib::methods::methods_rhea_ammv2::RHEA_AMMV2_METHODS_CONST;
 use near_kit::{Error, Near};
 use serde_json::json;
 // =================================================
-/// View helper: simulate a swap on the rhea / ref-finance DEX using
+/// View helper: simulate a swap on the rhea_ammv2 / ref-finance DEX using
 /// raw JSON args, returning the expected amount of `token_out` you
 /// would receive for `amount_in` of `token_in` on `pool_id`.
 ///
@@ -14,14 +14,14 @@ use serde_json::json;
 /// output amount as a yoctoNEAR decimal string of `token_out`.
 pub async fn get_return(
     near: &Near,
-    rhea_contract_id: &str,
+    rhea_ammv2_contract_id: &str,
     pool_id: u32,
     token_in: &str,
     amount_in: &str,
     token_out: &str,
 ) -> Result<String, Error> {
     let amount_out: String = near
-        .view::<String>(rhea_contract_id, RHEA_METHODS_CONST.get_return)
+        .view::<String>(rhea_ammv2_contract_id, RHEA_AMMV2_METHODS_CONST.get_return)
         .args(json!({
             "pool_id": pool_id,
             "token_in": token_in,

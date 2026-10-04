@@ -1,9 +1,9 @@
 // =================================================
-/// Method name constants for the rhea / ref-finance contract.
+/// Method name constants for the rhea_ammv2 / ref-finance contract.
 ///
 /// All 162 methods as reported by `near contract inspect` on
 /// `v2.ref-finance.near` (mainnet) and `ref-finance-101.testnet` (testnet).
-pub const RHEA_METHODS_CONST: RHEA_METHODS_CONST_TYPE = RHEA_METHODS_CONST_TYPE {
+pub const RHEA_AMMV2_METHODS_CONST: RHEA_AMMV2_METHODS_CONST_TYPE = RHEA_AMMV2_METHODS_CONST_TYPE {
     upgrade: "upgrade",
     register_tokens: "register_tokens",
     unregister_tokens: "unregister_tokens",
@@ -168,8 +168,8 @@ pub const RHEA_METHODS_CONST: RHEA_METHODS_CONST_TYPE = RHEA_METHODS_CONST_TYPE 
     update_degen_token_price_callback: "update_degen_token_price_callback",
 };
 // =================================================
-/// String constants for rhea / ref-finance contract method names.
-pub struct RHEA_METHODS_CONST_TYPE {
+/// String constants for rhea_ammv2 / ref-finance contract method names.
+pub struct RHEA_AMMV2_METHODS_CONST_TYPE {
     pub upgrade: &'static str,
     pub register_tokens: &'static str,
     pub unregister_tokens: &'static str,

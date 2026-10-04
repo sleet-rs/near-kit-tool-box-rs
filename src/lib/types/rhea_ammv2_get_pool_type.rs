@@ -1,9 +1,9 @@
 use serde::Deserialize;
 // =================================================
-/// Shape returned by the rhea / ref-finance `get_pool` and `get_pools`
+/// Shape returned by the rhea_ammv2 / ref-finance `get_pool` and `get_pools`
 /// view calls.
 #[derive(Debug, Clone, Deserialize)]
-pub struct RHEA_GET_POOL_TYPE {
+pub struct RHEA_AMMV2_GET_POOL_TYPE {
     pub pool_kind: String,
     pub token_account_ids: Vec<String>,
     pub amounts: Vec<String>,

@@ -19,7 +19,7 @@ pub mod methods_pool_stakingv1;
 pub mod methods_pumpopoly_exchequer;
 pub mod methods_pumpopoly_nft;
 pub mod methods_pumpopoly_world;
-pub mod methods_rhea;
+pub mod methods_rhea_ammv2;
 pub mod methods_social_near;
 pub mod methods_wrap_near;
 // =================================================

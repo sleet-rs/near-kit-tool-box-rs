@@ -18,7 +18,7 @@ pub mod pool_factoryv1_contract_id_const;
 pub mod pumpopoly_exchequer_contract_id_const;
 pub mod pumpopoly_nft_contract_id_const;
 pub mod pumpopoly_world_contract_id_const;
-pub mod rhea_contract_id_const;
+pub mod rhea_ammv2_contract_id_const;
 pub mod social_near_contract_id_const;
 pub mod wrap_near_contract_id_const;
 // =================================================
