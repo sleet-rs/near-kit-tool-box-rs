@@ -18,7 +18,7 @@ pub async fn near_create_account(
     near: &Near,
     new_account_id: &str,
     new_public_key: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let tld_contract_id = match near.chain_id().is_mainnet() {
         true => near_contractid("mainnet"),
         false => near_contractid("testnet"),

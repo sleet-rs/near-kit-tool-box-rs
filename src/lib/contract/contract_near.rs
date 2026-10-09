@@ -1,4 +1,4 @@
-use near_kit::types::AccountId;
+use near_kit::AccountId;
 use serde::{Deserialize, Serialize};
 // =================================================
 /// Arguments for `get_key_balance`.
@@ -73,15 +73,15 @@ pub trait NEAR_TLD_CONTRACT_TRAIT {
     fn get_key_information(&self, args: NEAR_GET_KEY_INFORMATION_ARGS) -> NEAR_KEY_INFO;
 
     /// Create a sub-account and deposit the attached funds. (payable)
-    #[call(payable)]
+    #[call]
     fn create_account(&mut self, args: NEAR_CREATE_ACCOUNT_ARGS);
     /// Create a sub-account with extra options and deposit the
     /// attached funds. (payable)
-    #[call(payable)]
+    #[call]
     fn create_account_advanced(&mut self, args: NEAR_CREATE_ACCOUNT_ADVANCED_ARGS);
     /// Allow the given public key to claim an attached balance.
     /// (payable)
-    #[call(payable)]
+    #[call]
     fn send(&mut self, args: NEAR_SEND_ARGS);
 }
 // =================================================

@@ -25,7 +25,7 @@ pub async fn nft_transfer(
     token_id: &str,
     approval_id: Option<u64>,
     memo: Option<&str>,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let receiver: AccountId = receiver_id.parse()?;
     let result = near
         .call(nft_contract_id, PUMPOPOLY_NFT_METHODS_CONST.nft_transfer)

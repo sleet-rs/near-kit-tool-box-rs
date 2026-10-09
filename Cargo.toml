@@ -18,7 +18,7 @@ edition = "2024"
 
 
 [dependencies]
-near-kit = "0.15.0"
+near-kit = { version = "0.18.3", features = ["contracts"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.151"
 tokio = { version = "1.53.1", features = ["macros", "rt-multi-thread"] }

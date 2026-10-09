@@ -10,7 +10,7 @@ pub async fn wrap_near_deposit(
     near: &Near,
     wrap_contract_id: &str,
     amount: NearToken,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let result = near
         .call(wrap_contract_id, WRAP_NEAR_METHODS_CONST.near_deposit)
         .args(serde_json::json!({}))

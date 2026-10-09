@@ -24,7 +24,8 @@
 //     walcwarchest.near walcpool.near mattbwalc.near
 //
 // =================================================
-use near_kit::{AccessKeyPermission, Error, Near};
+use near_kit::{Error, Near};
+use near_kit::protocol::AccessKeyPermission;
 use near_kit_tool_box::fun::near::add_key_meta_fun_json::{
     sign_add_key_meta, submit_add_key_meta,
 };

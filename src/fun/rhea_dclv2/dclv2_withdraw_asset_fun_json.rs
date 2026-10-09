@@ -16,7 +16,7 @@ pub async fn withdraw_asset(
     dcl_id: &str,
     token_id: &str,
     amount: Option<&str>,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let mut args = json!({ "token_id": token_id });
     if let Some(a) = amount {
         args["amount"] = json!(a);

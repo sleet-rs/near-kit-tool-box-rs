@@ -12,7 +12,7 @@ pub async fn set_greeting(
     new_greeting: String,
 ) -> Result<(), Error> {
     // Use the typed contract interface - compile-time type checking
-    let greeter = near.contract::<GREETING_CONTRACT_TRAIT>(contract_id);
+    let greeter = near.contract::<GREETING_CONTRACT_TRAIT>(contract_id)?;
     greeter
         .set_greeting(GREETING_ARGS {
             greeting: new_greeting,

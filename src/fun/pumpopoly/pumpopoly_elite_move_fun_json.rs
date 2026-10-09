@@ -11,7 +11,7 @@ use serde_json::json;
 pub async fn elite_move(
     near: &Near,
     pumpopoly_contract_id: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let result = near
         .call(
             pumpopoly_contract_id,

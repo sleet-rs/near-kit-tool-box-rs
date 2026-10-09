@@ -1,5 +1,8 @@
 // use near_kit::*;
-use near_kit::{AccessKey, AccessKeyPermission, Action, DelegateResult, Error, Near, PublicKey};
+use near_kit::{Error, Near};
+use near_kit::protocol::{AccessKey, AccessKeyPermission, Action};
+use near_kit::signer::PublicKey;
+use near_kit::transaction::DelegateResult;
 // =================================================
 /// Build and sign a meta-transaction (NEP-366) that adds `public_key`
 /// to `target_account_id`. The returned [`DelegateResult`] can be
@@ -21,7 +24,7 @@ pub async fn sign_add_key_meta(
     permission: AccessKeyPermission,
 ) -> Result<DelegateResult, Error> {
     let pk: PublicKey = public_key.parse()?;
-    let action = Action::AddKey(near_kit::AddKeyAction {
+    let action = Action::AddKey(near_kit::protocol::AddKeyAction {
         public_key: pk,
         access_key: AccessKey {
             nonce: 0,
@@ -43,7 +46,7 @@ pub async fn sign_add_key_meta(
 pub async fn submit_add_key_meta(
     relayer_near: &Near,
     delegate: DelegateResult,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let signed = delegate.signed_delegate_action;
     let result = relayer_near
         .transaction(signed.sender_id())

@@ -11,7 +11,7 @@
 //
 // =================================================
 use near_kit::Error;
-use near_kit::types::AccessKeyPermissionView;
+use near_kit::rpc::AccessKeyPermissionView;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
 // =================================================

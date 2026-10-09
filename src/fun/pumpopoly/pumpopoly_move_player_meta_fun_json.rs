@@ -1,6 +1,7 @@
 // use near_kit::*;
 use crate::lib::methods::methods_pumpopoly_world::PUMPOPOLY_WORLD_METHODS_CONST;
-use near_kit::{DelegateOptions, DelegateResult, Error, Gas, Near};
+use near_kit::{Error, Gas, Near};
+use near_kit::transaction::{DelegateOptions, DelegateResult};
 use serde_json::json;
 // =================================================
 /// Build and sign a meta-transaction (NEP-366) that calls
@@ -22,6 +23,7 @@ pub async fn sign_move_player_meta(
         .call(PUMPOPOLY_WORLD_METHODS_CONST.move_player)
         .args(json!({}))
         .gas(Gas::from_tgas(60))
+        .finish()
         .delegate(DelegateOptions::default())
         .await?;
     Ok(result)
@@ -34,7 +36,7 @@ pub async fn sign_move_player_meta(
 pub async fn submit_move_player_meta(
     relayer_near: &Near,
     delegate: DelegateResult,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let signed = delegate.signed_delegate_action;
     let result = relayer_near
         .transaction(signed.sender_id())

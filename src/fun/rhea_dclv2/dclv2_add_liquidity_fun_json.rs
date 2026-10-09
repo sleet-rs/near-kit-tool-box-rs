@@ -35,7 +35,7 @@ pub async fn add_liquidity(
     amount_y: &str,
     min_amount_x: Option<&str>,
     min_amount_y: Option<&str>,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let result = near
         .call(dcl_id, RHEA_DCLV2_METHODS_CONST.add_liquidity)
         .args(json!({

@@ -24,7 +24,7 @@ pub async fn remove_liquidity(
     amount: &str,
     min_amount_x: Option<&str>,
     min_amount_y: Option<&str>,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let result = near
         .call(dcl_id, RHEA_DCLV2_METHODS_CONST.remove_liquidity)
         .args(json!({

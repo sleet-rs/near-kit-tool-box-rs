@@ -1,6 +1,7 @@
 // use near_kit::*;
 use crate::lib::methods::methods_rhea_ammv2::RHEA_AMMV2_METHODS_CONST;
-use near_kit::{Error, IntoNearToken, Near};
+use near_kit::{Error, Near};
+use near_kit::protocol::IntoNearToken;
 use serde_json::json;
 // =================================================
 /// Change helper: register storage on the rhea_ammv2 / ref-finance DEX for
@@ -11,7 +12,7 @@ use serde_json::json;
 pub async fn storage_deposit(
     near: &Near,
     rhea_ammv2_contract_id: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let deposit = "0.00125 NEAR".into_near_token()?;
     let result = near
         .call(rhea_ammv2_contract_id, RHEA_AMMV2_METHODS_CONST.storage_deposit)

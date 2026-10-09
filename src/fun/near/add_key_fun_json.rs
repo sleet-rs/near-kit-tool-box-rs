@@ -1,5 +1,7 @@
 // use near_kit::*;
-use near_kit::{AccessKey, AccessKeyPermission, Action, Error, Near, PublicKey};
+use near_kit::{Error, Near};
+use near_kit::protocol::{AccessKey, AccessKeyPermission, Action};
+use near_kit::signer::PublicKey;
 // =================================================
 /// Add an access key to the signer's account using the NEAR
 /// transaction-builder API.
@@ -11,9 +13,9 @@ pub async fn add_key(
     signer_id: &str,
     public_key: &str,
     permission: AccessKeyPermission,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let pk: PublicKey = public_key.parse()?;
-    let action = Action::AddKey(near_kit::AddKeyAction {
+    let action = Action::AddKey(near_kit::protocol::AddKeyAction {
         public_key: pk,
         access_key: AccessKey {
             nonce: 0,

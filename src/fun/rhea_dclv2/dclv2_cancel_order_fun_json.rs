@@ -13,7 +13,7 @@ pub async fn cancel_order(
     dcl_id: &str,
     order_id: &str,
     amount: Option<&str>,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let mut args = json!({ "order_id": order_id });
     if let Some(a) = amount {
         args["amount"] = json!(a);

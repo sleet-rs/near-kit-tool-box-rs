@@ -21,7 +21,7 @@ pub async fn swap(
     rhea_ammv2_contract_id: &str,
     actions: &[RHEA_AMMV2_SWAP_ACTION_TYPE],
     referral_id: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let result = near
         .call(rhea_ammv2_contract_id, RHEA_AMMV2_METHODS_CONST.swap)
         .args(json!({

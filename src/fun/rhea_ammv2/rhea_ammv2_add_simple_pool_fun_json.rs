@@ -14,7 +14,7 @@ pub async fn add_simple_pool(
     rhea_ammv2_contract_id: &str,
     tokens: &[&str],
     fee: u32,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let tokens_parsed: Vec<AccountId> = tokens
         .iter()
         .map(|t| t.parse::<AccountId>())

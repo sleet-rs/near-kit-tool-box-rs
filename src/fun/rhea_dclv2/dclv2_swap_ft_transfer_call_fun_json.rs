@@ -22,7 +22,7 @@ pub async fn swap(
     pool_ids: &[String],
     output_token: &str,
     min_output_amount: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let msg = serde_json::to_string(&json!({
         "Swap": {
             "pool_ids": pool_ids,

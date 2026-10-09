@@ -9,7 +9,8 @@
 //   let view = view_account(&near, "sleet.near").await?;
 //
 // =================================================
-use near_kit::types::{AccountId, AccountView};
+use near_kit::AccountId;
+use near_kit::rpc::AccountView;
 use near_kit::{Error, Near};
 // =================================================
 /// View-call helper: fetch `AccountView` for `account_id` at the

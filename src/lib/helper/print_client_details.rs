@@ -2,7 +2,7 @@ use near_kit::Near;
 // =================================================
 pub fn print_client_details(near: &Near) {
     let account_id = near
-        .try_account_id()
+        .account_id()
         .map(ToString::to_string)
         .unwrap_or_else(|| "none (read-only)".to_string());
     let mode = if near.signer().is_some() {

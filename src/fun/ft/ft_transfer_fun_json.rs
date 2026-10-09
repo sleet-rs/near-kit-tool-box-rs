@@ -13,7 +13,7 @@ pub async fn ft_transfer(
     ft_contract_id: &str,
     receiver_id: &str,
     amount: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let receiver: AccountId = receiver_id.parse()?;
     let result = near
         .call(ft_contract_id, FT_METHODS_CONST.ft_transfer)

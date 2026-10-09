@@ -16,7 +16,8 @@
 //   cargo run --bin add_key_bin_json -- ed25519:9vnVSMT1hv2Q1vuZzbjStFieqGbTrwqe4KcvfqYAkb5T fc near "" "10 NEAR"
 //
 // =================================================
-use near_kit::{AccessKeyPermission, AccountId, Error, IntoNearToken};
+use near_kit::{AccountId, Error};
+use near_kit::protocol::{AccessKeyPermission, IntoNearToken};
 use near_kit_tool_box::fun::near::add_key_fun_json::add_key;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;

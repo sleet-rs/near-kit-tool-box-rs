@@ -8,12 +8,16 @@
 use std::sync::Arc;
 use std::sync::atomic::{AtomicUsize, Ordering};
 
-use near_kit::types::{
-    AccessKeyListView, AccessKeyView, AccountId, AccountView, BlockEffects, BlockReference,
-    BlockView, CryptoHash, EpochValidatorInfo, GasKeyNoncesView, GasPrice, MaintenanceWindow,
-    PublicKey, ReceiptToTxResponse, StateItem, StatusResponse, ViewFunctionResult, ViewStateResult,
+use near_kit::AccountId;
+use near_kit::CryptoHash;
+use near_kit::rpc::{
+    AccessKeyListView, AccessKeyView, AccountView, BlockEffects, BlockReference, BlockView,
+    EpochValidatorInfo, GasKeyNoncesView, GasPrice, MaintenanceWindow, ReceiptToTxResponse,
+    StatusResponse, ViewFunctionResult, ViewStateAllResult, ViewStateResult,
 };
-use near_kit::{Near, RetryConfig, RpcError};
+use near_kit::signer::PublicKey;
+use near_kit::Near;
+use near_kit::rpc::{RetryConfig, RpcError};
 
 use super::endpoints::{NEAR_RPC_MAINNET_ENDPOINTS, NEAR_RPC_TESTNET_ENDPOINTS};
 use super::strategies::{LoadBalancingStrategy, RoundRobin};
@@ -331,7 +335,7 @@ impl LOAD_BALANCING_NEAR {
         prefix: &[u8],
         page_size: u32,
         block: BlockReference,
-    ) -> Result<Vec<StateItem>, RpcError> {
+    ) -> Result<ViewStateAllResult, RpcError> {
         self.try_with_failover(|near| {
             let block = block.clone();
             let account_id = account_id.clone();

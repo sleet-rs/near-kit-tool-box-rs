@@ -1,6 +1,7 @@
 // use near_kit::*;
 use crate::lib::methods::methods_rhea_dclv2::RHEA_DCLV2_METHODS_CONST;
-use near_kit::{Error, IntoNearToken, Near};
+use near_kit::{Error, Near};
+use near_kit::protocol::IntoNearToken;
 use serde_json::json;
 // =================================================
 /// Change helper: register storage on the DCL v2 contract for the signer
@@ -13,7 +14,7 @@ use serde_json::json;
 pub async fn storage_deposit(
     near: &Near,
     dcl_id: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let deposit = "0.5 NEAR".into_near_token()?;
     let result = near
         .call(dcl_id, RHEA_DCLV2_METHODS_CONST.storage_deposit)

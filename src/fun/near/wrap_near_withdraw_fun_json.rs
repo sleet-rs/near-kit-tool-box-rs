@@ -13,7 +13,7 @@ pub async fn wrap_near_withdraw(
     near: &Near,
     wrap_contract_id: &str,
     amount: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let result = near
         .call(wrap_contract_id, WRAP_NEAR_METHODS_CONST.near_withdraw)
         .args(json!({ "amount": amount }))

@@ -7,7 +7,7 @@ pub async fn delete_account(
     near: &Near,
     signer_id: &str,
     beneficiary: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let beneficiary_id: AccountId = beneficiary.parse()?;
     let result = near
         .transaction(signer_id)

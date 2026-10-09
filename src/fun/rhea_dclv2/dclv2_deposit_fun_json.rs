@@ -19,7 +19,7 @@ pub async fn deposit(
     token_id: &str,
     amount: &str,
     dcl_id: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let receiver: AccountId = dcl_id.parse()?;
     let result = near
         .call(token_id, FT_METHODS_CONST.ft_transfer_call)

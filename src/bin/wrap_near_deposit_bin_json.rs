@@ -11,7 +11,8 @@
 //   cargo run --bin wrap_near_deposit_bin_json -- wrap.testnet "1 NEAR"
 //
 // =================================================
-use near_kit::{Error, IntoNearToken, NearToken};
+use near_kit::{Error, NearToken};
+use near_kit::protocol::IntoNearToken;
 use near_kit_tool_box::fun::near::wrap_near_deposit_fun_json::wrap_near_deposit;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;

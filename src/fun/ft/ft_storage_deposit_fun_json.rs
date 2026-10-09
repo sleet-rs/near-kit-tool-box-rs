@@ -1,6 +1,7 @@
 // use near_kit::*;
 use crate::lib::methods::methods_ft::FT_METHODS_CONST;
-use near_kit::{Error, IntoNearToken, Near};
+use near_kit::{Error, Near};
+use near_kit::protocol::IntoNearToken;
 use serde_json::json;
 // =================================================
 /// Register storage on the FT contract for the signer using raw JSON
@@ -11,7 +12,7 @@ use serde_json::json;
 pub async fn ft_storage_deposit(
     near: &Near,
     ft_contract_id: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let deposit = "0.00125 NEAR".into_near_token()?;
     let result = near
         .call(ft_contract_id, FT_METHODS_CONST.storage_deposit)

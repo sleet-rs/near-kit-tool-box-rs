@@ -12,7 +12,7 @@ use serde_json::json;
 pub async fn storage_unregister(
     near: &Near,
     dcl_id: &str,
-) -> Result<near_kit::FinalExecutionOutcome, Error> {
+) -> Result<near_kit::rpc::FinalExecutionOutcome, Error> {
     let result = near
         .call(dcl_id, RHEA_DCLV2_METHODS_CONST.storage_unregister)
         .args(json!({}))
