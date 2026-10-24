@@ -2,7 +2,7 @@
 //
 // Withdraws an internal token balance out of DCL v2 via raw JSON args.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin rhea_dclv2_withdraw_asset_bin_json -- <token_id> <amount> [dcl_id]
 //

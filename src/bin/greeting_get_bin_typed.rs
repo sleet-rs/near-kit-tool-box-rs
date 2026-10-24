@@ -1,7 +1,7 @@
 // get_greeting
 //
 // Reads `get_greeting` via the typed contract wrapper. No signer required —
-// only `NEAR_NETWORK` is needed (defaults to testnet).
+// only `NEAR_KIT_NETWORK` is needed (defaults to testnet).
 //
 // run:
 //   cargo run --bin greeting_get_bin_with_client -- <contract_id>

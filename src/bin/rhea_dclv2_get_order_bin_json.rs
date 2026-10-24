@@ -1,7 +1,7 @@
 // rhea_dclv2_get_order (json)
 //
 // Reads a single DCL v2 limit order by its order id via raw JSON args.
-// No signer required — only `NEAR_NETWORK` is needed.
+// No signer required — only `NEAR_KIT_NETWORK` is needed.
 //
 // run:
 //   cargo run --bin rhea_dclv2_get_order_bin_json -- <order_id> [dcl_id]

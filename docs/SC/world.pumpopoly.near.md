@@ -34,9 +34,9 @@ near contract inspect world.pumpopoly.near network-config mainnet now
 
 #### BINS
 
-View bins only need `NEAR_NETWORK`; the meta-tx bin also needs
-`NEAR_ACCOUNT_ID` + `NEAR_PRIVATE_KEY` (the signer / limited key) plus
-`RELAYER_ACCOUNT_ID` + `RELAYER_PRIVATE_KEY` (the funded relayer).
+View bins only need `NEAR_KIT_NETWORK`; the meta-tx bin also needs
+`NEAR_KIT_ACCOUNT_ID` + `NEAR_KIT_PRIVATE_KEY` (the signer / limited key) plus
+`NEAR_KIT_RELAYER_ACCOUNT_ID` + `NEAR_KIT_RELAYER_PRIVATE_KEY` (the funded relayer).
 
 ```bash
 ## view_player (json) — single player's state from the mainnet world contract

@@ -1,7 +1,7 @@
 // view_access_key_list (json)
 //
 // Reads `view_access_key_list` from a NEAR client built from env vars.
-// No signer required — only `NEAR_NETWORK` is needed.
+// No signer required — only `NEAR_KIT_NETWORK` is needed.
 //
 // usage:
 //   cargo run --bin view_access_key_list_bin_json -- <account_id>

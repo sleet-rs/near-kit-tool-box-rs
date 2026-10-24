@@ -3,7 +3,7 @@
 // Simulates a swap on the rhea_ammv2 / ref-finance DEX via raw JSON args,
 // returning the expected amount of `token_out` you'd receive for
 // `amount_in` of `token_in` on `pool_id`. No signer required — only
-// `NEAR_NETWORK` is needed (defaults to testnet).
+// `NEAR_KIT_NETWORK` is needed (defaults to testnet).
 //
 // run:
 //   cargo run --bin rhea_ammv2_get_return_bin_json -- <pool_id> <token_in> <amount_in> <token_out> [rhea_ammv2_contract_id]

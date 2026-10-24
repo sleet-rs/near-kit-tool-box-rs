@@ -2,7 +2,7 @@
 //
 // Reads the NEP-145 storage balance an account holds on the rhea_ammv2 /
 // ref-finance DEX contract via raw JSON args. No signer required —
-// only `NEAR_NETWORK` is needed (defaults to testnet).
+// only `NEAR_KIT_NETWORK` is needed (defaults to testnet).
 //
 // Returns `null` when the account has no storage registration; an
 // object with `total`, `available`, `used` otherwise.

@@ -8,11 +8,11 @@
 // contract still sees the original player as the signer.
 //
 // set in env (.env):
-//   NEAR_NETWORK              # testnet (default) or mainnet
-//   NEAR_ACCOUNT_ID           # the player account id (the signer)
-//   NEAR_PRIVATE_KEY          # the signer private key (the limited key)
-//   RELAYER_ACCOUNT_ID        # the relayer account id (must be funded)
-//   RELAYER_PRIVATE_KEY       # the relayer's full-access private key
+//   NEAR_KIT_NETWORK              # testnet (default) or mainnet
+//   NEAR_KIT_ACCOUNT_ID           # the player account id (the signer)
+//   NEAR_KIT_PRIVATE_KEY          # the signer private key (the limited key)
+//   NEAR_KIT_RELAYER_ACCOUNT_ID   # the relayer account id (must be funded)
+//   NEAR_KIT_RELAYER_PRIVATE_KEY  # the relayer's full-access private key
 //
 // then run:
 //   cargo run --bin pumpopoly_move_player_meta_bin_json -- \
@@ -48,15 +48,15 @@ async fn main() -> Result<(), Error> {
         "usage: pumpopoly_move_player_meta_bin_json <pumpopoly_contract_id>",
     );
 
-    let network = env::var("NEAR_NETWORK").unwrap_or_else(|_| "mainnet".to_string());
+    let network = env::var("NEAR_KIT_NETWORK").unwrap_or_else(|_| "mainnet".to_string());
     let signer_id =
-        env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
+        env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
     let signer_pk =
-        env::var("NEAR_PRIVATE_KEY").expect("NEAR_PRIVATE_KEY env var is required");
+        env::var("NEAR_KIT_PRIVATE_KEY").expect("NEAR_KIT_PRIVATE_KEY env var is required");
     let relayer_id =
-        env::var("RELAYER_ACCOUNT_ID").expect("RELAYER_ACCOUNT_ID env var is required");
+        env::var("NEAR_KIT_RELAYER_ACCOUNT_ID").expect("NEAR_KIT_RELAYER_ACCOUNT_ID env var is required");
     let relayer_pk =
-        env::var("RELAYER_PRIVATE_KEY").expect("RELAYER_PRIVATE_KEY env var is required");
+        env::var("NEAR_KIT_RELAYER_PRIVATE_KEY").expect("NEAR_KIT_RELAYER_PRIVATE_KEY env var is required");
 
     let signer = build_near(&network, &signer_pk, &signer_id);
     let relayer = build_near(&network, &relayer_pk, &relayer_id);

@@ -2,7 +2,7 @@
 //
 // Reads every LP position (per pool) that an account holds on the
 // rhea_ammv2 / ref-finance DEX via raw JSON args. No signer required —
-// only `NEAR_NETWORK` is needed (defaults to testnet).
+// only `NEAR_KIT_NETWORK` is needed (defaults to testnet).
 //
 // run:
 //   cargo run --bin rhea_ammv2_get_deposits_bin_json -- <account_id> [rhea_ammv2_contract_id]

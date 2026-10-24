@@ -3,7 +3,7 @@
 // Transfers FT to `receiver_id` and calls `ft_transfer_call` on it
 // with `msg` via raw JSON args.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin ft_transfer_call_bin_json -- <ft_contract_id> <receiver_id> <amount> <msg>
 //
@@ -33,7 +33,7 @@ async fn main() -> Result<(), Error> {
         .expect("usage: ft_transfer_call_bin_json <ft_contract_id> <receiver_id> <amount> <msg>");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
-    let account_id = env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
+    let account_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
 
     println!(
         "Transferring {} of `{}` from `{}` to `{}` with msg `{}`...",

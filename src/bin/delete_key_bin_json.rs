@@ -3,7 +3,7 @@
 // Deletes an access key from the signer's account using the NEAR
 // transaction-builder API.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin delete_key_bin_json -- <public_key>
 //
@@ -24,7 +24,7 @@ async fn main() -> Result<(), Error> {
         .expect("usage: delete_key_bin_json <public_key>");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
-    let signer_id = env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
+    let signer_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
 
     println!(
         "Deleting access key `{}` from `{}`...",

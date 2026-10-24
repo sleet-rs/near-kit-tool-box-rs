@@ -3,7 +3,7 @@
 // Funds the signer's DCL v2 internal balance via ft_transfer_call with an
 // empty msg, using raw JSON args. Check with rhea_dclv2_get_user_asset_bin_json.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin rhea_dclv2_deposit_bin_json -- <token_id> <amount> [dcl_id]
 //

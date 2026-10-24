@@ -6,7 +6,7 @@
 //
 // Token ids contain spaces, so quote them.
 //
-// set NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env) then run:
+// set NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env) then run:
 //   cargo run --bin pumpopoly_nft_transfer_call_bin_json -- <receiver_id> <token_id> <msg> [memo]
 //
 // example:
@@ -31,8 +31,8 @@ async fn main() -> Result<(), Error> {
     let memo = args.get(4).map(|s| s.as_str());
 
     // pinned to mainnet — nft.pumpopoly.near has no testnet deployment
-    let account_id = env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
-    let private_key = env::var("NEAR_PRIVATE_KEY").expect("NEAR_PRIVATE_KEY env var is required");
+    let account_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
+    let private_key = env::var("NEAR_KIT_PRIVATE_KEY").expect("NEAR_KIT_PRIVATE_KEY env var is required");
     let near = NEAR_KIT_CLIENT::mainnet()
         .credentials(&private_key, &account_id)?
         .build();

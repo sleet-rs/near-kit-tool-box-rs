@@ -3,7 +3,7 @@
 // Registers storage on an FT contract for the signer via raw JSON
 // args. Attaches 0.00125 NEAR.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin ft_storage_deposit_bin_json -- <ft_contract_id>
 //
@@ -24,7 +24,7 @@ async fn main() -> Result<(), Error> {
         .expect("usage: ft_storage_deposit_bin_json <ft_contract_id>");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
-    let account_id = env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
+    let account_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
 
     println!(
         "Registering storage on `{}` for `{}`...",

@@ -1,7 +1,7 @@
 // rhea_ammv2_get_number_of_pools (json)
 //
 // Reads the total number of pools registered on the rhea_ammv2 / ref-finance
-// DEX via raw JSON args. No signer required — only `NEAR_NETWORK` is
+// DEX via raw JSON args. No signer required — only `NEAR_KIT_NETWORK` is
 // needed (defaults to testnet).
 //
 // run:

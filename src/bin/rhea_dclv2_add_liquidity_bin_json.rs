@@ -4,7 +4,7 @@
 // Requires internal balances (fund via rhea_dclv2_deposit_bin_json first) and
 // DCL storage registered.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin rhea_dclv2_add_liquidity_bin_json -- <pool_id> <left_point> <right_point> <amount_x> <amount_y> [dcl_id]
 //

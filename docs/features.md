@@ -19,8 +19,8 @@ use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 let near = NEAR_KIT_CLIENT::testnet().build();
 let near = NEAR_KIT_CLIENT::mainnet().build();
 
-// Env-driven (NEAR_NETWORK, NEAR_CHAIN_ID, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY)
-let near = NEAR_KIT_CLIENT::from_env()?.build();
+// Env-driven (NEAR_KIT_NETWORK, NEAR_KIT_CHAIN_ID, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY)
+let near = NEAR_KIT_CLIENT::from_env()?;
 
 // Custom RPC URL
 let near = Near::custom("https://my-rpc.example.com", "mainnet").build();

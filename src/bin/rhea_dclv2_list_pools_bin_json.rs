@@ -1,7 +1,7 @@
 // rhea_dclv2_list_pools (json)
 //
 // Reads a paginated slice of DCL v2 pools via raw JSON args. No signer
-// required — only `NEAR_NETWORK` is needed (defaults to testnet).
+// required — only `NEAR_KIT_NETWORK` is needed (defaults to testnet).
 //
 // run:
 //   cargo run --bin rhea_dclv2_list_pools_bin_json -- <from_index> <limit> [dcl_id]

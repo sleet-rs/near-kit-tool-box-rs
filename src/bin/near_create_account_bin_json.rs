@@ -2,9 +2,9 @@
 //
 // Creates a new sub-account via the TLD registrar contract (e.g.
 // `near` on mainnet, `testnet` on testnet) using raw JSON args.
-// The TLD contract id is resolved automatically from `NEAR_NETWORK`.
+// The TLD contract id is resolved automatically from `NEAR_KIT_NETWORK`.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin near_create_account_bin_json -- <new_account_id> <new_public_key>
 //

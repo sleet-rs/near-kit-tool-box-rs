@@ -4,7 +4,7 @@
 // contract (e.g. `wrap.testnet`) via raw JSON args. Returns `{ total,
 // available }` when registered, or an FT-specific shape otherwise.
 //
-// No signer required — only `NEAR_NETWORK` is needed (defaults to
+// No signer required — only `NEAR_KIT_NETWORK` is needed (defaults to
 // testnet).
 //
 // run:

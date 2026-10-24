@@ -1,7 +1,7 @@
 // ft_balance_of (json)
 //
 // Reads an FT balance via raw JSON args. No signer required — only
-// `NEAR_NETWORK` is needed (defaults to testnet).
+// `NEAR_KIT_NETWORK` is needed (defaults to testnet).
 //
 // run:
 //   cargo run --bin ft_balance_of_bin_json -- <ft_contract_id> <account_id>

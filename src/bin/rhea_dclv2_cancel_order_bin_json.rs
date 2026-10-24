@@ -3,7 +3,7 @@
 // Cancels a DCL v2 limit order via raw JSON args. Omit amount for full
 // cancel; pass "0" to claim fills without cancelling.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin rhea_dclv2_cancel_order_bin_json -- <order_id> [amount] [dcl_id]
 //

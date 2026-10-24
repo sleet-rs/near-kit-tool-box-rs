@@ -2,7 +2,7 @@
 //
 // Withdraws excess storage NEAR from the DCL v2 contract. Attaches 1 yocto.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin rhea_dclv2_storage_withdraw_bin_json -- [dcl_id]
 //

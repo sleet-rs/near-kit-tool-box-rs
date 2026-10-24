@@ -4,7 +4,7 @@
 // transaction-builder API. Defaults to full-access; pass "fc" to add
 // a function-call key instead, with receiver/method/allowance.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin add_key_bin_json -- <public_key>                              # full access
 //   cargo run --bin add_key_bin_json -- <public_key> fc <receiver> <methods> <allowance>
@@ -30,7 +30,7 @@ async fn main() -> Result<(), Error> {
         .expect("usage: add_key_bin_json <public_key> [fc <receiver> <methods> <allowance>]");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
-    let signer_id = env::var("NEAR_ACCOUNT_ID").expect("NEAR_ACCOUNT_ID env var is required");
+    let signer_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
 
     let permission = match args.get(2).map(String::as_str) {
         Some("fc") => {

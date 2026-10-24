@@ -8,11 +8,11 @@
 // with zero own balance — no need to fund them just to add a key.
 //
 // set in env (.env):
-//   NEAR_NETWORK              # testnet (default) or mainnet
-//   NEAR_PRIVATE_KEY          # the shared full-access private key
-//                             # already on every target account
-//   RELAYER_ACCOUNT_ID        # the relayer account id (must be funded)
-//   RELAYER_PRIVATE_KEY       # the relayer's full-access private key
+//   NEAR_KIT_NETWORK              # testnet (default) or mainnet
+//   NEAR_KIT_PRIVATE_KEY          # the shared full-access private key
+//                                # already on every target account
+//   NEAR_KIT_RELAYER_ACCOUNT_ID   # the relayer account id (must be funded)
+//   NEAR_KIT_RELAYER_PRIVATE_KEY  # the relayer's full-access private key
 //
 // then run:
 //   cargo run --bin add_key_meta_bin_json -- \
@@ -56,13 +56,13 @@ async fn main() -> Result<(), Error> {
         );
     }
 
-    let network = env::var("NEAR_NETWORK").unwrap_or_else(|_| "testnet".to_string());
+    let network = env::var("NEAR_KIT_NETWORK").unwrap_or_else(|_| "testnet".to_string());
     let user_private_key =
-        env::var("NEAR_PRIVATE_KEY").expect("NEAR_PRIVATE_KEY env var is required");
+        env::var("NEAR_KIT_PRIVATE_KEY").expect("NEAR_KIT_PRIVATE_KEY env var is required");
     let relayer_id =
-        env::var("RELAYER_ACCOUNT_ID").expect("RELAYER_ACCOUNT_ID env var is required");
+        env::var("NEAR_KIT_RELAYER_ACCOUNT_ID").expect("NEAR_KIT_RELAYER_ACCOUNT_ID env var is required");
     let relayer_pk =
-        env::var("RELAYER_PRIVATE_KEY").expect("RELAYER_PRIVATE_KEY env var is required");
+        env::var("NEAR_KIT_RELAYER_PRIVATE_KEY").expect("NEAR_KIT_RELAYER_PRIVATE_KEY env var is required");
 
     let relayer = build_near(&network, &relayer_pk, &relayer_id);
 

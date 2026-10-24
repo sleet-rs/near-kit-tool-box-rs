@@ -1,7 +1,7 @@
 // get_greeting (json)
 //
 // Reads `get_greeting` via raw JSON args. No signer required — only
-// `NEAR_NETWORK` is needed (defaults to testnet).
+// `NEAR_KIT_NETWORK` is needed (defaults to testnet).
 //
 // run:
 //   cargo run --bin greeting_get_bin_json -- <contract_id>

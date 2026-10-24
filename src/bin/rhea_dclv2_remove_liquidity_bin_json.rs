@@ -3,7 +3,7 @@
 // Removes concentrated liquidity from a DCL v2 position via raw JSON args.
 // Funds land in internal balance; withdraw via rhea_dclv2_withdraw_asset_bin_json.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin rhea_dclv2_remove_liquidity_bin_json -- <lpt_id> <amount> [dcl_id]
 //

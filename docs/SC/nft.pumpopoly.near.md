@@ -39,7 +39,7 @@ Each has a matching `src/bin/<name>_bin_json.rs`.
 #### NOTES
 
 - Mainnet only, so the bins pin `NEAR_KIT_CLIENT::mainnet()` rather than
-  reading `NEAR_NETWORK` via `from_env()`.
+  reading `NEAR_KIT_NETWORK` via `from_env()`.
 - Token ids are human readable and contain spaces (e.g. `Bond 10-849-1`),
   so quote them on the command line.
 - `nft_supply_for_owner` and `nft_total_supply` return counts as JSON

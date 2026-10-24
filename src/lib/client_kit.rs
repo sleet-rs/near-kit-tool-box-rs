@@ -13,7 +13,7 @@
 //! let near = NEAR_KIT_CLIENT::mainnet().build();
 //!
 //! // From env vars with optional credentials
-//! let near = NEAR_KIT_CLIENT::from_env()?.build();
+//! let near = NEAR_KIT_CLIENT::from_env()?;
 //!
 //! // Load-balanced view client (round-robin across default endpoints).
 //! // Each call picks a Near and either returns it for the caller to use
@@ -62,14 +62,55 @@ impl NEAR_KIT_CLIENT {
     }
 
     /// Build a client directly from env vars and return the
-    /// constructed [`Near`] (delegates to [`Near::from_env`] and
-    /// prints client details on success).
+    /// constructed [`Near`] (prints client details on success).
     ///
-    /// Reads `NEAR_NETWORK` (defaults to `testnet`, may be a custom
-    /// RPC URL), optional `NEAR_CHAIN_ID`, and optional credentials
-    /// via `NEAR_ACCOUNT_ID` + `NEAR_PRIVATE_KEY`.
+    /// Reads `NEAR_KIT_NETWORK` (defaults to `testnet`, may be a custom
+    /// RPC URL), optional `NEAR_KIT_CHAIN_ID`, and optional credentials
+    /// via `NEAR_KIT_ACCOUNT_ID` + `NEAR_KIT_PRIVATE_KEY`.
+    ///
+    /// The `NEAR_KIT_` prefix keeps these vars from colliding with the
+    /// generic `NEAR_*` vars that `near-kit` reads on its own.
     pub fn from_env() -> Result<Near, Error> {
-        let near = Near::from_env()?;
+        let network = std::env::var("NEAR_KIT_NETWORK").ok();
+        let mut chain_id_override = std::env::var("NEAR_KIT_CHAIN_ID").ok();
+        let account_id = std::env::var("NEAR_KIT_ACCOUNT_ID").ok();
+        let private_key = std::env::var("NEAR_KIT_PRIVATE_KEY").ok();
+
+        let mut builder = match network.as_deref() {
+            Some("mainnet") => Near::mainnet(),
+            Some("testnet") | None => Near::testnet(),
+            Some(url) => {
+                let chain_id = chain_id_override
+                    .take()
+                    .unwrap_or_else(|| "custom".to_string());
+                Near::custom(url, chain_id)
+            }
+        };
+
+        if let Some(id) = chain_id_override {
+            builder = builder.chain_id(id);
+        }
+
+        match (account_id, private_key) {
+            (Some(account), Some(key)) => {
+                builder = builder.credentials(&key, account)?;
+            }
+            (Some(_), None) => {
+                return Err(Error::Config(
+                    "NEAR_KIT_ACCOUNT_ID is set but NEAR_KIT_PRIVATE_KEY is missing".into(),
+                ));
+            }
+            (None, Some(_)) => {
+                return Err(Error::Config(
+                    "NEAR_KIT_PRIVATE_KEY is set but NEAR_KIT_ACCOUNT_ID is missing".into(),
+                ));
+            }
+            (None, None) => {
+                // Read-only client, no credentials
+            }
+        }
+
+        let near = builder.build();
         print_client_details(&near);
         Ok(near)
     }

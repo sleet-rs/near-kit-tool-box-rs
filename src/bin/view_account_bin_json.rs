@@ -1,7 +1,7 @@
 // view_account (json)
 //
 // Reads `view_account` from a NEAR client built from env vars.
-// No signer required — only `NEAR_NETWORK` is needed.
+// No signer required — only `NEAR_KIT_NETWORK` is needed.
 //
 // usage:
 //   cargo run --bin view_account_bin_json -- <account_id>

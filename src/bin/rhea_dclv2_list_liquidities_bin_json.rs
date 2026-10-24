@@ -1,7 +1,7 @@
 // rhea_dclv2_list_liquidities (json)
 //
 // Lists the DCL v2 liquidity positions of an account via raw JSON args.
-// No signer required — only `NEAR_NETWORK` is needed.
+// No signer required — only `NEAR_KIT_NETWORK` is needed.
 //
 // run:
 //   cargo run --bin rhea_dclv2_list_liquidities_bin_json -- <account_id> <from_index> <limit> [dcl_id]

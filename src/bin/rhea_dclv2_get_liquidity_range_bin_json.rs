@@ -1,7 +1,7 @@
 // rhea_dclv2_get_liquidity_range (json)
 //
 // Reads the per-point liquidity distribution of a DCL v2 pool range via
-// raw JSON args. No signer required — only `NEAR_NETWORK` is needed.
+// raw JSON args. No signer required — only `NEAR_KIT_NETWORK` is needed.
 //
 // run:
 //   cargo run --bin rhea_dclv2_get_liquidity_range_bin_json -- <pool_id> <left_point> <right_point> [dcl_id]

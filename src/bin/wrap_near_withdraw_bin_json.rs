@@ -3,7 +3,7 @@
 // Unwraps wNEAR back into NEAR via the wrap.near / wrap.testnet
 // contract using raw JSON args.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin wrap_near_withdraw_bin_json -- <wrap_contract_id> <amount_yocto>
 //

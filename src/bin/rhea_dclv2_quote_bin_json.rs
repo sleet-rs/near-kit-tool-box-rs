@@ -1,7 +1,7 @@
 // rhea_dclv2_quote (json)
 //
 // Quotes an exact-input swap across DCL v2 pools via raw JSON args. No
-// signer required — only `NEAR_NETWORK` is needed (defaults to testnet).
+// signer required — only `NEAR_KIT_NETWORK` is needed (defaults to testnet).
 //
 // run:
 //   cargo run --bin rhea_dclv2_quote_bin_json -- <pool_ids_csv> <input_token> <output_token> <input_amount> [tag] [dcl_id]

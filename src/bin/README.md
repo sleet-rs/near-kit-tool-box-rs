@@ -4,9 +4,9 @@ All bins sign / read via `NEAR_KIT_CLIENT` (see `src/lib/client_kit.rs`).
 Auth comes from env vars — copy `.env.example` to `.env` and fill in:
 
 ```env
-NEAR_NETWORK=testnet        # or mainnet
-NEAR_ACCOUNT_ID=alice.testnet
-NEAR_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE
+NEAR_KIT_NETWORK=testnet        # or mainnet
+NEAR_KIT_ACCOUNT_ID=alice.testnet
+NEAR_KIT_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE
 ```
 
 ```sh
@@ -16,7 +16,7 @@ set -a; source .env; set +a
 
 ## src/fun/greeting
 
-Read bins only need `NEAR_NETWORK` (defaults to `testnet`). Set bins also need `NEAR_ACCOUNT_ID` and `NEAR_PRIVATE_KEY`.
+Read bins only need `NEAR_KIT_NETWORK` (defaults to `testnet`). Set bins also need `NEAR_KIT_ACCOUNT_ID` and `NEAR_KIT_PRIVATE_KEY`.
 
 ```bash
 ## get greeting (typed)
@@ -49,7 +49,7 @@ cargo run --bin greeting_set_bin_json -- hello.sleet.testnet "hello from near ki
 
 ## generic NEAR protocol views
 
-Read-only — only `NEAR_NETWORK` is needed.
+Read-only — only `NEAR_KIT_NETWORK` is needed.
 
 ```bash
 ## view_account — account balance, storage, deployed contract info
@@ -66,7 +66,7 @@ cargo run --bin view_access_key_list_bin_json -- sleet.testnet
 ## src/fun/near
 
 Near-level account / key actions and `wrap.near` helpers. All bins
-need `NEAR_ACCOUNT_ID` and `NEAR_PRIVATE_KEY` except view-style ones.
+need `NEAR_KIT_ACCOUNT_ID` and `NEAR_KIT_PRIVATE_KEY` except view-style ones.
 
 ```bash
 ## create_account via the TLD registrar (contract call)
@@ -88,8 +88,8 @@ cargo run --bin delete_key_bin_json -- <public_key>
 # Adds a full-access key to one or more accounts, even ones with zero
 # own balance. The shared user key signs a DelegateAction per target;
 # a funded relayer account submits each one on the target's behalf.
-# Requires `RELAYER_ACCOUNT_ID` + `RELAYER_PRIVATE_KEY` in env in
-# addition to `NEAR_PRIVATE_KEY`.
+# Requires `NEAR_KIT_RELAYER_ACCOUNT_ID` + `NEAR_KIT_RELAYER_PRIVATE_KEY` in env in
+# addition to `NEAR_KIT_PRIVATE_KEY`.
 cargo run --bin add_key_meta_bin_json -- <new_public_key> <account_1> [account_2 ...]
 cargo run --bin add_key_meta_bin_json -- ed25519:2eDMWnKcDt7UQ1xVximcWbd1YKwJbfE7HGPmNZSegjcV walcwarchest.near walcpool.near
 
@@ -109,8 +109,8 @@ cargo run --bin wrap_near_withdraw_bin_json -- wrap.testnet 10000000000000000000
 ## src/fun/ft
 
 Generic NEP-141 / NEP-145 fungible-token helpers. View bins only need
-`NEAR_NETWORK`; call bins also need `NEAR_ACCOUNT_ID` and
-`NEAR_PRIVATE_KEY`.
+`NEAR_KIT_NETWORK`; call bins also need `NEAR_KIT_ACCOUNT_ID` and
+`NEAR_KIT_PRIVATE_KEY`.
 
 ```bash
 ## ft_balance_of (view)
@@ -147,7 +147,7 @@ cargo run --bin ft_storage_balance_of_bin_json -- usdt.tether-token.near sleet.n
 ## src/fun/rhea_ammv2
 
 rhea_ammv2 / ref-finance DEX view helpers. All bins are read-only — only
-`NEAR_NETWORK` is needed. Defaults to `ref-finance-101.testnet` when
+`NEAR_KIT_NETWORK` is needed. Defaults to `ref-finance-101.testnet` when
 no contract id is passed; pass `v2.ref-finance.near` for mainnet.
 
 ```bash
@@ -184,9 +184,9 @@ cargo run --bin rhea_ammv2_storage_balance_of_bin_json -- sleet.near v2.ref-fina
 
 ## src/fun/pumpopoly
 
-View bins only need `NEAR_NETWORK`; the meta-tx bin also needs
-`NEAR_ACCOUNT_ID` + `NEAR_PRIVATE_KEY` (the signer / limited key) plus
-`RELAYER_ACCOUNT_ID` + `RELAYER_PRIVATE_KEY` (the funded relayer).
+View bins only need `NEAR_KIT_NETWORK`; the meta-tx bin also needs
+`NEAR_KIT_ACCOUNT_ID` + `NEAR_KIT_PRIVATE_KEY` (the signer / limited key) plus
+`NEAR_KIT_RELAYER_ACCOUNT_ID` + `NEAR_KIT_RELAYER_PRIVATE_KEY` (the funded relayer).
 `world.pumpopoly.near` is mainnet only.
 
 ```bash

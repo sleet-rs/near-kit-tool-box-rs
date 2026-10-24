@@ -33,8 +33,8 @@ constants.
 # Adds a full-access key to one or more accounts, even ones with zero
 # own balance. The shared user key signs a DelegateAction per target;
 # a funded relayer account submits each one on the target's behalf.
-# Requires `RELAYER_ACCOUNT_ID` + `RELAYER_PRIVATE_KEY` in env in
-# addition to `NEAR_PRIVATE_KEY`.
+# Requires `NEAR_KIT_RELAYER_ACCOUNT_ID` + `NEAR_KIT_RELAYER_PRIVATE_KEY` in env in
+# addition to `NEAR_KIT_PRIVATE_KEY`.
 cargo run --bin add_key_meta_bin_json -- <new_public_key> <account_1> [account_2 ...]
 cargo run --bin add_key_meta_bin_json -- ed25519:2eDMWnKcDt7UQ1xVximcWbd1YKwJbfE7HGPmNZSegjcV walcwarchest.near walcpool.near
 ```

@@ -1,7 +1,7 @@
 // rhea_dclv2_list_active_orders (json)
 //
 // Lists the still-open DCL v2 limit orders of an account via raw JSON
-// args. No signer required — only `NEAR_NETWORK` is needed.
+// args. No signer required — only `NEAR_KIT_NETWORK` is needed.
 //
 // run:
 //   cargo run --bin rhea_dclv2_list_active_orders_bin_json -- <account_id> [dcl_id]

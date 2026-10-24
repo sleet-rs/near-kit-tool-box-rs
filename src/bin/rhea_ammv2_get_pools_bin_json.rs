@@ -1,7 +1,7 @@
 // rhea_ammv2_get_pools (json)
 //
 // Reads a paginated slice of pools from the rhea_ammv2 / ref-finance DEX via
-// raw JSON args. No signer required — only `NEAR_NETWORK` is needed
+// raw JSON args. No signer required — only `NEAR_KIT_NETWORK` is needed
 // (defaults to testnet).
 //
 // run:

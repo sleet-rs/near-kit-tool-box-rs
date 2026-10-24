@@ -1,7 +1,7 @@
 // rhea_dclv2_get_pool (json)
 //
 // Reads a single DCL v2 pool by its pool id via raw JSON args. No signer
-// required — only `NEAR_NETWORK` is needed (defaults to testnet).
+// required — only `NEAR_KIT_NETWORK` is needed (defaults to testnet).
 //
 // run:
 //   cargo run --bin rhea_dclv2_get_pool_bin_json -- <pool_id> [dcl_id]

@@ -3,7 +3,7 @@
 // Swaps on DCL v2 via ft_transfer_call on the INPUT token (DCL has no
 // direct swap method) using raw JSON args.
 //
-// set NEAR_NETWORK, NEAR_ACCOUNT_ID, NEAR_PRIVATE_KEY in env (.env)
+// set NEAR_KIT_NETWORK, NEAR_KIT_ACCOUNT_ID, NEAR_KIT_PRIVATE_KEY in env (.env)
 // then run:
 //   cargo run --bin rhea_dclv2_swap_bin_json -- <token_in> <amount_in> <pool_ids_csv> <output_token> <min_output> [dcl_id]
 //

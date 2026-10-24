@@ -1,7 +1,7 @@
 // rhea_dclv2_predict_add_liquidity (json)
 //
 // Simulates adding liquidity to a DCL v2 pool range via raw JSON args.
-// No signer required — only `NEAR_NETWORK` is needed.
+// No signer required — only `NEAR_KIT_NETWORK` is needed.
 //
 // run:
 //   cargo run --bin rhea_dclv2_predict_add_liquidity_bin_json -- <pool_id> <left_point> <right_point> <amount_x> <amount_y> [dcl_id]
