@@ -10,8 +10,8 @@ NEAR_KIT_PRIVATE_KEY=ed25519:YOUR_PRIVATE_KEY_HERE
 ```
 
 ```sh
-set -a; source .env; set +a
-# bare `source .env` does NOT export — child `cargo` won't see vars without `set -a`
+# no `source` needed — the bins load .env from the cwd themselves
+# (vars already set in the shell win over the .env file)
 ```
 
 ## src/fun/greeting

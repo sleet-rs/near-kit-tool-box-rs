@@ -15,11 +15,13 @@
 use near_kit::Error;
 use near_kit_tool_box::fun::pumpopoly_nft::pumpopoly_nft_transfer_fun_json::nft_transfer;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
+use near_kit_tool_box::lib::helper::load_env::load_env;
 use near_kit_tool_box::lib::const_id::pumpopoly_nft_contract_id_const::PUMPOPOLY_NFT_CONTRACT_ID_CONST;
 use std::env;
 // =================================================
 #[tokio::main]
 async fn main() -> Result<(), Error> {
+    load_env();
     let args: Vec<String> = env::args().collect();
     let receiver_id = args
         .get(1)

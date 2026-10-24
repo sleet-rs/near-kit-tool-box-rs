@@ -30,6 +30,7 @@ use near_kit_tool_box::fun::near::add_key_meta_fun_json::{
     sign_add_key_meta, submit_add_key_meta,
 };
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
+use near_kit_tool_box::lib::helper::load_env::load_env;
 use std::env;
 // =================================================
 fn build_near(network: &str, pk: &str, account_id: &str) -> Near {
@@ -45,6 +46,7 @@ fn build_near(network: &str, pk: &str, account_id: &str) -> Near {
 // =================================================
 #[tokio::main]
 async fn main() -> Result<(), Error> {
+    load_env();
     let args: Vec<String> = env::args().collect();
     let public_key = args
         .get(1)

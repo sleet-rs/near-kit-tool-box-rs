@@ -28,6 +28,7 @@ use near_kit_tool_box::fun::pumpopoly::pumpopoly_move_player_meta_fun_json::{
     sign_move_player_meta, submit_move_player_meta,
 };
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
+use near_kit_tool_box::lib::helper::load_env::load_env;
 use std::env;
 // =================================================
 fn build_near(network: &str, pk: &str, account_id: &str) -> Near {
@@ -43,6 +44,7 @@ fn build_near(network: &str, pk: &str, account_id: &str) -> Near {
 // =================================================
 #[tokio::main]
 async fn main() -> Result<(), Error> {
+    load_env();
     let args: Vec<String> = env::args().collect();
     let contract_id = args.get(1).expect(
         "usage: pumpopoly_move_player_meta_bin_json <pumpopoly_contract_id>",

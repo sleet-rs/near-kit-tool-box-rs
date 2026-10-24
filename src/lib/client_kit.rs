@@ -24,6 +24,7 @@
 //! # }
 //! ```
 // =================================================
+use super::helper::load_env::load_env;
 use super::helper::print_client_details::print_client_details;
 use super::load_balancer::load_balancing_near::LOAD_BALANCING_NEAR;
 use near_kit::{Error, Near, NearBuilder};
@@ -64,6 +65,10 @@ impl NEAR_KIT_CLIENT {
     /// Build a client directly from env vars and return the
     /// constructed [`Near`] (prints client details on success).
     ///
+    /// Loads `.env` from the current working directory first, so no
+    /// `source` / `export` step is needed. Vars already present in the
+    /// process environment take precedence over the `.env` file.
+    ///
     /// Reads `NEAR_KIT_NETWORK` (defaults to `testnet`, may be a custom
     /// RPC URL), optional `NEAR_KIT_CHAIN_ID`, and optional credentials
     /// via `NEAR_KIT_ACCOUNT_ID` + `NEAR_KIT_PRIVATE_KEY`.
@@ -71,6 +76,8 @@ impl NEAR_KIT_CLIENT {
     /// The `NEAR_KIT_` prefix keeps these vars from colliding with the
     /// generic `NEAR_*` vars that `near-kit` reads on its own.
     pub fn from_env() -> Result<Near, Error> {
+        load_env();
+
         let network = std::env::var("NEAR_KIT_NETWORK").ok();
         let mut chain_id_override = std::env::var("NEAR_KIT_CHAIN_ID").ok();
         let account_id = std::env::var("NEAR_KIT_ACCOUNT_ID").ok();
