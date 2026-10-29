@@ -61,6 +61,25 @@ points fail with `E200: invalid endpoint`.
 `amount_x` (`predict_add_liquidity` returns `need_y = "0"`); a range entirely
 below only consumes `amount_y` (`need_x = "0"`). Pass `"0"` for the unused side.
 
+Verified on `dclv2.ref-dev.testnet` on 2026-10-29, with `current_point`
+288785 and `point_delta` 40 on `usdc.fakes.testnet|wrap.testnet|2000`:
+
+| range | shape | paid_token_x | paid_token_y |
+| --- | --- | --- | --- |
+| `[288560, 288760]` | below current | `0` | `999999999999807010505` |
+| `[288800, 288880]` | above current | `5000000` | `0` |
+| `[288760, 288800]` | straddles current | `5000000` | `32274009234898315497` |
+
+a straddling range needs **both** tokens, and much more of the second one
+than a single-sided range of the same width — 0.0323 wrap for 5 usdc. it
+only takes what it needs, the surplus stays in the internal balance. a
+two-sided add that is short on the second token fails with `E101:
+insufficient balance`, and the contract reports the amount it wanted in the
+`liquidity_added` event.
+
+`remove_liquidity` refunds the mirror of what was paid — a single-sided
+position gives back only its own side.
+
 **Storage.** `storage_deposit` needs 0.5 NEAR (the bare `storage_balance_bounds`
 minimum fails with E102). `storage_withdraw` / `storage_unregister` attach exactly
 1 yoctoNEAR. `add_liquidity` / `remove_liquidity` / `withdraw_asset` attach none.
@@ -169,6 +188,23 @@ cargo run --bin rhea_dclv2_deposit_bin_json -- wrap.testnet 10000000000000000000
 cargo run --bin rhea_dclv2_add_liquidity_bin_json -- \
   "usdc.fakes.testnet|wrap.testnet|2000" 288560 288760 0 1000000000000000000000 dclv2.ref-dev.testnet
 # -> liquidity_added: lpt_id "usdc.fakes.testnet|wrap.testnet|2000#2544"
+# -> paid_token_x "0", paid_token_y "999999999999807010505"
+
+# 3b) the same pool ABOVE current_point — only amount_x (usdc) is consumed.
+#     deposit usdc into the internal balance first.
+cargo run --bin rhea_dclv2_deposit_bin_json -- usdc.fakes.testnet 5000000 dclv2.ref-dev.testnet
+cargo run --bin rhea_dclv2_add_liquidity_bin_json -- \
+  "usdc.fakes.testnet|wrap.testnet|2000" 288800 288880 5000000 0 dclv2.ref-dev.testnet
+# -> liquidity_added: lpt_id "usdc.fakes.testnet|wrap.testnet|2000#2546"
+# -> paid_token_x "5000000", paid_token_y "0"
+
+# 3c) a range that STRADDLES current_point needs BOTH tokens, and much
+#     more of the second one than a single-sided range of the same width.
+cargo run --bin rhea_dclv2_deposit_bin_json -- wrap.testnet 40000000000000000000000 dclv2.ref-dev.testnet
+cargo run --bin rhea_dclv2_add_liquidity_bin_json -- \
+  "usdc.fakes.testnet|wrap.testnet|2000" 288760 288800 5000000 40000000000000000000000 dclv2.ref-dev.testnet
+# -> liquidity_added: lpt_id "usdc.fakes.testnet|wrap.testnet|2000#2547"
+# -> paid_token_x "5000000", paid_token_y "32274009234898315497"
 
 # 4) quote + swap (no swap method exists — it routes through ft_transfer_call)
 cargo run --bin rhea_dclv2_quote_bin_json -- \
