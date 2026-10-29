@@ -150,10 +150,28 @@ claimed fees go **straight to the signer's wallet**, the DEX transfers them
 out as part of the same call. The position's `unclaimed_fee_x` /
 `unclaimed_fee_y` go back to `"0"`.
 
-The x side pays the token's own **tax** on the way out, the y side does not.
-A claim of 38,246,369,033,956,797,141,701 BATMAN arrived as
-37,863,905,343,617,229,170,284 — the 1% difference is the token contract's
-tax, not the DEX's.
+**Some tokens charge a tax on the way out.** It is the **token contract's**
+tax, not the DEX's, and it is a property of the token — the pool's own
+`tax` field stays `None`. Read it with the token's `get_tax` view:
+
+- `batman-4.nearlytrade.near` — buy 100 bps, sell 100 bps (1%), only for
+  the pair `dclv2.ref-labs.near`
+- `bald.nearlytrade.near` — buy 200 bps, sell 200 bps (2%), same pair
+- `nearvember-337.meme-cooking.near`, `wrap.near`, `token.pumpopoly.near` —
+  no tax
+
+A taxed token takes its cut on both the fee payout and a swap. Verified on
+mainnet on 2026-10-29:
+
+```
+# claim: 38246369033956797141701 BATMAN out, 382463690339567971417 tax
+# -> 37863905343617229170284 received
+# swap:  37860118953082867447368 BATMAN sent, 378601189530828674473 tax
+# -> 37481517763552038772895 reached the pool
+```
+
+The tax is taken by the token contract, so it shows up as an `ft_transfer`
+to the token's own account with the memo `tax`.
 
 Verified on `dclv2.ref-dev.testnet` on 2026-10-29:
 
