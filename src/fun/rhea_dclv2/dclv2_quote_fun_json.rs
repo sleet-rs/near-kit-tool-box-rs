@@ -1,4 +1,5 @@
 // use near_kit::*;
+use crate::lib::methods::methods_rhea_dclv2::RHEA_DCLV2_METHODS_CONST;
 use near_kit::{Error, Near};
 use serde_json::{Value, json};
 // =================================================
@@ -19,7 +20,7 @@ pub async fn quote(
     tag: Option<&str>,
 ) -> Result<Value, Error> {
     let out: Value = near
-        .view::<Value>(dcl_id, "quote")
+        .view::<Value>(dcl_id, RHEA_DCLV2_METHODS_CONST.quote)
         .args(json!({
             "pool_ids": pool_ids,
             "input_token": input_token,

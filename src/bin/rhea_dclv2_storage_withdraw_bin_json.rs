@@ -15,11 +15,17 @@ use std::env;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
-    let dcl_id = args.get(1).map(String::as_str).unwrap_or("dclv2.ref-dev.testnet");
+    let dcl_id = args
+        .get(1)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-dev.testnet");
     let near = NEAR_KIT_CLIENT::from_env()?;
     println!("Withdrawing storage NEAR from `{dcl_id}`...");
     let result = storage_withdraw(&near, dcl_id).await?;
-    println!("✅ storage_withdraw complete. tx id: {}", result.transaction.hash);
+    println!(
+        "✅ storage_withdraw complete. tx id: {}",
+        result.transaction.hash
+    );
     Ok(())
 }
 // =================================================

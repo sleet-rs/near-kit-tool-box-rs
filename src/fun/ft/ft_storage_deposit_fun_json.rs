@@ -1,7 +1,7 @@
 // use near_kit::*;
 use crate::lib::methods::methods_ft::FT_METHODS_CONST;
-use near_kit::{Error, Near};
 use near_kit::protocol::IntoNearToken;
+use near_kit::{Error, Near};
 use serde_json::json;
 // =================================================
 /// Register storage on the FT contract for the signer using raw JSON

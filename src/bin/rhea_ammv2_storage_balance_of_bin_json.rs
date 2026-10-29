@@ -24,9 +24,9 @@ use std::env;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
-    let account_id_raw = args
-        .get(1)
-        .expect("usage: rhea_ammv2_storage_balance_of_bin_json <account_id> [rhea_ammv2_contract_id]");
+    let account_id_raw = args.get(1).expect(
+        "usage: rhea_ammv2_storage_balance_of_bin_json <account_id> [rhea_ammv2_contract_id]",
+    );
     let rhea_ammv2_contract_id = args
         .get(2)
         .map(String::as_str)

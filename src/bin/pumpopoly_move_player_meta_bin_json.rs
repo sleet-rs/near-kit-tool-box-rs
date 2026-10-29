@@ -46,19 +46,19 @@ fn build_near(network: &str, pk: &str, account_id: &str) -> Near {
 async fn main() -> Result<(), Error> {
     load_env();
     let args: Vec<String> = env::args().collect();
-    let contract_id = args.get(1).expect(
-        "usage: pumpopoly_move_player_meta_bin_json <pumpopoly_contract_id>",
-    );
+    let contract_id = args
+        .get(1)
+        .expect("usage: pumpopoly_move_player_meta_bin_json <pumpopoly_contract_id>");
 
     let network = env::var("NEAR_KIT_NETWORK").unwrap_or_else(|_| "mainnet".to_string());
     let signer_id =
         env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
     let signer_pk =
         env::var("NEAR_KIT_PRIVATE_KEY").expect("NEAR_KIT_PRIVATE_KEY env var is required");
-    let relayer_id =
-        env::var("NEAR_KIT_RELAYER_ACCOUNT_ID").expect("NEAR_KIT_RELAYER_ACCOUNT_ID env var is required");
-    let relayer_pk =
-        env::var("NEAR_KIT_RELAYER_PRIVATE_KEY").expect("NEAR_KIT_RELAYER_PRIVATE_KEY env var is required");
+    let relayer_id = env::var("NEAR_KIT_RELAYER_ACCOUNT_ID")
+        .expect("NEAR_KIT_RELAYER_ACCOUNT_ID env var is required");
+    let relayer_pk = env::var("NEAR_KIT_RELAYER_PRIVATE_KEY")
+        .expect("NEAR_KIT_RELAYER_PRIVATE_KEY env var is required");
 
     let signer = build_near(&network, &signer_pk, &signer_id);
     let relayer = build_near(&network, &relayer_pk, &relayer_id);

@@ -15,20 +15,27 @@ use std::env;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
-    let token_id = args.get(1).expect("usage: rhea_dclv2_withdraw_asset_bin_json <token_id> [amount] [dcl_id]");
+    let token_id = args
+        .get(1)
+        .expect("usage: rhea_dclv2_withdraw_asset_bin_json <token_id> [amount] [dcl_id]");
     // Disambiguate: contract ids contain '.', amounts are digits only.
     let (amount, dcl_id): (Option<&str>, &str) = match (args.get(2), args.get(3)) {
         (Some(second), Some(third)) => (Some(second.as_str()), third.as_str()),
         (Some(second), None) if second.contains('.') => (None, second.as_str()),
         (Some(second), None) => (Some(second.as_str()), "dclv2.ref-dev.testnet"),
-        (None, _) => panic!("usage: rhea_dclv2_withdraw_asset_bin_json <token_id> [amount] [dcl_id]"),
+        (None, _) => {
+            panic!("usage: rhea_dclv2_withdraw_asset_bin_json <token_id> [amount] [dcl_id]")
+        }
     };
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!("Withdrawing `{token_id}` amount {amount:?} via `{dcl_id}`...");
     let result = withdraw_asset(&near, dcl_id, token_id, amount).await?;
-    println!("✅ withdraw_asset complete. tx id: {}", result.transaction.hash);
+    println!(
+        "✅ withdraw_asset complete. tx id: {}",
+        result.transaction.hash
+    );
     Ok(())
 }
 // =================================================

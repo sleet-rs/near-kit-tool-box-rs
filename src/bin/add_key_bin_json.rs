@@ -16,8 +16,8 @@
 //   cargo run --bin add_key_bin_json -- ed25519:9vnVSMT1hv2Q1vuZzbjStFieqGbTrwqe4KcvfqYAkb5T fc near "" "10 NEAR"
 //
 // =================================================
-use near_kit::{AccountId, Error};
 use near_kit::protocol::{AccessKeyPermission, IntoNearToken};
+use near_kit::{AccountId, Error};
 use near_kit_tool_box::fun::near::add_key_fun_json::add_key;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
@@ -30,7 +30,8 @@ async fn main() -> Result<(), Error> {
         .expect("usage: add_key_bin_json <public_key> [fc <receiver> <methods> <allowance>]");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
-    let signer_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
+    let signer_id =
+        env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
 
     let permission = match args.get(2).map(String::as_str) {
         Some("fc") => {

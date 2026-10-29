@@ -20,7 +20,10 @@ pub async fn add_simple_pool(
         .map(|t| t.parse::<AccountId>())
         .collect::<Result<_, _>>()?;
     let result = near
-        .call(rhea_ammv2_contract_id, RHEA_AMMV2_METHODS_CONST.add_simple_pool)
+        .call(
+            rhea_ammv2_contract_id,
+            RHEA_AMMV2_METHODS_CONST.add_simple_pool,
+        )
         .args(json!({
             "fee": fee,
             "tokens": tokens_parsed,

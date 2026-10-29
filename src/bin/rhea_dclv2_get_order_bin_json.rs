@@ -18,7 +18,10 @@ async fn main() -> Result<(), Error> {
     let order_id = args
         .get(1)
         .expect("usage: rhea_dclv2_get_order_bin_json <order_id> [dcl_id]");
-    let dcl_id = args.get(2).map(String::as_str).unwrap_or("dclv2.ref-labs.near");
+    let dcl_id = args
+        .get(2)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-labs.near");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 

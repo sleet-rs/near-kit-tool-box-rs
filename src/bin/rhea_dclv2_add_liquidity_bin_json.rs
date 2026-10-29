@@ -35,13 +35,32 @@ async fn main() -> Result<(), Error> {
         .expect("right_point must be i32");
     let amount_x = args.get(4).expect("amount_x required");
     let amount_y = args.get(5).expect("amount_y required");
-    let dcl_id = args.get(6).map(String::as_str).unwrap_or("dclv2.ref-dev.testnet");
+    let dcl_id = args
+        .get(6)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-dev.testnet");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 
-    println!("Adding liquidity to `{pool_id}` [{left_point},{right_point}] x={amount_x} y={amount_y} via `{dcl_id}`...");
-    let result = add_liquidity(&near, dcl_id, pool_id, left_point, right_point, amount_x, amount_y, None, None).await?;
-    println!("✅ add_liquidity complete. tx id: {}", result.transaction.hash);
+    println!(
+        "Adding liquidity to `{pool_id}` [{left_point},{right_point}] x={amount_x} y={amount_y} via `{dcl_id}`..."
+    );
+    let result = add_liquidity(
+        &near,
+        dcl_id,
+        pool_id,
+        left_point,
+        right_point,
+        amount_x,
+        amount_y,
+        None,
+        None,
+    )
+    .await?;
+    println!(
+        "✅ add_liquidity complete. tx id: {}",
+        result.transaction.hash
+    );
     Ok(())
 }
 // =================================================

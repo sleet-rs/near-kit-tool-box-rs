@@ -56,13 +56,47 @@ minimum fails with E102). `storage_withdraw` / `storage_unregister` attach exact
 - `E207` liquidity not found
 - `E600` invalid msg / unknown variant
 
+**Typed view responses**
+- `get_pool` / `get_pools` / `list_pools` → `RHEA_DCLV2_POOL_TYPE`
+- `get_liquidity` / `list_liquidities` / `get_liquidity_view` / `list_liquidity_views` → `RHEA_DCLV2_LIQUIDITY_TYPE`
+- `get_user_asset` → `RHEA_DCLV2_USER_ASSET_TYPE` (a bare decimal string, not an object)
+- `list_user_assets` → `RHEA_DCLV2_USER_ASSETS_TYPE` (a `{ token_id: balance }` map)
+- `get_metadata` → `RHEA_DCLV2_METADATA_TYPE`
+- `storage_balance_of` → `Option<STORAGE_BALANCE_OF_RESPONSE_TYPE>`
+
+The pool id is a composite string in the form `<hash>|<token>|<fee>`, and
+`token_x` is the hash rather than an account id. An `lpt_id` is the pool
+id followed by the owner's liquidity index, for example
+`nearvember-337.meme-cooking.near|wrap.near|10000#17677`. `left_point` and
+`right_point` are negative for positions below the current point.
+
+`get_liquidity` and `list_liquidities` answer with `unclaimed_fee_x` and
+`unclaimed_fee_y`; `get_liquidity_view` and `list_liquidity_views` answer
+with `token_x`, `token_y`, `fee_x`, and `fee_y` instead. Both sets are
+named on `RHEA_DCLV2_LIQUIDITY_TYPE`.
+
+`get_metadata` answers with 12 fields: `version`, `owner_id`,
+`farming_contract_id`, `next_owner_id`, `next_owner_accept_deadline`,
+`wnear_id`, `state`, `operators`, `protocol_fee_rate`, `pool_count`, and
+`user_count`. `pool_count` and `user_count` are JSON strings, while
+`protocol_fee_rate` is a JSON number.
+
+All of the above shapes were verified against live `dclv2.ref-labs.near`
+responses on 2026-10-29 — 3 pools, 7 liquidity positions, 1 metadata
+object, and both user-asset views — with the `extra` catch-all empty on
+every response.
+
+The remaining DCL v2 views (quotes, predictions, order and depth ranges,
+user storage detail) still return raw JSON until their shapes are
+confirmed against a live response.
+
 
 #### FILES
 
 - `src/lib/methods/methods_rhea_dclv2.rs`
 - `src/lib/const_id/rhea_dclv2_contract_id_const.rs`
-- `src/lib/types/rhea_dclv2_pool_type.rs`, `rhea_dclv2_quote_type.rs`, `rhea_dclv2_predict_add_liquidity_type.rs`, `rhea_dclv2_liquidity_type.rs`, `rhea_dclv2_order_type.rs`, `rhea_dclv2_user_asset_type.rs`
-- `src/fun/rhea_dclv2/` — `dclv2_get_pool_fun_json.rs`, `dclv2_get_pools_fun_json.rs`, `dclv2_list_pools_fun_json.rs`, `dclv2_quote_fun_json.rs`, `dclv2_quote_by_output_fun_json.rs`, `dclv2_get_liquidity_fun_json.rs`, `dclv2_list_liquidities_fun_json.rs`, `dclv2_get_liquidity_view_fun_json.rs`, `dclv2_list_liquidity_views_fun_json.rs`, `dclv2_get_liquidity_range_fun_json.rs`, `dclv2_get_pointorder_range_fun_json.rs`, `dclv2_get_marketdepth_fun_json.rs`, `dclv2_get_market_depth_list_fun_json.rs`, `dclv2_predict_add_liquidity_fun_json.rs`, `dclv2_predict_remove_liquidity_fun_json.rs`, `dclv2_get_order_fun_json.rs`, `dclv2_find_order_fun_json.rs`, `dclv2_list_active_orders_fun_json.rs`, `dclv2_list_history_orders_fun_json.rs`, `dclv2_get_user_asset_fun_json.rs`, `dclv2_list_user_assets_fun_json.rs`, `dclv2_get_user_storage_detail_fun_json.rs`, `dclv2_storage_balance_of_fun_json.rs`, `dclv2_add_liquidity_fun_json.rs`, `dclv2_remove_liquidity_fun_json.rs`, `dclv2_withdraw_asset_fun_json.rs`, `dclv2_cancel_order_fun_json.rs`, `dclv2_deposit_fun_json.rs`, `dclv2_swap_ft_transfer_call_fun_json.rs`, `dclv2_storage_deposit_fun_json.rs`, `dclv2_storage_withdraw_fun_json.rs`, `dclv2_storage_unregister_fun_json.rs`
+- `src/lib/types/rhea_dclv2_pool_type.rs`, `rhea_dclv2_quote_type.rs`, `rhea_dclv2_predict_add_liquidity_type.rs`, `rhea_dclv2_liquidity_type.rs`, `rhea_dclv2_order_type.rs`, `rhea_dclv2_user_asset_type.rs`, `rhea_dclv2_metadata_type.rs`
+- `src/fun/rhea_dclv2/` — `dclv2_get_pool_fun_json.rs`, `dclv2_get_pools_fun_json.rs`, `dclv2_list_pools_fun_json.rs`, `dclv2_get_metadata_fun_json.rs`, `dclv2_quote_fun_json.rs`, `dclv2_quote_by_output_fun_json.rs`, `dclv2_get_liquidity_fun_json.rs`, `dclv2_list_liquidities_fun_json.rs`, `dclv2_get_liquidity_view_fun_json.rs`, `dclv2_list_liquidity_views_fun_json.rs`, `dclv2_get_liquidity_range_fun_json.rs`, `dclv2_get_pointorder_range_fun_json.rs`, `dclv2_get_marketdepth_fun_json.rs`, `dclv2_get_market_depth_list_fun_json.rs`, `dclv2_predict_add_liquidity_fun_json.rs`, `dclv2_predict_remove_liquidity_fun_json.rs`, `dclv2_get_order_fun_json.rs`, `dclv2_find_order_fun_json.rs`, `dclv2_list_active_orders_fun_json.rs`, `dclv2_list_history_orders_fun_json.rs`, `dclv2_get_user_asset_fun_json.rs`, `dclv2_list_user_assets_fun_json.rs`, `dclv2_get_user_storage_detail_fun_json.rs`, `dclv2_storage_balance_of_fun_json.rs`, `dclv2_add_liquidity_fun_json.rs`, `dclv2_remove_liquidity_fun_json.rs`, `dclv2_withdraw_asset_fun_json.rs`, `dclv2_cancel_order_fun_json.rs`, `dclv2_deposit_fun_json.rs`, `dclv2_swap_ft_transfer_call_fun_json.rs`, `dclv2_storage_deposit_fun_json.rs`, `dclv2_storage_withdraw_fun_json.rs`, `dclv2_storage_unregister_fun_json.rs`
 - `src/bin/rhea_dclv2_*_bin_json.rs`
 
 ---

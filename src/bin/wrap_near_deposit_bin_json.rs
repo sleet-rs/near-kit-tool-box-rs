@@ -11,8 +11,8 @@
 //   cargo run --bin wrap_near_deposit_bin_json -- wrap.testnet "1 NEAR"
 //
 // =================================================
-use near_kit::{Error, NearToken};
 use near_kit::protocol::IntoNearToken;
+use near_kit::{Error, NearToken};
 use near_kit_tool_box::fun::near::wrap_near_deposit_fun_json::wrap_near_deposit;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
@@ -30,7 +30,8 @@ async fn main() -> Result<(), Error> {
         .into_near_token()?;
 
     let near = NEAR_KIT_CLIENT::from_env()?;
-    let account_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
+    let account_id =
+        env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
 
     println!(
         "Wrapping {} into wNEAR via `{}` for `{}`...",

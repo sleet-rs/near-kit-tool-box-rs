@@ -10,14 +10,14 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 
 use near_kit::AccountId;
 use near_kit::CryptoHash;
+use near_kit::Near;
 use near_kit::rpc::{
     AccessKeyListView, AccessKeyView, AccountView, BlockEffects, BlockReference, BlockView,
     EpochValidatorInfo, GasKeyNoncesView, GasPrice, MaintenanceWindow, ReceiptToTxResponse,
     StatusResponse, ViewFunctionResult, ViewStateAllResult, ViewStateResult,
 };
-use near_kit::signer::PublicKey;
-use near_kit::Near;
 use near_kit::rpc::{RetryConfig, RpcError};
+use near_kit::signer::PublicKey;
 
 use super::endpoints::{NEAR_RPC_MAINNET_ENDPOINTS, NEAR_RPC_TESTNET_ENDPOINTS};
 use super::strategies::{LoadBalancingStrategy, RoundRobin};

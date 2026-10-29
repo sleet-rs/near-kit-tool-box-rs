@@ -1,7 +1,7 @@
 // use near_kit::*;
 use crate::lib::methods::methods_rhea_dclv2::RHEA_DCLV2_METHODS_CONST;
-use near_kit::{Error, Near};
 use near_kit::protocol::IntoNearToken;
+use near_kit::{Error, Near};
 use serde_json::json;
 // =================================================
 /// Change helper: register storage on the DCL v2 contract for the signer

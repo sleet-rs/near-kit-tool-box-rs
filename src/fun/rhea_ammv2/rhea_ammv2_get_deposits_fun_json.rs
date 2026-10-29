@@ -15,7 +15,10 @@ pub async fn get_deposits(
     account_id: &AccountId,
 ) -> Result<RHEA_AMMV2_GET_DEPOSITS_TYPE, Error> {
     let deposits: RHEA_AMMV2_GET_DEPOSITS_TYPE = near
-        .view::<RHEA_AMMV2_GET_DEPOSITS_TYPE>(rhea_ammv2_contract_id, RHEA_AMMV2_METHODS_CONST.get_deposits)
+        .view::<RHEA_AMMV2_GET_DEPOSITS_TYPE>(
+            rhea_ammv2_contract_id,
+            RHEA_AMMV2_METHODS_CONST.get_deposits,
+        )
         .args(json!({ "account_id": account_id }))
         .await?;
     Ok(deposits)

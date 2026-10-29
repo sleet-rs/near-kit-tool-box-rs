@@ -1,4 +1,5 @@
 // use near_kit::*;
+use crate::lib::methods::methods_rhea_dclv2::RHEA_DCLV2_METHODS_CONST;
 use near_kit::{Error, Near};
 use serde_json::{Value, json};
 // =================================================
@@ -14,7 +15,7 @@ pub async fn get_marketdepth(
     depth: u64,
 ) -> Result<Value, Error> {
     let out: Value = near
-        .view::<Value>(dcl_id, "get_marketdepth")
+        .view::<Value>(dcl_id, RHEA_DCLV2_METHODS_CONST.get_marketdepth)
         .args(json!({ "pool_id": pool_id, "depth": depth }))
         .await?;
     Ok(out)

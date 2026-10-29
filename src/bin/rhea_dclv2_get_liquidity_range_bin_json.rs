@@ -18,13 +18,26 @@ async fn main() -> Result<(), Error> {
     let pool_id = args
         .get(1)
         .expect("usage: rhea_dclv2_get_liquidity_range_bin_json <pool_id> <left_point> <right_point> [dcl_id]");
-    let left_point: i32 = args.get(2).expect("missing <left_point>").parse().expect("left_point must be an i32");
-    let right_point: i32 = args.get(3).expect("missing <right_point>").parse().expect("right_point must be an i32");
-    let dcl_id = args.get(4).map(String::as_str).unwrap_or("dclv2.ref-labs.near");
+    let left_point: i32 = args
+        .get(2)
+        .expect("missing <left_point>")
+        .parse()
+        .expect("left_point must be an i32");
+    let right_point: i32 = args
+        .get(3)
+        .expect("missing <right_point>")
+        .parse()
+        .expect("right_point must be an i32");
+    let dcl_id = args
+        .get(4)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-labs.near");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 
-    println!("Fetching liquidity range [{left_point}, {right_point}] of `{pool_id}` via `{dcl_id}`...");
+    println!(
+        "Fetching liquidity range [{left_point}, {right_point}] of `{pool_id}` via `{dcl_id}`..."
+    );
     let out = get_liquidity_range(&near, dcl_id, pool_id, left_point, right_point).await?;
     println!("{out:#?}");
     Ok(())

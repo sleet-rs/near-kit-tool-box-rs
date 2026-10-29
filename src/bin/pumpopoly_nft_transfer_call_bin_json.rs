@@ -16,8 +16,8 @@
 use near_kit::Error;
 use near_kit_tool_box::fun::pumpopoly_nft::pumpopoly_nft_transfer_call_fun_json::nft_transfer_call;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
-use near_kit_tool_box::lib::helper::load_env::load_env;
 use near_kit_tool_box::lib::const_id::pumpopoly_nft_contract_id_const::PUMPOPOLY_NFT_CONTRACT_ID_CONST;
+use near_kit_tool_box::lib::helper::load_env::load_env;
 use std::env;
 // =================================================
 const USAGE: &str =
@@ -33,8 +33,10 @@ async fn main() -> Result<(), Error> {
     let memo = args.get(4).map(|s| s.as_str());
 
     // pinned to mainnet — nft.pumpopoly.near has no testnet deployment
-    let account_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
-    let private_key = env::var("NEAR_KIT_PRIVATE_KEY").expect("NEAR_KIT_PRIVATE_KEY env var is required");
+    let account_id =
+        env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
+    let private_key =
+        env::var("NEAR_KIT_PRIVATE_KEY").expect("NEAR_KIT_PRIVATE_KEY env var is required");
     let near = NEAR_KIT_CLIENT::mainnet()
         .credentials(&private_key, &account_id)?
         .build();

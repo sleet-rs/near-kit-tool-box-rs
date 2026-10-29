@@ -29,11 +29,17 @@ async fn main() -> Result<(), Error> {
         .expect("usage: rhea_dclv2_list_pools_bin_json <from_index> <limit> [dcl_id]")
         .parse()
         .expect("limit must be a u64");
-    let dcl_id = args.get(3).map(String::as_str).unwrap_or("dclv2.ref-labs.near");
+    let dcl_id = args
+        .get(3)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-labs.near");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 
-    println!("Fetching pools [{from_index}, {}) from DCL v2 contract `{dcl_id}`...", from_index + limit);
+    println!(
+        "Fetching pools [{from_index}, {}) from DCL v2 contract `{dcl_id}`...",
+        from_index + limit
+    );
     let pools = list_pools(&near, dcl_id, from_index, limit).await?;
     println!("{pools:#?}");
     Ok(())

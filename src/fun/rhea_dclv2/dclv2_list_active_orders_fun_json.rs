@@ -1,4 +1,5 @@
 // use near_kit::*;
+use crate::lib::methods::methods_rhea_dclv2::RHEA_DCLV2_METHODS_CONST;
 use near_kit::{Error, Near};
 use serde_json::{Value, json};
 // =================================================
@@ -12,7 +13,7 @@ pub async fn list_active_orders(
     account_id: &str,
 ) -> Result<Vec<Value>, Error> {
     let out: Vec<Value> = near
-        .view::<Vec<Value>>(dcl_id, "list_active_orders")
+        .view::<Vec<Value>>(dcl_id, RHEA_DCLV2_METHODS_CONST.list_active_orders)
         .args(json!({ "account_id": account_id }))
         .await?;
     Ok(out)

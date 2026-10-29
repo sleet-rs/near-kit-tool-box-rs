@@ -29,7 +29,8 @@ async fn main() -> Result<(), Error> {
         .expect("usage: ft_transfer_bin_json <ft_contract_id> <receiver_id> <amount>");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
-    let account_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
+    let account_id =
+        env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
 
     println!(
         "Transferring {} of `{}` from `{}` to `{}`...",

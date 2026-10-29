@@ -1,4 +1,5 @@
 // use near_kit::*;
+use crate::lib::methods::methods_rhea_dclv2::RHEA_DCLV2_METHODS_CONST;
 use near_kit::{Error, Near};
 use serde_json::{Value, json};
 // =================================================
@@ -12,7 +13,7 @@ pub async fn get_user_storage_detail(
     user_id: &str,
 ) -> Result<Value, Error> {
     let out: Value = near
-        .view::<Value>(dcl_id, "get_user_storage_detail")
+        .view::<Value>(dcl_id, RHEA_DCLV2_METHODS_CONST.get_user_storage_detail)
         .args(json!({ "user_id": user_id }))
         .await?;
     Ok(out)

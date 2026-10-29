@@ -29,12 +29,24 @@ async fn main() -> Result<(), Error> {
         .collect();
     let output_token = args.get(4).expect("output_token required");
     let min_output = args.get(5).expect("min_output required");
-    let dcl_id = args.get(6).map(String::as_str).unwrap_or("dclv2.ref-dev.testnet");
+    let dcl_id = args
+        .get(6)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-dev.testnet");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!("Swapping `{amount_in}` of `{token_in}` via `{dcl_id}` pools {pool_ids:?}...");
-    let result = swap(&near, token_in, amount_in, dcl_id, &pool_ids, output_token, min_output).await?;
+    let result = swap(
+        &near,
+        token_in,
+        amount_in,
+        dcl_id,
+        &pool_ids,
+        output_token,
+        min_output,
+    )
+    .await?;
     println!("✅ swap complete. tx id: {}", result.transaction.hash);
     Ok(())
 }

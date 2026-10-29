@@ -1,6 +1,6 @@
 // use near_kit::*;
-use near_kit::{Error, Near};
 use near_kit::signer::PublicKey;
+use near_kit::{Error, Near};
 // =================================================
 /// Delete an access key from the signer's account using the NEAR
 /// transaction-builder API.

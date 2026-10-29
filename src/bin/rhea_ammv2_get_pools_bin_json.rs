@@ -23,12 +23,16 @@ async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
     let from_index: u64 = args
         .get(1)
-        .expect("usage: rhea_ammv2_get_pools_bin_json <from_index> <limit> [rhea_ammv2_contract_id]")
+        .expect(
+            "usage: rhea_ammv2_get_pools_bin_json <from_index> <limit> [rhea_ammv2_contract_id]",
+        )
         .parse()
         .expect("from_index must be a u64");
     let limit: u64 = args
         .get(2)
-        .expect("usage: rhea_ammv2_get_pools_bin_json <from_index> <limit> [rhea_ammv2_contract_id]")
+        .expect(
+            "usage: rhea_ammv2_get_pools_bin_json <from_index> <limit> [rhea_ammv2_contract_id]",
+        )
         .parse()
         .expect("limit must be a u64");
     let rhea_ammv2_contract_id = args

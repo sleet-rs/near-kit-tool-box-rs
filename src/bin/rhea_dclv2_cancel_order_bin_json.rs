@@ -16,7 +16,9 @@ use std::env;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
-    let order_id = args.get(1).expect("usage: rhea_dclv2_cancel_order_bin_json <order_id> [amount] [dcl_id]");
+    let order_id = args
+        .get(1)
+        .expect("usage: rhea_dclv2_cancel_order_bin_json <order_id> [amount] [dcl_id]");
     let amount = args.get(2).map(String::as_str);
     let dcl_id = args
         .get(3)
@@ -27,7 +29,10 @@ async fn main() -> Result<(), Error> {
 
     println!("Cancelling order `{order_id}` via `{dcl_id}`...");
     let result = cancel_order(&near, dcl_id, order_id, amount).await?;
-    println!("✅ cancel_order complete. tx id: {}", result.transaction.hash);
+    println!(
+        "✅ cancel_order complete. tx id: {}",
+        result.transaction.hash
+    );
     Ok(())
 }
 // =================================================

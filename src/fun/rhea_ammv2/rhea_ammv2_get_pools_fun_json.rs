@@ -16,7 +16,10 @@ pub async fn get_pools(
     limit: u64,
 ) -> Result<Vec<RHEA_AMMV2_GET_POOL_TYPE>, Error> {
     let pools: Vec<RHEA_AMMV2_GET_POOL_TYPE> = near
-        .view::<Vec<RHEA_AMMV2_GET_POOL_TYPE>>(rhea_ammv2_contract_id, RHEA_AMMV2_METHODS_CONST.get_pools)
+        .view::<Vec<RHEA_AMMV2_GET_POOL_TYPE>>(
+            rhea_ammv2_contract_id,
+            RHEA_AMMV2_METHODS_CONST.get_pools,
+        )
         .args(json!({ "from_index": from_index, "limit": limit }))
         .await?;
     Ok(pools)

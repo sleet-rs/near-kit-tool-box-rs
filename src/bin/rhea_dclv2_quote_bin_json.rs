@@ -28,12 +28,24 @@ async fn main() -> Result<(), Error> {
     let output_token = args.get(3).expect("missing <output_token>");
     let input_amount = args.get(4).expect("missing <input_amount>");
     let tag = args.get(5).map(String::as_str);
-    let dcl_id = args.get(6).map(String::as_str).unwrap_or("dclv2.ref-labs.near");
+    let dcl_id = args
+        .get(6)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-labs.near");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 
     println!("Quoting swap on DCL v2 contract `{dcl_id}`...");
-    let out = quote(&near, dcl_id, &pool_ids, input_token, output_token, input_amount, tag).await?;
+    let out = quote(
+        &near,
+        dcl_id,
+        &pool_ids,
+        input_token,
+        output_token,
+        input_amount,
+        tag,
+    )
+    .await?;
     println!("{out:#?}");
     Ok(())
 }

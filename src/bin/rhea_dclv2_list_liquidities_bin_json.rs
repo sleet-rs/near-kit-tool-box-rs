@@ -15,12 +15,23 @@ use std::env;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
-    let account_id = args
-        .get(1)
-        .expect("usage: rhea_dclv2_list_liquidities_bin_json <account_id> <from_index> <limit> [dcl_id]");
-    let from_index: u64 = args.get(2).expect("missing <from_index>").parse().expect("from_index must be a u64");
-    let limit: u64 = args.get(3).expect("missing <limit>").parse().expect("limit must be a u64");
-    let dcl_id = args.get(4).map(String::as_str).unwrap_or("dclv2.ref-labs.near");
+    let account_id = args.get(1).expect(
+        "usage: rhea_dclv2_list_liquidities_bin_json <account_id> <from_index> <limit> [dcl_id]",
+    );
+    let from_index: u64 = args
+        .get(2)
+        .expect("missing <from_index>")
+        .parse()
+        .expect("from_index must be a u64");
+    let limit: u64 = args
+        .get(3)
+        .expect("missing <limit>")
+        .parse()
+        .expect("limit must be a u64");
+    let dcl_id = args
+        .get(4)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-labs.near");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 

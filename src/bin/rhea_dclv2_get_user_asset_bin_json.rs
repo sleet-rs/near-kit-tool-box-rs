@@ -19,7 +19,10 @@ async fn main() -> Result<(), Error> {
         .get(1)
         .expect("usage: rhea_dclv2_get_user_asset_bin_json <account_id> <token_id> [dcl_id]");
     let token_id = args.get(2).expect("missing <token_id>");
-    let dcl_id = args.get(3).map(String::as_str).unwrap_or("dclv2.ref-labs.near");
+    let dcl_id = args
+        .get(3)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-labs.near");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 

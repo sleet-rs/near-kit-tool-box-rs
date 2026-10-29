@@ -24,11 +24,9 @@
 //     walcwarchest.near walcpool.near mattbwalc.near
 //
 // =================================================
-use near_kit::{Error, Near};
 use near_kit::protocol::AccessKeyPermission;
-use near_kit_tool_box::fun::near::add_key_meta_fun_json::{
-    sign_add_key_meta, submit_add_key_meta,
-};
+use near_kit::{Error, Near};
+use near_kit_tool_box::fun::near::add_key_meta_fun_json::{sign_add_key_meta, submit_add_key_meta};
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use near_kit_tool_box::lib::helper::load_env::load_env;
 use std::env;
@@ -61,10 +59,10 @@ async fn main() -> Result<(), Error> {
     let network = env::var("NEAR_KIT_NETWORK").unwrap_or_else(|_| "testnet".to_string());
     let user_private_key =
         env::var("NEAR_KIT_PRIVATE_KEY").expect("NEAR_KIT_PRIVATE_KEY env var is required");
-    let relayer_id =
-        env::var("NEAR_KIT_RELAYER_ACCOUNT_ID").expect("NEAR_KIT_RELAYER_ACCOUNT_ID env var is required");
-    let relayer_pk =
-        env::var("NEAR_KIT_RELAYER_PRIVATE_KEY").expect("NEAR_KIT_RELAYER_PRIVATE_KEY env var is required");
+    let relayer_id = env::var("NEAR_KIT_RELAYER_ACCOUNT_ID")
+        .expect("NEAR_KIT_RELAYER_ACCOUNT_ID env var is required");
+    let relayer_pk = env::var("NEAR_KIT_RELAYER_PRIVATE_KEY")
+        .expect("NEAR_KIT_RELAYER_PRIVATE_KEY env var is required");
 
     let relayer = build_near(&network, &relayer_pk, &relayer_id);
 

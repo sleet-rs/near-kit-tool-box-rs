@@ -16,9 +16,16 @@ use std::env;
 #[tokio::main]
 async fn main() -> Result<(), Error> {
     let args: Vec<String> = env::args().collect();
-    let token_id = args.get(1).expect("usage: rhea_dclv2_deposit_bin_json <token_id> <amount> [dcl_id]");
-    let amount = args.get(2).expect("usage: rhea_dclv2_deposit_bin_json <token_id> <amount> [dcl_id]");
-    let dcl_id = args.get(3).map(String::as_str).unwrap_or("dclv2.ref-dev.testnet");
+    let token_id = args
+        .get(1)
+        .expect("usage: rhea_dclv2_deposit_bin_json <token_id> <amount> [dcl_id]");
+    let amount = args
+        .get(2)
+        .expect("usage: rhea_dclv2_deposit_bin_json <token_id> <amount> [dcl_id]");
+    let dcl_id = args
+        .get(3)
+        .map(String::as_str)
+        .unwrap_or("dclv2.ref-dev.testnet");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
 

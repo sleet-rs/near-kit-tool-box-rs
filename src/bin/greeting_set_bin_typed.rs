@@ -26,7 +26,8 @@ async fn main() -> Result<(), Error> {
         .expect("usage: greeting_set_bin_typed <contract_id> \"<new_text>\"");
 
     let near = NEAR_KIT_CLIENT::from_env()?;
-    let account_id = env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
+    let account_id =
+        env::var("NEAR_KIT_ACCOUNT_ID").expect("NEAR_KIT_ACCOUNT_ID env var is required");
 
     println!(
         "Setting greeting on `{}` as `{}` to: {}",

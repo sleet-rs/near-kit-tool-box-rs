@@ -1,6 +1,8 @@
 // use near_kit::*;
+use crate::lib::methods::methods_rhea_dclv2::RHEA_DCLV2_METHODS_CONST;
+use crate::lib::types::rhea_dclv2_pool_type::RHEA_DCLV2_POOL_TYPE;
 use near_kit::{Error, Near};
-use serde_json::{Value, json};
+use serde_json::json;
 // =================================================
 /// View helper: fetch a paginated slice of DCL v2 pools using raw JSON
 /// args.
@@ -12,9 +14,9 @@ pub async fn list_pools(
     dcl_id: &str,
     from_index: u64,
     limit: u64,
-) -> Result<Vec<Value>, Error> {
-    let pools: Vec<Value> = near
-        .view::<Vec<Value>>(dcl_id, "list_pools")
+) -> Result<Vec<RHEA_DCLV2_POOL_TYPE>, Error> {
+    let pools: Vec<RHEA_DCLV2_POOL_TYPE> = near
+        .view::<Vec<RHEA_DCLV2_POOL_TYPE>>(dcl_id, RHEA_DCLV2_METHODS_CONST.list_pools)
         .args(json!({ "from_index": from_index, "limit": limit }))
         .await?;
     Ok(pools)

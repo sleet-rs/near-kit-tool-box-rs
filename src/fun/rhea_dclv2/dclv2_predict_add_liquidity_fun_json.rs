@@ -1,4 +1,5 @@
 // use near_kit::*;
+use crate::lib::methods::methods_rhea_dclv2::RHEA_DCLV2_METHODS_CONST;
 use near_kit::{Error, Near};
 use serde_json::{Value, json};
 // =================================================
@@ -18,7 +19,7 @@ pub async fn predict_add_liquidity(
     amount_y: &str,
 ) -> Result<Value, Error> {
     let out: Value = near
-        .view::<Value>(dcl_id, "predict_add_liquidity")
+        .view::<Value>(dcl_id, RHEA_DCLV2_METHODS_CONST.predict_add_liquidity)
         .args(json!({
             "pool_id": pool_id,
             "left_point": left_point,

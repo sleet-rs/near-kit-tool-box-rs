@@ -27,11 +27,11 @@ pub mod greeting {
     pub mod greeting_set_fun_json;
 }
 pub mod near {
+    /// Add an access key to the signer's account using raw JSON args.
+    pub mod add_key_fun_json;
     /// Add an access key to one or more target accounts via meta-transactions
     /// (NEP-366), with a separate relayer paying gas + storage. Uses raw JSON args.
     pub mod add_key_meta_fun_json;
-    /// Add an access key to the signer's account using raw JSON args.
-    pub mod add_key_fun_json;
     /// Delete the signer's account via raw JSON args.
     pub mod delete_account_fun_json;
     /// Delete an access key from the signer's account using raw JSON args.
@@ -49,11 +49,11 @@ pub mod near {
 pub mod pumpopoly {
     /// Change helper: perform a Pumpopoly elite move via raw JSON args.
     pub mod pumpopoly_elite_move_fun_json;
+    /// Change helper: move a Pumpopoly player via raw JSON args.
+    pub mod pumpopoly_move_player_fun_json;
     /// Change helper: move a Pumpopoly player via a NEP-366 meta-transaction
     /// (sign + submit pair), with a separate relayer paying gas. Uses raw JSON args.
     pub mod pumpopoly_move_player_meta_fun_json;
-    /// Change helper: move a Pumpopoly player via raw JSON args.
-    pub mod pumpopoly_move_player_fun_json;
     /// View helper: fetch a Pumpopoly player's state via raw JSON args.
     pub mod pumpopoly_view_player_fun_json;
     /// View helper: fetch multiple Pumpopoly players' state via raw JSON args.
@@ -82,8 +82,6 @@ pub mod rhea_dclv2 {
     pub mod dclv2_deposit_fun_json;
     /// View helper: find an account's DCL v2 limit order on one pool point via raw JSON args.
     pub mod dclv2_find_order_fun_json;
-    /// View helper: fetch a single DCL v2 limit order by its order id via raw JSON args.
-    pub mod dclv2_get_order_fun_json;
     /// View helper: fetch a single DCL v2 liquidity position by its lpt id via raw JSON args.
     pub mod dclv2_get_liquidity_fun_json;
     /// View helper: fetch the per-point liquidity distribution of a DCL v2 pool range via raw JSON args.
@@ -94,6 +92,10 @@ pub mod rhea_dclv2 {
     pub mod dclv2_get_market_depth_list_fun_json;
     /// View helper: fetch the market-depth snapshot of a DCL v2 pool via raw JSON args.
     pub mod dclv2_get_marketdepth_fun_json;
+    /// View helper: fetch the DCL v2 contract metadata via raw JSON args.
+    pub mod dclv2_get_metadata_fun_json;
+    /// View helper: fetch a single DCL v2 limit order by its order id via raw JSON args.
+    pub mod dclv2_get_order_fun_json;
     /// View helper: fetch the resting limit orders of a DCL v2 pool range via raw JSON args.
     pub mod dclv2_get_pointorder_range_fun_json;
     /// View helper: fetch a single DCL v2 pool by its pool id via raw JSON args.
