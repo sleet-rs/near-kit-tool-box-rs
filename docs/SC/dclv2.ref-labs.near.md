@@ -146,8 +146,14 @@ named on `RHEA_DCLV2_LIQUIDITY_TYPE`.
 **Claiming the fees.** There is **no `claim_fee` method** — the fees are
 claimed by calling `remove_liquidity` with an `amount` of `"0"`. That claims
 the fees and removes **no** liquidity, so the position stays open. The
-claimed fees land in the internal balance, and the position's
-`unclaimed_fee_x` / `unclaimed_fee_y` go back to `"0"`.
+claimed fees go **straight to the signer's wallet**, the DEX transfers them
+out as part of the same call. The position's `unclaimed_fee_x` /
+`unclaimed_fee_y` go back to `"0"`.
+
+The x side pays the token's own **tax** on the way out, the y side does not.
+A claim of 38,246,369,033,956,797,141,701 BATMAN arrived as
+37,863,905,343,617,229,170,284 — the 1% difference is the token contract's
+tax, not the DEX's.
 
 Verified on `dclv2.ref-dev.testnet` on 2026-10-29:
 
@@ -156,6 +162,8 @@ remove_liquidity "usdc.fakes.testnet|wrap.testnet|2000#2549" 0
 -> removed_amount "0"
 -> claim_fee_token_x "2"
 -> claim_fee_token_y "294998137750361"
+-> Transfer 2 from dclv2.ref-dev.testnet to sleet.testnet
+-> Withdraw 294998137750361 yoctoNEAR from dclv2.ref-dev.testnet
 ```
 
 The fees accrue only while the price trades **through** the position's
