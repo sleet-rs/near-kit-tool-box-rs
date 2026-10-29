@@ -143,6 +143,29 @@ already exists there.
 with `token_x`, `token_y`, `fee_x`, and `fee_y` instead. Both sets are
 named on `RHEA_DCLV2_LIQUIDITY_TYPE`.
 
+**Claiming the fees.** There is **no `claim_fee` method** — the fees are
+claimed by calling `remove_liquidity` with an `amount` of `"0"`. That claims
+the fees and removes **no** liquidity, so the position stays open. The
+claimed fees land in the internal balance, and the position's
+`unclaimed_fee_x` / `unclaimed_fee_y` go back to `"0"`.
+
+Verified on `dclv2.ref-dev.testnet` on 2026-10-29:
+
+```
+remove_liquidity "usdc.fakes.testnet|wrap.testnet|2000#2549" 0
+-> removed_amount "0"
+-> claim_fee_token_x "2"
+-> claim_fee_token_y "294998137750361"
+```
+
+The fees accrue only while the price trades **through** the position's
+range. A position that sits on one side of the current price earns nothing
+until a swap crosses it, and a position the price has moved away from earns
+nothing either.
+
+`claim_charged_fee` is a **management** method, it wants a `pool_id`, and it
+is not the LP fee claim.
+
 `get_metadata` answers with 12 fields: `version`, `owner_id`,
 `farming_contract_id`, `next_owner_id`, `next_owner_accept_deadline`,
 `wnear_id`, `state`, `operators`, `protocol_fee_rate`, `pool_count`, and
@@ -167,6 +190,11 @@ confirmed against a live response.
 - `src/fun/rhea_dclv2/` — the contract methods: `dclv2_get_pool_fun_json.rs`, `dclv2_get_pools_fun_json.rs`, `dclv2_list_pools_fun_json.rs`, `dclv2_get_metadata_fun_json.rs`, `dclv2_quote_fun_json.rs`, `dclv2_quote_by_output_fun_json.rs`, `dclv2_get_liquidity_fun_json.rs`, `dclv2_list_liquidities_fun_json.rs`, `dclv2_get_liquidity_view_fun_json.rs`, `dclv2_list_liquidity_views_fun_json.rs`, `dclv2_get_liquidity_range_fun_json.rs`, `dclv2_get_pointorder_range_fun_json.rs`, `dclv2_get_marketdepth_fun_json.rs`, `dclv2_get_market_depth_list_fun_json.rs`, `dclv2_predict_add_liquidity_fun_json.rs`, `dclv2_predict_remove_liquidity_fun_json.rs`, `dclv2_get_order_fun_json.rs`, `dclv2_find_order_fun_json.rs`, `dclv2_list_active_orders_fun_json.rs`, `dclv2_list_history_orders_fun_json.rs`, `dclv2_get_user_asset_fun_json.rs`, `dclv2_list_user_assets_fun_json.rs`, `dclv2_get_user_storage_detail_fun_json.rs`, `dclv2_storage_balance_of_fun_json.rs`, `dclv2_add_liquidity_fun_json.rs`, `dclv2_remove_liquidity_fun_json.rs`, `dclv2_withdraw_asset_fun_json.rs`, `dclv2_cancel_order_fun_json.rs`, `dclv2_storage_deposit_fun_json.rs`, `dclv2_storage_withdraw_fun_json.rs`, `dclv2_storage_unregister_fun_json.rs`
 - `src/fun/rhea_dclv2/ft_transfer_call/` — the flows that are **not** DCL v2 methods, they call `ft_transfer_call` on the token contract instead: `dclv2_deposit_fun_json.rs`, `dclv2_swap_ft_transfer_call_fun_json.rs`, `dclv2_limit_order_fun_json.rs`
 - `src/bin/rhea_dclv2_*_bin_json.rs`
+
+the fee reading bins: `rhea_dclv2_get_liquidity_bin_json` (one position, with
+its `unclaimed_fee_x` / `unclaimed_fee_y`), `rhea_dclv2_get_liquidity_view_bin_json`
+(one position, with its `token_x` / `token_y` and `fee_x` / `fee_y`), and
+`rhea_dclv2_list_liquidity_views_bin_json` (every position, enriched).
 
 ---
 
