@@ -82,7 +82,13 @@ pool exists for it.
 overflow` for the pools that were checked. Use it for its intended purpose
 only once it is fixed; `add_liquidity` itself works fine.
 
+`predict_remove_liquidity` works and answers with a two element array, the
+`amount_x` and `amount_y` that would come back. Its burned amount goes in
+under the key `amount`, not `liquidity` — sending `liquidity` fails with
+`missing field `amount``.
+
 **Verified error codes**
+- `E100` account not registered (no DCL storage on the signer)
 - `E101` insufficient internal balance (deposit first)
 - `E102` storage deposit too small
 - `E200` invalid endpoint (unaligned points)

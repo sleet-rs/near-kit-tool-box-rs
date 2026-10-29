@@ -9,6 +9,10 @@ use serde_json::{Value, json};
 /// `lpt_id` is the position token id and `liquidity` is how much of its
 /// liquidity to burn (yocto string). Returns the raw prediction
 /// (returned token amounts, ...).
+///
+/// The contract expects the burned amount under the key `amount`, not
+/// `liquidity` — sending `liquidity` fails with
+/// `missing field `amount``.
 pub async fn predict_remove_liquidity(
     near: &Near,
     dcl_id: &str,
@@ -17,7 +21,7 @@ pub async fn predict_remove_liquidity(
 ) -> Result<Value, Error> {
     let out: Value = near
         .view::<Value>(dcl_id, RHEA_DCLV2_METHODS_CONST.predict_remove_liquidity)
-        .args(json!({ "lpt_id": lpt_id, "liquidity": liquidity }))
+        .args(json!({ "lpt_id": lpt_id, "amount": liquidity }))
         .await?;
     Ok(out)
 }
