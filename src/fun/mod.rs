@@ -78,8 +78,6 @@ pub mod rhea_dclv2 {
     pub mod dclv2_add_liquidity_fun_json;
     /// Change helper: cancel a DCL v2 limit order via raw JSON args.
     pub mod dclv2_cancel_order_fun_json;
-    /// Change helper: fund the signer's DCL v2 internal balance via ft_transfer_call with empty msg.
-    pub mod dclv2_deposit_fun_json;
     /// View helper: find an account's DCL v2 limit order on one pool point via raw JSON args.
     pub mod dclv2_find_order_fun_json;
     /// View helper: fetch a single DCL v2 liquidity position by its lpt id via raw JSON args.
@@ -106,8 +104,6 @@ pub mod rhea_dclv2 {
     pub mod dclv2_get_user_asset_fun_json;
     /// View helper: fetch the storage-deposit detail the DCL v2 contract tracks for one user via raw JSON args.
     pub mod dclv2_get_user_storage_detail_fun_json;
-    /// Change helper: place a DCL v2 limit order via `ft_transfer_call` on the sell token via raw JSON args.
-    pub mod dclv2_limit_order_fun_json;
     /// View helper: list the still-open DCL v2 limit orders of an account via raw JSON args.
     pub mod dclv2_list_active_orders_fun_json;
     /// View helper: list the filled / cancelled DCL v2 limit orders of an account via raw JSON args.
@@ -138,10 +134,11 @@ pub mod rhea_dclv2 {
     pub mod dclv2_storage_unregister_fun_json;
     /// Change helper: withdraw excess storage NEAR from the DCL v2 contract via raw JSON args.
     pub mod dclv2_storage_withdraw_fun_json;
-    /// Change helper: swap on DCL v2 via ft_transfer_call on the input token via raw JSON args.
-    pub mod dclv2_swap_ft_transfer_call_fun_json;
     /// Change helper: withdraw an internal token balance out of the DCL v2 contract via raw JSON args.
     pub mod dclv2_withdraw_asset_fun_json;
+    /// The DCL v2 flows that are not methods of the DCL v2 contract itself —
+    /// they call `ft_transfer_call` on the token contract instead.
+    pub mod ft_transfer_call;
 }
 pub mod rhea_ammv2 {
     /// Change helper: register a new constant-product pool on the rhea_ammv2 / ref-finance DEX via raw JSON args.

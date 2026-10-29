@@ -45,7 +45,8 @@ entirely to leave it unset.
 remainder, so it needs far more than the 50 TGas that the generic
 `ft_transfer_call` helper attaches — it runs out of gas with
 `Exceeded the prepaid gas.` after the swap already succeeded. Use the
-`dclv2_limit_order_fun_json::limit_order` helper (300 TGas) instead.
+`rhea_dclv2::ft_transfer_call::dclv2_limit_order_fun_json::limit_order` helper
+(300 TGas) instead.
 
 **LP flow** is *not* a `ft_transfer_call` message: deposit both tokens into the
 internal balance first, then call `add_liquidity` directly on the contract.
@@ -138,7 +139,8 @@ confirmed against a live response.
 - `src/lib/methods/methods_rhea_dclv2.rs`
 - `src/lib/const_id/rhea_dclv2_contract_id_const.rs`
 - `src/lib/types/rhea_dclv2_pool_type.rs`, `rhea_dclv2_quote_type.rs`, `rhea_dclv2_predict_add_liquidity_type.rs`, `rhea_dclv2_liquidity_type.rs`, `rhea_dclv2_order_type.rs`, `rhea_dclv2_user_asset_type.rs`, `rhea_dclv2_metadata_type.rs`
-- `src/fun/rhea_dclv2/` — `dclv2_get_pool_fun_json.rs`, `dclv2_get_pools_fun_json.rs`, `dclv2_list_pools_fun_json.rs`, `dclv2_get_metadata_fun_json.rs`, `dclv2_quote_fun_json.rs`, `dclv2_quote_by_output_fun_json.rs`, `dclv2_get_liquidity_fun_json.rs`, `dclv2_list_liquidities_fun_json.rs`, `dclv2_get_liquidity_view_fun_json.rs`, `dclv2_list_liquidity_views_fun_json.rs`, `dclv2_get_liquidity_range_fun_json.rs`, `dclv2_get_pointorder_range_fun_json.rs`, `dclv2_get_marketdepth_fun_json.rs`, `dclv2_get_market_depth_list_fun_json.rs`, `dclv2_predict_add_liquidity_fun_json.rs`, `dclv2_predict_remove_liquidity_fun_json.rs`, `dclv2_get_order_fun_json.rs`, `dclv2_find_order_fun_json.rs`, `dclv2_list_active_orders_fun_json.rs`, `dclv2_list_history_orders_fun_json.rs`, `dclv2_get_user_asset_fun_json.rs`, `dclv2_list_user_assets_fun_json.rs`, `dclv2_get_user_storage_detail_fun_json.rs`, `dclv2_storage_balance_of_fun_json.rs`, `dclv2_add_liquidity_fun_json.rs`, `dclv2_remove_liquidity_fun_json.rs`, `dclv2_withdraw_asset_fun_json.rs`, `dclv2_cancel_order_fun_json.rs`, `dclv2_deposit_fun_json.rs`, `dclv2_swap_ft_transfer_call_fun_json.rs`, `dclv2_limit_order_fun_json.rs`, `dclv2_storage_deposit_fun_json.rs`, `dclv2_storage_withdraw_fun_json.rs`, `dclv2_storage_unregister_fun_json.rs`
+- `src/fun/rhea_dclv2/` — the contract methods: `dclv2_get_pool_fun_json.rs`, `dclv2_get_pools_fun_json.rs`, `dclv2_list_pools_fun_json.rs`, `dclv2_get_metadata_fun_json.rs`, `dclv2_quote_fun_json.rs`, `dclv2_quote_by_output_fun_json.rs`, `dclv2_get_liquidity_fun_json.rs`, `dclv2_list_liquidities_fun_json.rs`, `dclv2_get_liquidity_view_fun_json.rs`, `dclv2_list_liquidity_views_fun_json.rs`, `dclv2_get_liquidity_range_fun_json.rs`, `dclv2_get_pointorder_range_fun_json.rs`, `dclv2_get_marketdepth_fun_json.rs`, `dclv2_get_market_depth_list_fun_json.rs`, `dclv2_predict_add_liquidity_fun_json.rs`, `dclv2_predict_remove_liquidity_fun_json.rs`, `dclv2_get_order_fun_json.rs`, `dclv2_find_order_fun_json.rs`, `dclv2_list_active_orders_fun_json.rs`, `dclv2_list_history_orders_fun_json.rs`, `dclv2_get_user_asset_fun_json.rs`, `dclv2_list_user_assets_fun_json.rs`, `dclv2_get_user_storage_detail_fun_json.rs`, `dclv2_storage_balance_of_fun_json.rs`, `dclv2_add_liquidity_fun_json.rs`, `dclv2_remove_liquidity_fun_json.rs`, `dclv2_withdraw_asset_fun_json.rs`, `dclv2_cancel_order_fun_json.rs`, `dclv2_storage_deposit_fun_json.rs`, `dclv2_storage_withdraw_fun_json.rs`, `dclv2_storage_unregister_fun_json.rs`
+- `src/fun/rhea_dclv2/ft_transfer_call/` — the flows that are **not** DCL v2 methods, they call `ft_transfer_call` on the token contract instead: `dclv2_deposit_fun_json.rs`, `dclv2_swap_ft_transfer_call_fun_json.rs`, `dclv2_limit_order_fun_json.rs`
 - `src/bin/rhea_dclv2_*_bin_json.rs`
 
 ---

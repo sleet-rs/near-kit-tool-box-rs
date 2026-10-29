@@ -9,7 +9,7 @@
 //
 // =================================================
 use near_kit::Error;
-use near_kit_tool_box::fun::rhea_dclv2::dclv2_deposit_fun_json::deposit;
+use near_kit_tool_box::fun::rhea_dclv2::ft_transfer_call::dclv2_deposit_fun_json::deposit;
 use near_kit_tool_box::lib::client_kit::NEAR_KIT_CLIENT;
 use std::env;
 // =================================================
