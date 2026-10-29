@@ -106,6 +106,8 @@ pub mod rhea_dclv2 {
     pub mod dclv2_get_user_asset_fun_json;
     /// View helper: fetch the storage-deposit detail the DCL v2 contract tracks for one user via raw JSON args.
     pub mod dclv2_get_user_storage_detail_fun_json;
+    /// Change helper: place a DCL v2 limit order via `ft_transfer_call` on the sell token via raw JSON args.
+    pub mod dclv2_limit_order_fun_json;
     /// View helper: list the still-open DCL v2 limit orders of an account via raw JSON args.
     pub mod dclv2_list_active_orders_fun_json;
     /// View helper: list the filled / cancelled DCL v2 limit orders of an account via raw JSON args.
