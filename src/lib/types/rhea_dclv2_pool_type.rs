@@ -5,8 +5,10 @@ use serde::Deserialize;
 ///
 /// Verified against live `dclv2.ref-labs.near` responses on 2026-10-28.
 /// A pool id is a composite string in the form
-/// `<hash>|<token>|<fee>`, and `token_x` is the hash rather than an
-/// account id. The live response has 23 fields; all are named here.
+/// `<token_x_account_id>|<token_y_account_id>|<fee>` — **both** slots are
+/// plain NEAR account ids of the two tokens of the pool, and `fee` is in
+/// basis points. `token_x` and `token_y` below are those same account
+/// ids, not hashes. The live response has 23 fields; all are named here.
 ///
 /// Fields that may be absent for a particular pool are optional. Unknown
 /// contract fields are preserved in `extra` so a contract update does not
