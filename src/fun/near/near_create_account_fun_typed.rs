@@ -28,7 +28,11 @@ pub async fn near_create_account(
         .parse()
         .map_err(|e| Error::Config(format!("invalid account id `{new_account_id}`: {e}")))?;
 
-    let tld = near.contract::<NEAR_TLD_CONTRACT_TRAIT>(tld_contract_id)?;
+    let tld_contract_id: AccountId = tld_contract_id
+        .parse()
+        .map_err(|e| Error::Config(format!("invalid account id `{tld_contract_id}`: {e}")))?;
+
+    let tld = near.contract::<NEAR_TLD_CONTRACT_TRAIT>(tld_contract_id);
 
     let result = tld
         .create_account(NEAR_CREATE_ACCOUNT_ARGS {

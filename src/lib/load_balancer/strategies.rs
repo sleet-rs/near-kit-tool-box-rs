@@ -6,7 +6,7 @@ use std::sync::atomic::{AtomicUsize, Ordering};
 
 /// Strategy for selecting the next RPC endpoint from a list of available endpoints.
 ///
-/// Implementations must be `Send + Sync` so the [`LoadBalancingRpcClient`](crate::lib::load_balancer::load_balancer::LoadBalancingRpcClient)
+/// Implementations must be `Send + Sync` so the [`LOAD_BALANCING_NEAR`](crate::lib::load_balancer::load_balancing_near::LOAD_BALANCING_NEAR)
 /// can be shared across tasks. The picked index is always taken modulo `len`, so
 /// implementations do not need to clamp themselves.
 pub trait LoadBalancingStrategy: Send + Sync {

@@ -52,6 +52,11 @@ pub struct LOAD_BALANCING_NEAR {
     last_used_idx: AtomicUsize,
 }
 
+// Keep the public, structured RPC errors directly matchable. `RpcError` is
+// an upstream near-kit type that carries the account/key and block context
+// of the failure, which can exceed Clippy's size threshold; boxing these
+// return values would change the low-level API for a cold error path.
+#[allow(clippy::result_large_err)]
 impl LOAD_BALANCING_NEAR {
     /// Create a load-balanced client over the given URLs, using the default
     /// round-robin strategy and failover on retryable errors. Each URL is
@@ -222,7 +227,6 @@ impl LOAD_BALANCING_NEAR {
         block: BlockReference,
     ) -> Result<AccountView, RpcError> {
         self.try_with_failover(|near| {
-            let block = block.clone();
             let account_id = account_id.clone();
             async move { near.rpc().view_account(&account_id, block).await }
         })
@@ -237,7 +241,6 @@ impl LOAD_BALANCING_NEAR {
         block: BlockReference,
     ) -> Result<AccessKeyView, RpcError> {
         self.try_with_failover(|near| {
-            let block = block.clone();
             let account_id = account_id.clone();
             let public_key = public_key.clone();
             async move {
@@ -256,7 +259,6 @@ impl LOAD_BALANCING_NEAR {
         block: BlockReference,
     ) -> Result<AccessKeyListView, RpcError> {
         self.try_with_failover(|near| {
-            let block = block.clone();
             let account_id = account_id.clone();
             async move { near.rpc().view_access_key_list(&account_id, block).await }
         })
@@ -271,7 +273,6 @@ impl LOAD_BALANCING_NEAR {
         block: BlockReference,
     ) -> Result<GasKeyNoncesView, RpcError> {
         self.try_with_failover(|near| {
-            let block = block.clone();
             let account_id = account_id.clone();
             let public_key = public_key.clone();
             async move {
@@ -292,7 +293,6 @@ impl LOAD_BALANCING_NEAR {
         block: BlockReference,
     ) -> Result<ViewFunctionResult, RpcError> {
         self.try_with_failover(|near| {
-            let block = block.clone();
             let account_id = account_id.clone();
             let args = args.to_vec();
             let method_name = method_name.to_string();
@@ -315,7 +315,6 @@ impl LOAD_BALANCING_NEAR {
         block: BlockReference,
     ) -> Result<ViewStateResult, RpcError> {
         self.try_with_failover(|near| {
-            let block = block.clone();
             let account_id = account_id.clone();
             let prefix = prefix.to_vec();
             let after_key = after_key.map(|k| k.to_vec());
@@ -337,7 +336,6 @@ impl LOAD_BALANCING_NEAR {
         block: BlockReference,
     ) -> Result<ViewStateAllResult, RpcError> {
         self.try_with_failover(|near| {
-            let block = block.clone();
             let account_id = account_id.clone();
             let prefix = prefix.to_vec();
             async move {
@@ -351,20 +349,14 @@ impl LOAD_BALANCING_NEAR {
 
     /// Get block information.
     pub async fn block(&self, block: BlockReference) -> Result<BlockView, RpcError> {
-        self.try_with_failover(|near| {
-            let block = block.clone();
-            async move { near.rpc().block(block).await }
-        })
-        .await
+        self.try_with_failover(|near| async move { near.rpc().block(block).await })
+            .await
     }
 
     /// Get all state changes that occurred in a block.
     pub async fn block_effects(&self, block: BlockReference) -> Result<BlockEffects, RpcError> {
-        self.try_with_failover(|near| {
-            let block = block.clone();
-            async move { near.rpc().block_effects(block).await }
-        })
-        .await
+        self.try_with_failover(|near| async move { near.rpc().block_effects(block).await })
+            .await
     }
 
     /// Get the network's genesis configuration as raw JSON.
@@ -405,11 +397,8 @@ impl LOAD_BALANCING_NEAR {
         &self,
         block: Option<BlockReference>,
     ) -> Result<EpochValidatorInfo, RpcError> {
-        self.try_with_failover(|near| {
-            let block = block.clone();
-            async move { near.rpc().validators(block).await }
-        })
-        .await
+        self.try_with_failover(|near| async move { near.rpc().validators(block).await })
+            .await
     }
 
     /// Look up the transaction that produced a receipt.

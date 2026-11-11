@@ -1,6 +1,6 @@
 // use near_kit::*;
 use crate::lib::contract::contract_greeting::{GREETING_ARGS, GREETING_CONTRACT_TRAIT};
-use near_kit::{Error, Gas, Near};
+use near_kit::{AccountId, Error, Gas, Near};
 // =================================================
 /// Change helper: set a new greeting on the contract using typed contract interface.
 ///
@@ -11,8 +11,11 @@ pub async fn set_greeting(
     contract_id: &str,
     new_greeting: String,
 ) -> Result<(), Error> {
+    let contract_id: AccountId = contract_id
+        .parse()
+        .map_err(|e| Error::Config(format!("invalid account id `{contract_id}`: {e}")))?;
     // Use the typed contract interface - compile-time type checking
-    let greeter = near.contract::<GREETING_CONTRACT_TRAIT>(contract_id)?;
+    let greeter = near.contract::<GREETING_CONTRACT_TRAIT>(contract_id);
     greeter
         .set_greeting(GREETING_ARGS {
             greeting: new_greeting,

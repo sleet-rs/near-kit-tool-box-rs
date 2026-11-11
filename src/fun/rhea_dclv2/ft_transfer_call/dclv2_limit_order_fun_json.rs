@@ -30,6 +30,11 @@ use serde_json::json;
 /// Gas: the swap-and-rest path runs a real swap before parking the
 /// remainder, so it needs well over the 50 TGas that the generic
 /// `ft_transfer_call` helper uses — this helper attaches 300 TGas.
+///
+/// The argument list mirrors the order's on-chain fields one-to-one; every
+/// argument is a distinct parameter of the limit order, so grouping them
+/// would hide the call shape behind a struct.
+#[allow(clippy::too_many_arguments)]
 pub async fn limit_order(
     near: &Near,
     sell_token_id: &str,

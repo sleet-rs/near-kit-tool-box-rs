@@ -7,7 +7,7 @@ use serde_json::json;
 /// raw JSON args.
 ///
 /// Pulls from the signer's internal balances — fund first with
-/// [`crate::fun::rhea_dclv2::dclv2_deposit_fun_json::deposit`] (`ft_transfer_call`
+/// [`crate::fun::rhea_dclv2::ft_transfer_call::dclv2_deposit_fun_json::deposit`] (`ft_transfer_call`
 /// with msg `"Deposit"`), then verify via `get_user_asset`.
 ///
 /// # args
@@ -25,6 +25,11 @@ use serde_json::json;
 /// Requires DCL storage registered (0.5 NEAR covers the first liquidity
 /// slot). Takes **no** attached deposit — attaching one fails with
 /// "Method add_liquidity doesn't accept deposit".
+///
+/// The argument list mirrors the contract's `add_liquidity` args one-to-one;
+/// every field is a distinct on-chain parameter, so grouping them would hide
+/// the call shape behind a struct.
+#[allow(clippy::too_many_arguments)]
 pub async fn add_liquidity(
     near: &Near,
     dcl_id: &str,
