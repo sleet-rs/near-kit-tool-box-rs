@@ -45,28 +45,28 @@ pub const CHESS_GAME_METHODS_CONST: CHESS_GAME_METHODS_CONST_TYPE = CHESS_GAME_M
     set_fees: "set_fees",
     set_token_whitelist: "set_token_whitelist",
     withdraw_treasury: "withdraw_treasury",
-    withdraw_treasury_callback: "withdraw_treasury_callback",
     transfer_ownership: "transfer_ownership",
     create_ai_game: "create_ai_game",
     challenge: "challenge",
     accept_challenge: "accept_challenge",
     reject_challenge: "reject_challenge",
-    reject_challenge_wager_callback: "reject_challenge_wager_callback",
     claim_points: "claim_points",
     join_matchmaking: "join_matchmaking",
     cancel_matchmaking: "cancel_matchmaking",
     play_move: "play_move",
     resign: "resign",
     cancel: "cancel",
-    cancel_wager_refund_callback: "cancel_wager_refund_callback",
-    wager_victory_callback: "wager_victory_callback",
-    wager_stalemate_callback: "wager_stalemate_callback",
     cancel_bet: "cancel_bet",
     withdraw_token: "withdraw_token",
-    withdraw_token_callback: "withdraw_token_callback",
 };
 // =================================================
 /// String constants for app.chess-game.near contract method names.
+///
+/// The contract's `#[private]` settlement callbacks — `wager_victory_callback`,
+/// `wager_stalemate_callback`, `cancel_wager_refund_callback`,
+/// `reject_challenge_wager_callback`, `withdraw_token_callback` and
+/// `withdraw_treasury_callback` — are **not** listed here. They are
+/// invoked by the contract itself and are not callable by a caller.
 pub struct CHESS_GAME_METHODS_CONST_TYPE {
     pub ft_on_transfer: &'static str,
     pub ft_metadata: &'static str,
@@ -112,25 +112,19 @@ pub struct CHESS_GAME_METHODS_CONST_TYPE {
     pub set_fees: &'static str,
     pub set_token_whitelist: &'static str,
     pub withdraw_treasury: &'static str,
-    pub withdraw_treasury_callback: &'static str,
     pub transfer_ownership: &'static str,
     pub create_ai_game: &'static str,
     pub challenge: &'static str,
     pub accept_challenge: &'static str,
     pub reject_challenge: &'static str,
-    pub reject_challenge_wager_callback: &'static str,
     pub claim_points: &'static str,
     pub join_matchmaking: &'static str,
     pub cancel_matchmaking: &'static str,
     pub play_move: &'static str,
     pub resign: &'static str,
     pub cancel: &'static str,
-    pub cancel_wager_refund_callback: &'static str,
-    pub wager_victory_callback: &'static str,
-    pub wager_stalemate_callback: &'static str,
     pub cancel_bet: &'static str,
     pub withdraw_token: &'static str,
-    pub withdraw_token_callback: &'static str,
 }
 // =================================================
 // =================================================

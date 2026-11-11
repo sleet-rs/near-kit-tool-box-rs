@@ -1,5 +1,41 @@
 // =================================================
 //! Helper functions for interacting with NEAR contracts.
+pub mod chess_game {
+    /// Change helper: claim the pending ppp points of the caller via raw JSON args.
+    pub mod chess_game_account_calls_fun_json;
+    /// Change helper: challenge, accept and reject chess challenges via raw JSON args.
+    pub mod chess_game_challenge_fun_json;
+    /// Change helper: start a game against the on-chain chess ai via raw JSON args.
+    pub mod chess_game_create_ai_game_fun_json;
+    /// Change helper: resign and cancel a chess game via raw JSON args.
+    pub mod chess_game_game_end_fun_json;
+    /// View helper: fetch the players, the turn and the bet flag of a chess game via raw JSON args.
+    pub mod chess_game_game_info_fun_json;
+    /// View helper: fetch the registration, rating, points and stats of one chess account via raw JSON args.
+    pub mod chess_game_get_account_fun_json;
+    /// View helper: fetch the registered chess account ids, paginated, via raw JSON args.
+    pub mod chess_game_get_accounts_fun_json;
+    /// View helper: fetch the board of a chess game via raw JSON args.
+    pub mod chess_game_get_board_fun_json;
+    /// View helper: fetch the contract owner, the treasury fee and the token whitelist via raw JSON args.
+    pub mod chess_game_get_contract_info_fun_json;
+    /// View helper: fetch the elo ratings of specific chess accounts via raw JSON args.
+    pub mod chess_game_get_elo_ratings_by_ids_fun_json;
+    /// View helper: fetch the elo leaderboard of the chess contract via raw JSON args.
+    pub mod chess_game_get_elo_ratings_fun_json;
+    /// View helper: fetch the active games of one chess account via raw JSON args.
+    pub mod chess_game_get_game_ids_fun_json;
+    /// Change helper: join and leave the chess matchmaking queue via raw JSON args.
+    pub mod chess_game_matchmaking_fun_json;
+    /// Change helper: play a move in a chess game via raw JSON args.
+    pub mod chess_game_play_move_fun_json;
+    /// View helper: fetch the board of a chess game as one formatted string via raw JSON args.
+    pub mod chess_game_render_board_fun_json;
+    /// View helper: fetch the NEP-145 storage balance bounds and of one account via raw JSON args.
+    pub mod chess_game_storage_balance_fun_json;
+    /// Change helper: register an account on the chess contract via raw JSON args.
+    pub mod chess_game_storage_deposit_fun_json;
+}
 pub mod ft {
     /// View helper: fetch an FT balance via raw JSON args.
     pub mod ft_balance_of_fun_json;

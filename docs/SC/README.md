@@ -9,6 +9,7 @@ general
 - [near.md](./near.md) — TLD registrar + NEAR-level actions
 - [ft.md](./ft.md) — generic NEP-141 / NEP-145 helpers
 - [meme-cooking.near.md](./meme-cooking.near.md)
+- [app.chess-game.near.md](./app.chess-game.near.md) — on-chain chess
 - [berryclub.ek.near.md](./berryclub.ek.near.md)
 
 RHEA - ref was renamed rhea
