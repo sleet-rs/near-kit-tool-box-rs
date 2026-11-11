@@ -45,9 +45,13 @@ the rows are 1–8, counted from white's side.
   - `storage_deposit` attaches at least **0.05 NEAR**, the storage cost
   - `storage_withdraw`, `set_is_agent` and `withdraw_token` attach exactly
     **1 yoctoNEAR**
-  - `join_matchmaking` attaches **0.01 NEAR**, the storage for the queue
-    entry
 - an **`ft_transfer_call`** attaches exactly 1 yoctoNEAR
+
+`join_matchmaking` attaches **nothing**. It is not payable, so any
+attached deposit is rejected. The queue entry costs the contract no
+storage to keep. A **wagered** queue entry goes through
+`ft_transfer_call` on the token contract instead — that is the path that
+carries a token deposit.
 
 the gas follows the work the call does:
 
@@ -67,6 +71,11 @@ the gas follows the work the call does:
 in Rust the ai difficulty carries its own gas — `CHESS_GAME_DIFFICULTY`
 has a `gas_tgas()` method, and `play_move_with_gas` picks the right value
 for you (`None` for a human game, 150 Tgas).
+
+these gas figures come from the contract source and the official app —
+the app's `AI_MOVE_GAS` is 50 / 150 / 250 / 400 Tgas for Easy / Medium /
+Hard / VeryHard, and its `GAS_HIGH` of 300 Tgas is what it attaches to
+`resign` and `cancel`.
 
 **REGISTRATION IS THE FIRST STEP**
 

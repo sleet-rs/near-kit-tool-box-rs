@@ -46,7 +46,10 @@ impl CHESS_GAME_DIFFICULTY {
 ///
 /// The caller must be registered. The gas scales with the difficulty —
 /// 50 Tgas for `Easy`, 150 for `Medium`, 250 for `Hard` and 400 for
-/// `VeryHard`.
+/// `VeryHard`, matching the official app's `AI_MOVE_GAS`.
+///
+/// The ai does **not** think during this call — it thinks on its reply to
+/// the first `play_move`. The gas here covers the game setup.
 pub async fn create_ai_game(
     near: &Near,
     chess_contract_id: &str,
