@@ -43,8 +43,10 @@ the rows are 1–8, counted from white's side.
 - a **contract method** takes no deposit, except the storage methods
   and the token methods:
   - `storage_deposit` attaches at least **0.05 NEAR**, the storage cost
-  - `storage_withdraw`, `set_is_agent` and `withdraw_token` attach exactly
-    **1 yoctoNEAR**
+  - `set_is_agent` and `withdraw_token` attach exactly **1 yoctoNEAR**
+  - `storage_withdraw` attaches exactly **1 yoctoNEAR** — but the contract
+    does not implement it, the call always fails with
+    `OperationNotSupported`
 - an **`ft_transfer_call`** attaches exactly 1 yoctoNEAR
 
 `join_matchmaking` attaches **nothing**. It is not payable, so any

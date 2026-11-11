@@ -29,8 +29,13 @@ pub async fn set_is_agent(
 /// Requires a `Near` client configured with signer credentials and returns
 /// the final execution outcome.
 ///
-/// `amount` is optional and is a yoctoNEAR decimal string. Without it the
-/// contract withdraws the whole balance.
+/// **NOT IMPLEMENTED on the contract** — `internal_storage_withdraw`
+/// returns `ContractError::OperationNotSupported` for every call, so no
+/// storage balance can ever be withdrawn this way. The helper is kept
+/// because the method exists on the contract and the call type, gas and
+/// deposit are correct — but it will not succeed.
+///
+/// `amount` is optional and is a yoctoNEAR decimal string.
 pub async fn storage_withdraw(
     near: &Near,
     chess_contract_id: &str,
