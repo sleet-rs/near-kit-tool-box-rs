@@ -10,7 +10,14 @@ use serde_json::json;
 ///
 /// `min_elo` and `max_elo` are the rating range of the opponent to match
 /// and are required. The caller must be registered, and must not already
-/// be in a challenge or in the queue. The queue holds **200 entries**.
+/// be in a challenge or in the queue. The queue holds **500 entries**.
+///
+/// A queue entry expires after **one hour**, and the expired entries are
+/// purged lazily — when the queue is next walked.
+///
+/// The elo test is **mutual**: the joiner's band and the queued player's
+/// band must both accept the other player, so a band is an agreement
+/// between two players rather than a search range.
 ///
 /// The call attaches **no deposit** — the queue entry costs the contract
 /// nothing to store. `min_elo` and `max_elo` are floats on the contract.
