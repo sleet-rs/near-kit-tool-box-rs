@@ -11,8 +11,9 @@ use serde_json::json;
 ///
 /// `mv` is **coordinate notation**, not san. `"Nf3"` and `"Qxe4"` fail.
 /// The accepted forms are `"e2e4"`, `"e2 e4"`, `"e2 to e4"`, `"O-O"`,
-/// `"O-O-O"` and a promotion like `"e7 to e8 Q"`. The columns are a–h
-/// and the rows are 1–8, counted from white's side.
+/// `"O-O-O"` and a promotion like `"e7 to e8 queen"` — a promotion
+/// spells the piece out in full. The columns are a–h and the rows are
+/// 1–8, counted from white's side.
 ///
 /// The gas depends on the opponent: 50 Tgas against the `Easy` ai, 150
 /// against the `Medium` ai or a human game, 250 against `Hard` and 400
